@@ -1,0 +1,410 @@
+$(document).ready(function(){
+    $.ajaxSetup({ cache: false });  // Prevent browser from caching the page. This is !important
+    $('#renterlist').click(function(){
+        $('#display_info').empty();
+       userlist('renter');
+    });
+    $('#properties').click(function(){
+        $('#display_info').empty();
+       proplist();
+    });
+    $('#owners').click(function(){
+        $('#display_info').empty();
+       userlist('owner');
+    });
+    $('#reservation').click(function(){
+        $('#display_info').empty();
+       //userlist('owner');
+    });
+    $('.navbar-brand').click(function(){
+        $('#display_info').empty();
+       resetall();
+    });
+});
+
+
+function userlist(user_type){
+    //alert('It works');
+    var uid = $('#id').text();
+    var usertype = user_type;
+    var userlist = 'userlist='+ usertype;
+    $.ajax({
+        type: 'post',
+        url: 'sandydashboard.php',
+        data: userlist,
+        success: function (response) {
+        // We get the element having id of display_info and put the response inside it
+        $('#display_info').html(response);
+            $('#tblUser').on('click', 'tbody td:nth-child(7)', function(event) { 
+                var renterbystate = $(this).text();
+                var user_state = renterbystate;
+                userbystate(user_state, usertype);
+            }); 
+            $('#tblUser thead tr:nth-child(2) th:first-child').each(function(){
+                $(this).before('<th>');
+            });
+            $('#tblUser thead tr:nth-child(2) th:last-child').each(function(){
+                $(this).before('<th>');
+            });
+            $('#tblUser tbody tr').each(function(){
+                $(this).prepend('<span><button class="btnUpdate">Update</button></span>') 
+               $(this).append('<span><button class="btnDelete">Delete</button></span>') 
+            });
+            $('.btnDelete').each(function(){
+               $(this).click(function(){
+                   row = $(this).closest('tr');
+                   tds = row.find('td:nth-child(2)').text();
+                   delUser(tds, usertype);
+               });
+            });
+        }
+    }); //end first AJAX
+}
+
+function userbystate(user_state, user_type){
+    if(user_type ==='owner'){
+        var usertype = 'owner';
+    } else if (user_type ==='renter'){
+        var usertype = 'renter';
+    }
+    // var stuff = 'user_state='+ user_state, 'user_type='+ usertype;
+    $.ajax({
+        type: 'post',
+        url: 'sandydashboard.php',
+        data: {
+            'user_state': user_state,
+            'user_type': usertype
+        },
+        success: function (response) {
+        // We get the element having id of display_info and put the response inside it
+        $('#display_info').html(response);
+        }
+    }); //end first AJAX
+}
+
+function delUser(delMe, usertype){
+    var stuff = 'del_user='+ delMe;
+    //alert(delMe);
+    $.ajax({
+        type: 'post',
+        url: 'sandydashboard.php',
+        data: stuff,
+        beforeSend:function(){
+         return confirm("Are you sure you want to delete this record? " + delMe);
+        },
+        success: function (response) {
+            // We get the element having id of display_info and put the response inside it
+            //$('#display_info').html(response);
+            alert(response);
+            userlist(usertype);
+        }
+    }); //end first AJAX
+
+}
+
+function proplist(){
+    //alert('It works');
+    var uid = $('#id').text();
+    var proplist = 'proplist='+ uid;
+    $.ajax({
+        type: 'post',
+        url: 'sandydashboard.php',
+        data: proplist,
+        success: function (response) {
+        // We get the element having id of display_info and put the response inside it
+            $('#display_info').html(response);
+            $('#tblprop tr').each(function(){
+               $(this).click(function(){
+                   var row = $(this).closest('tr');
+                   var tds = row.find('td:nth-child(1)').text();
+                   picture(tds);
+               });
+            });
+            $('#subPic').click(function(){
+                //$('#display_info').empty();
+                subPicForm();
+               //userlist('owner');
+            });
+            /*
+            $('#tblprop tbody tr:nth-child(n+1)').each(function(){
+               $(this).append('<span><button>Delete</button></span>') 
+            });
+
+            */
+        }
+    }); //end first AJAX
+}
+
+function picture(tds){
+    var piclist = 'piclist='+ tds;
+    $.ajax({
+        type: 'post',
+        url: 'sandydashboard.php',
+        data: piclist,
+        success: function (response) {
+        // We get the element having id of display_info and put the response inside it
+            $('.piclist,.picForm').empty();
+            $('#propTbl').removeClass('mx-auto');
+            $('#piclist').html(response); 
+        }
+    }); //end first AJAX    
+}
+
+function subPicForm(e){
+    alert('im working');
+    var data = 'picupload="1"';
+    
+    $.ajax({
+        type: 'post',
+        url: 'sandydashboard.php',
+        data: data,
+        success: function (response) {
+            $('.picForm').html(response); 
+                $("#uploadimage").on('submit',(function(e) { 
+                    alert($(this).serialize());
+                        //alert('im working');
+                    e.preventDefault();
+                    //$('#loading').show();
+                    $.ajax({
+                        url: "ajax_php_file.php", // Url to which the request is send
+                        type: "POST",             // Type of request to be send, called as method
+                        data: new FormData(this), // Data sent to server, a set of key/value pairs (i.e. form fields and values)
+                        contentType: false,       // The content type used when sending data to the server.
+                        cache: false,             // To unable request pages to be cached
+                        processData:false,        // To send DOMDocument or non processed data file it is set to false
+                        success: function(data)   // A function to be called if request succeeds
+                        {
+                            //$('#loading').hide();
+                            $(".piclist").html(data);
+                            $(".piclist").html("dude");
+                        }
+                        });
+                    }));
+        }
+    }); //end first AJAX 
+    //alert('im working');
+}
+
+function subPic(prop_id, prop_pic, prop_pic_desc){
+    //alert('im working');
+     $('.picForm')
+        .append('<form id="mySearch"></form>'); //append a new form element with id mySearch to <body>
+    $('#mySearch') 
+        //.attr("action","mySearchPage.cfm") .attr("method","post") //set the form attributes
+        .append('<input type="file" name="image" id="image">')
+        .append('<button>Dude</button>')
+        .preventDefault;
+    //alert('im working');
+}
+
+function ownerlist(){
+    //alert('It works');
+    var uid = $('#id').text();
+    var ownerlist = 'ownerlist='+ uid;
+    $.ajax({
+        type: 'post',
+        url: 'sandydashboard.php',
+        data: ownerlist,
+        success: function (response) {
+        // We get the element having id of display_info and put the response inside it
+        $('#display_info').html(response);
+            $('#tblUser').on('click', 'td:nth-child(6)', function(event) { 
+                var userstate = $(this).text();
+                userbystate(userstate, 'owner');
+                $('.tdhead').val('Owners');
+            }); 
+            $('#tblUser tr:nth-child(n+3)').each(function(){
+               $(this).append('<span><button>Delete</button></span>'); 
+            });
+            $('#tblUser button').each(function(){
+               $(this).click(function(){
+                   row = $(this).closest('tr');
+                   tds = row.find('td:nth-child(1)').text();
+                   delUser(tds);
+               });
+            });
+        }
+    }); //end first AJAX
+}
+
+
+function resetall(){
+    var uid = $('#id').text();
+    var resetall = 'resetall='+ uid;
+    $.ajax({
+        type: 'post',
+        url: 'sandydashboard.php',
+        data: resetall,
+        beforeSend:function(){
+         return confirm("Are you sure you want to reset the database?");
+        },
+        success: function (response) {
+        // We get the element having id of display_info and put the response inside it
+        $('#display_info').html(response);
+           
+        }
+    }); //end first AJAX
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+function tablestuff(){
+    $('#display_info table').click(function(){
+       alert('working'); 
+    });
+}
+
+function logo(x){
+    if (x === "on"){
+        $('body').addClass('body');
+        $('#insert').empty();
+        $('#searchResult h3').remove();
+        //alert('logo ran');
+    } else if (x === "off"){
+        $('body').removeClass('body');
+        var div = $('.companylogo');
+    }
+}
+
+function setup(x){
+    if(x === 'off'){
+        if ($('body').is('.index'))  {
+            $('#signin-form').show();
+        }
+        $('nav').hide();
+        $('#insert').empty();
+        $('#dialog').hide();
+    } else if(x === 'on'){
+        if ($('body').is('.index'))  {
+            $('#signin-form').show();
+        }
+        $('nav').show();
+        $('#insert').empty();
+        $('#dialog').hide();
+    }
+    
+}
+
+function search(){     
+    // prevent default action of pressing enter and remove focus
+    $('#search').keypress(function(e) {
+        if(e.which == 13) {
+           event.preventDefault();
+            $(':focus').blur();
+            logo('off');
+            skuSearch();
+            
+        }
+    });
+    
+    $('#browse').click(function(){
+        //alert('I clicked myself');
+        //event.preventDefault();
+        $('.navbar-toggler').click();
+        $('#search').val('');
+        logo('off');
+        browseSku();
+    });
+    
+    // reset everything
+    $('#home').click(function(){
+        $('.navbar-toggler').click();
+        logo('on');
+        //setup();
+    });
+
+    // slider for the pictures
+    $('#bsearch').click(skuSearch);
+    
+
+    function skuSearch(){
+        logo('off');
+        $('#insert').empty();
+        var searchField = $('#search').val().toUpperCase();
+        if (searchField.length == 0) {
+            //alert('Enter SKU number');
+            $("#dialog").dialog({
+                modal: true,
+                dialogClass: "no-close",
+                    buttons: [
+                    {
+                        text: "OK",
+                        click: function() {
+                        $(this).dialog("close");
+                    }
+                }
+                ]
+            }).prev(".ui-dialog").css("background","red");
+            //$('#search').focus();
+        } else {
+        $.getJSON('skus.json', function(data) {
+            $.each(data, function(key, value){
+                if (value.sku == searchField){
+                    $('#insert').empty();
+                    $('#searchResult h3').remove();
+                    $('#searchResult').prepend('<h3>'+value.sku+'</h3>');
+                   $.each(value.images, function (key, value){
+                       $('#insert').append('<div class="col-xl-3 col-lg-4 col-md-4 col-sm-6 col-xs-12 spaceme"><figure><img src="'+value.url+'" alt="SKU Picture" class="rounded mx-auto d-block img-fluid"><figcaption>'+value.caption+'</figure></div>'); 
+                    });
+                    } 
+            });   
+        });
+       }
+    }
+}
+
+function browseSku(){
+        $('#searchResult').val('');
+        $('#searchResult h3').remove();
+        $('#insert').empty();
+        
+        $.getJSON("skus.json", function(data){
+            // OK, this is weird. When i empty my #insert row the jquery UI will not longer apply the accordion
+            // classes, etc. I have to incerment the id by one in order for accordion to work correctly
+            // Ask Ben or Alec about this
+            num++;
+            $('#insert').append('<div class="col" id="resultHead'+num+'"></div>');
+            ids = $('#insert div:first').attr('id');
+            
+            $.each(data, function (key, value){
+                $('#'+ids).append('<h2>'+value.sku+'</h2>').append('<div>');
+                $('#'+ids +' div:last').append('<ul>')
+                $.each(value.images, function (key, value){
+                   $('#'+ids +' ul:last').append('<li class="link-class"><a href="'+value.url+'">'+value.caption+'</a>'); 
+                });
+                $('#'+ids + ' div:last').append('</ul>');
+                $('#'+ids).append('</div>');
+                $('#insert').append('</div>');
+            });
+            flipFlop();
+        });
+}
+
+// Because accordion is weird we must make the resultHead increment by one each time we press the browse button
+// Ask Ben about this to get guidence
+function flipFlop(){
+    $('#'+ids).addClass('resultHead');
+    $('#'+ids).accordion({
+        active: 9999999,
+        heightStyle: "content",
+        collapsible: true,
+    });
+    //alert("I ran");
+    //alert(num);
+}
