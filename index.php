@@ -6,7 +6,9 @@ $login = new USER();
 
 if($login->is_loggedin()!="")
 {
-	$login->redirect('home.php');
+	//$login->redirect('home.php');
+    $rank = $login->check_rank();
+    
 }
 
 if(isset($_POST['btn-login']))
@@ -29,7 +31,7 @@ if(isset($_POST['btn-login']))
 <?php 
 include "views/header.php"; 
 include "views/index-nav.php"; 
-echo ROOT_DIR;
+//echo ROOT_DIR;
 ?>
 
 <div class="container">

@@ -1,4 +1,6 @@
 <?php 
+    $rank = '';
+    
     if($page_name === "index.php"){
         $ufname = $login->fname(); 
     }else if($page_name === "sign-up.php"){
@@ -7,6 +9,9 @@
         $ufname = $auth_user->fname(); 
     }
 
+    if(isset($_SESSION['user_rank'])){
+        $rank = $_SESSION['user_rank'];
+    } 
 
 ?>
 <header class="container-fluid sticky-top sandy">
@@ -28,16 +33,22 @@ fixed-top
 
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark" role="navigation">
     <div class="container">
-        <a class="navbar-brand" href="#">Brand</a>
+        <a class="navbar-brand" href="#">SandyFeetRental</a>
         <button class="navbar-toggler border-0" type="button" data-toggle="collapse" data-target="#exCollapsingNavbar">
             &#9776;
         </button>
         <div class="collapse navbar-collapse" id="exCollapsingNavbar">
             <ul class="nav navbar-nav">
                 <li class="nav-item"><a href="#" class="nav-link">About</a></li>
-                <li class="nav-item"><a href="#" class="nav-link">Link</a></li>
-                <li class="nav-item"><a href="#" class="nav-link">Service</a></li>
-                <li class="nav-item"><a href="#" class="nav-link">More</a></li>
+                <li class="nav-item"><a href="#" class="nav-link">Browse</a></li>
+                <?php if($rank === "admin"){
+                    ?><li class="nav-item"><a href="#" class="nav-link">Admin</a></li><?php
+                }
+                ?>
+                <?php if($rank === "super_admin"){
+                    ?><li class="nav-item"><a href="#" class="nav-link">Super_Admin</a></li><?php
+                }
+                ?>
             </ul>
             <ul class="nav navbar-nav flex-row justify-content-between ml-auto">
             <?php 
