@@ -20,23 +20,22 @@
     </title>
     
     <!-- CSS -->    
-    <link rel="stylesheet" href="assets/css/bootstrap.min.css">
-    <link rel="stylesheet" href="assets/css/jquery-ui.min.css">
-    <link rel="stylesheet" href="assets/css/jquery-ui.structure.css">
-    <link rel="stylesheet" href="assets/css/font-awesome.min.css">
-    <link rel="stylesheet" href="assets/css/open-iconic.css">
-    <link rel="stylesheet" href="assets/css/open-iconic-bootstrap.css">
-    <link rel="stylesheet" href="assets/css/sandy.css">
+    <link rel="stylesheet" href="<?php echo ROOT_URL ?>/assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="<?php echo ROOT_URL ?>/assets/css/jquery-ui.min.css">
+    <link rel="stylesheet" href="<?php echo ROOT_URL ?>/assets/css/jquery-ui.structure.css">
+    <link rel="stylesheet" href="<?php echo ROOT_URL ?>/assets/css/font-awesome.min.css">
+    <link rel="stylesheet" href="<?php echo ROOT_URL ?>/assets/css/open-iconic.css">
+    <link rel="stylesheet" href="<?php echo ROOT_URL ?>/assets/css/open-iconic-bootstrap.css">
+    <link rel="stylesheet" href="<?php echo ROOT_URL ?>/assets/css/sandy.css">
 
     <!-- JS -->  
-    <script type="text/javascript" src="assets/js/jquery-3.3.1.min.js"></script>
-    <script type="text/javascript" src="assets/js/jquery.validate.min.js"></script>
-    <script type="text/javascript" src="assets/js/jquery-ui.min.-1.12.1js"></script>
-    <script type="text/javascript" src="assets/js/popper.js"></script>
-    <script type="text/javascript" src="assets/js/bootstrap.min.js"></script>
-    <script type="text/javascript" src="assets/js/sandy.js"></script>
+    <script type="text/javascript" src="<?php echo ROOT_URL ?>/assets/js/jquery-3.3.1.min.js"></script>
+    <script type="text/javascript" src="<?php echo ROOT_URL ?>/assets/js/jquery.validate.min.js"></script>
+    <script type="text/javascript" src="<?php echo ROOT_URL ?>/assets/js/jquery-ui.min.-1.12.1js"></script>
+    <script type="text/javascript" src="<?php echo ROOT_URL ?>/assets/js/popper.js"></script>
+    <script type="text/javascript" src="<?php echo ROOT_URL ?>/assets/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="<?php echo ROOT_URL ?>/assets/js/sandy.js"></script>
 
     
-    <link href="favicon.ico" rel="icon" type="image/x-icon" />
+    <link href="<?php echo ROOT_URL ?>/favicon.ico" rel="icon" type="image/x-icon" />
 </head>
-    

@@ -1,13 +1,7 @@
 body {
-    background-image: url("../images/SandyFeet4_blur.jpg");
-    -webkit-background-size: cover;
-    -moz-background-size: cover;
-    -o-background-size: cover;
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-position: 85% 0%; 
-    min-height: 1500px;
-    max-height: 100%;
+    background-image: url("../images/bg-pattern.jpg");
+
+	
 }
 
 .sandy {
@@ -18,12 +12,29 @@ body {
     background-color: #fff;
 }
 
+#index-img {
+	background-image: url("../images/SandyFeet6.jpg");
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: 45% 50%; 
+    min-height: 350px;
+	max-width: 100%;
+	border: 5px solid #fff;
+}
+
 #txt_umail {
     text-transform: lowercase;
 }
 
 ul.dropdown-lr {
   width: 300px;
+}
+
+.index-nav {
+	background-color: #80be8b;
 }
 
 .navProp {

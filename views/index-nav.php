@@ -31,7 +31,7 @@ fixed-top
 -->
 
 
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark" role="navigation">
+<nav class="navbar navbar-expand-lg navbar-dark bg-info" role="navigation" >
     <div class="container">
         <a class="navbar-brand" href="#">SandyFeetRental</a>
         <button class="navbar-toggler border-0" type="button" data-toggle="collapse" data-target="#exCollapsingNavbar">
@@ -59,7 +59,7 @@ fixed-top
                         
                         <li class="nav-item order-2 order-md-1"><a href="profile.php" class="nav-link" title="settings"><i class="fa fa-cog fa-fw fa-lg"></i></a></li>
                         <li class="order-1">
-                            <button type="button" id="register" href="sign-up.php" class="btn btn-outline-secondary">Register<span class="caret"></span></button>
+                            <button type="button" id="register" href="sign-up.php" class="btn btn-outline-warning">Register<span class="caret"></span></button>
                             <ul class="dropdown-menu dropdown-menu-right mt-2">
                                <li class="px-3 py-2">
                                 </li>
@@ -75,7 +75,7 @@ fixed-top
                     if(isset($ufname)){
                         ?>
                             <li class="nav-item dropdown order-1">
-                                <button type="button" id="dropdownMenu1" data-toggle="dropdown" class="btn btn-outline-secondary dropdown-toggle">Welcome <?php print($ufname); ?> <span class="caret"></span></button>
+                                <button type="button" id="dropdownMenu1" data-toggle="dropdown" class="btn btn-outline-dark dropdown-toggle">Welcome <?php print($ufname); ?> <span class="caret"></span></button>
                                   <div class="dropdown-menu">
                                     <a class="dropdown-item" href="profile.php">Profile</a>
                                     <a class="dropdown-item" href="logout.php?logout=true">Logout</a>

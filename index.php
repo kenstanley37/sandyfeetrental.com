@@ -36,9 +36,25 @@ include "views/index-nav.php";
 
 <div class="container">
     <div class="row">
-        <div class="col">The Slide Show Will Go Here</div>
-        <div class="col">Other Stuff Here</div> <!-- End col-4 -->
+        <div class="col" id="index-img"></div>
     </div> <!-- End Row -->
+    <div class="row">
+        <div class="col">
+            <p>Paragraph about Sandy Feet Rental</p>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-10">
+            <div class="row">
+                <div class="col">
+                    Blog Here
+                </div>
+            </div>
+        </div>
+        <div class="col-2">
+            Img Here
+        </div>
+    </div>
 </div> <!-- End Main Container -->
 
 
