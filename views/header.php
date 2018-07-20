@@ -31,9 +31,14 @@
     <!-- JS -->  
     <script type="text/javascript" src="<?php echo ROOT_URL ?>/assets/js/jquery-3.3.1.min.js"></script>
     <script type="text/javascript" src="<?php echo ROOT_URL ?>/assets/js/jquery.validate.min.js"></script>
-    <script type="text/javascript" src="<?php echo ROOT_URL ?>/assets/js/jquery-ui.min.-1.12.1js"></script>
+    <script type="text/javascript" src="<?php echo ROOT_URL ?>/assets/js/jquery-ui.min-1.12.1.js"></script>
     <script type="text/javascript" src="<?php echo ROOT_URL ?>/assets/js/popper.js"></script>
     <script type="text/javascript" src="<?php echo ROOT_URL ?>/assets/js/bootstrap.min.js"></script>
+    <!--
+    <script type="text/javascript" src="<?php echo ROOT_URL ?>/assets/flot/jquery.flot.js"></script>
+	<script type="text/javascript" src="<?php echo ROOT_URL ?>/assets/flot/jquery.flot.pie.js"></script>
+    -->
+    <script type="text/javascript" src="<?php echo ROOT_URL ?>/assets/js/Chart.min.js"></script>
     <script type="text/javascript" src="<?php echo ROOT_URL ?>/assets/js/sandy.js"></script>
 
     

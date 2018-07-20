@@ -41,12 +41,8 @@ fixed-top
             <ul class="nav navbar-nav">
                 <li class="nav-item"><a href="#" class="nav-link">About</a></li>
                 <li class="nav-item"><a href="#" class="nav-link">Browse</a></li>
-                <?php if($rank === "admin"){
-                    ?><li class="nav-item"><a href="#" class="nav-link">Admin</a></li><?php
-                }
-                ?>
-                <?php if($rank === "super_admin"){
-                    ?><li class="nav-item"><a href="#" class="nav-link">Super_Admin</a></li><?php
+                <?php if($rank === "admin" or $rank === "super_admin" ){
+                    ?><li class="nav-item"><a href="<?php echo ROOT_URL ?>/admin" class="nav-link">Admin</a></li><?php
                 }
                 ?>
             </ul>

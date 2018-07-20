@@ -6,6 +6,7 @@ class PROP
 {	
 
 	private $conn;
+    private $avg_rate;
 	
 	public function __construct()
 	{
@@ -20,82 +21,66 @@ class PROP
 		return $stmt;
 	}
 	
-	public function register($ufname, $ulname, $ustreet, $ustate, $uzip, $uphone, $umail, $upass, $ujoindate)
-	{
-		try
+    public function avg_rate(){
+       try
 		{
-			$new_password = password_hash($upass, PASSWORD_DEFAULT);
-            $utype = "renter";
-			
-			$stmt = $this->conn->prepare("INSERT INTO user(user_fName, user_lName, user_street, user_state, user_zip, user_phone, user_email, user_pass, user_type, joining_date) 
-                   VALUES(:ufname, :ulname, :ustreet, :ustate, :uzip, :uphone, :umail, :upass, :utype, :ujoindate)");
-												  
-			$stmt->bindparam(":ufname", $ufname);
-			$stmt->bindparam(":ulname", $ulname);
-            $stmt->bindparam(":ustreet", $ustreet);
-            $stmt->bindparam(":ustate", $ustate);
-            $stmt->bindparam(":uzip", $uzip);
-            $stmt->bindparam(":uphone", $uphone);
-            $stmt->bindparam(":umail", $umail);
-			$stmt->bindparam(":upass", $new_password);
-            $stmt->bindparam(":utype", $utype);
-            $stmt->bindparam(":ujoindate", $ujoindate);
-				
-			$stmt->execute();	
-			
-			return $stmt;	
-		}
-		catch(PDOException $e)
-		{
-			echo $e->getMessage();
-		}				
-	}
-	
-	
-	public function doLogin($umail,$upass)
-	{
-		try
-		{
-			$stmt = $this->conn->prepare("SELECT user_id, user_email, user_pass FROM user WHERE user_email=:umail ");
-			$stmt->execute(array(':umail'=>$umail));
-			$userRow=$stmt->fetch(PDO::FETCH_ASSOC);
-			if($stmt->rowCount() == 1)
-			{
-				if(password_verify($upass, $userRow['user_pass']))
-				{
-					$_SESSION['user_session'] = $userRow['user_id'];
-					return true;
-				}
-				else
-				{
-					return false;
-				}
-			}
+            $stmt = $this->conn->prepare("SELECT * from View1_AverageRate");
+            $stmt->execute();
+           ?> 
+            <table class="greenTable">
+            <thead>
+                <tr>
+                    <th colspan="2">Average Rate</th>
+                </tr>
+                <tr>
+                    <th>Property</th>
+                    <th>Average Rate</th>
+                </tr>    
+            </thead>
+            <tbody>
+            <?php
+            while ($row = $stmt->fetch()) {
+                //$avg_rate[] = array($row['Prop_Type'],$row['Avg_Prop_Rate']);
+                ?>
+                <tr>
+                    <td><?php echo $row['Prop_Type']."<br />\n"; ?></td>
+                    <td>$<?php echo $row['Avg_Prop_Rate']."<br />\n"; ?></td>
+                </tr>
+               
+                <?php
+            }
+            ?>
+            </tbody>
+            </table> 
+            
+            <?php
 		}
 		catch(PDOException $e)
 		{
 			echo $e->getMessage();
 		}
-	}
-	
-	public function is_loggedin()
-	{
-		if(isset($_SESSION['user_session']))
+    }
+    
+    public function avg_rate_array(){
+       try
 		{
-			return true;
+           //$check = [];
+            $stmt = $this->conn->prepare("SELECT * from View1_AverageRate");
+            $stmt->execute();
+            //$check[] = $stmt->fetchAll(\PDO::FETCH_ASSOC);
+            //$stmt->setFetchMode(PDO::FETCH_ASSOC);
+           $data = $stmt->fetchAll(PDO::FETCH_OBJ);
+           //while($row = $stmt->fetch()){
+           //        $fred[] = [$row['Prop_Type'], (int)$row['Avg_Prop_Rate']];
+           //}
+            //return($check);
+           header('Content-Type:application/json');
+           return $data;
 		}
-	}
-	
-	public function redirect($url)
-	{
-		header("Location: $url");
-	}
-	
-	public function doLogout()
-	{
-		session_destroy();
-		unset($_SESSION['user_session']);
-		return true;
-	}
+		catch(PDOException $e)
+		{
+			echo $e->getMessage();
+		}
+    }
 }
 ?>
