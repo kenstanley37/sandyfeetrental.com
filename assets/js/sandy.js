@@ -30,24 +30,24 @@ function avg_rate_graph(e){
     $.ajax({
         url:'/sandyfeetrental.com/inc/ajax.php',
         method: "POST",
-        data: "btn-avg",
+        data: 'btn-avg',
         success:function(response){
             console.log(response);
             var label = [];
-            var donne = [];
-            for(var i = 0; i<response.length;i++){
+            var data = [];
+            for(var i = 0; i < response.length;i++){
                 label.push(response[i].Prop_Type);
-                donne.push(response[i].Avg_Prop_Rate);
+                data.push(response[i].Avg_Prop_Rate);
             }
-            //alert(label);
+             
             var graph = new Chart(canvas,{
                 type:'pie',
-                label:'test',
+                label:'State',
                 data:{
                     labels:label,
                     datasets:[{
-                        label:"Average Rate",
-                        data:donne,
+                        label:"State",
+                        data:data,
                         backgroundColor: [
                             'rgba(255, 99, 132)',
                             'rgba(54, 162, 235)',
@@ -68,22 +68,45 @@ function avg_rate_graph(e){
                     }]
                 },
                 options: {
-                    countPercentage: 0,
+                    responsive: true,
                     legend: {
                         display: true,
                         position: 'right',
                         labels: {
                             fontColor: 'rgb(0, 0, 0)'
                         }
+                    },
+                    tooltips: {
+                        callbacks: {
+                          label: function(tooltipItem, data) {
+                            var dataset = data.datasets[tooltipItem.datasetIndex];
+                            var meta = dataset._meta[Object.keys(dataset._meta)[0]];
+                            var total = meta.total;
+                            var currentValue = dataset.data[tooltipItem.index];
+                            var percentage = parseFloat((currentValue/total*100).toFixed(1));
+                            return currentValue + ' (' + percentage + '%)';
+                          },
+                          title: function(tooltipItem, data) {
+                            return data.labels[tooltipItem[0].index];
+                          }
+                        }
+                      },
+                    title: {
+                        display: true,
+                        text: 'Per State',
+                        fontColor: 'rgb(0, 0, 0)'
+                        
                     }
                 }
 
             }); //end graph
         },
+        
         error:function(response){
             console.log(response);
         }
-       }); // end AJAX
+        
+       });
 } //end avg_rate_graph
 
 function get_no_rent(e){

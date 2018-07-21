@@ -22,42 +22,42 @@ class PROP
 		return $stmt;
 	}
 	
-    public function avg_rate(){
-       try
-		{
-            $stmt = $this->conn->prepare("SELECT * from View1_AverageRate");
-            $stmt->execute();
-           ?> 
-            <table class="avgTable">
-            <thead>
-                <tr>
-                    <th>Property</th>
-                    <th>Average Rate</th>
-                </tr>    
-            </thead>
-            <tbody>
-            <?php
-            while ($row = $stmt->fetch()) {
-                //$avg_rate[] = array($row['Prop_Type'],$row['Avg_Prop_Rate']);
-                ?>
-                <tr>
-                    <td><?php echo $row['Prop_Type']."<br />\n"; ?></td>
-                    <td>$<?php echo $row['Avg_Prop_Rate']."<br />\n"; ?></td>
-                </tr>
-               
-                <?php
-            }
+public function avg_rate(){
+   try
+    {
+        $stmt = $this->conn->prepare("SELECT * from View1_AverageRate");
+        $stmt->execute();
+       ?> 
+        <table class="avgTable">
+        <thead>
+            <tr>
+                <th>Property</th>
+                <th>Average Rate</th>
+            </tr>    
+        </thead>
+        <tbody>
+        <?php
+        while ($row = $stmt->fetch()) {
+            //$avg_rate[] = array($row['Prop_Type'],$row['Avg_Prop_Rate']);
             ?>
-            </tbody>
-            </table> 
-            
+            <tr>
+                <td><?php echo $row['Prop_Type']."<br />\n"; ?></td>
+                <td>$<?php echo $row['Avg_Prop_Rate']."<br />\n"; ?></td>
+            </tr>
+
             <?php
-		}
-		catch(PDOException $e)
-		{
-			echo $e->getMessage();
-		}
+        }
+        ?>
+        </tbody>
+        </table> 
+
+        <?php
     }
+    catch(PDOException $e)
+    {
+        echo $e->getMessage();
+    }
+}
     
 public function no_rent(){
        try
@@ -111,10 +111,12 @@ public function no_rent(){
     public function avg_rate_array(){
        try
 		{
-            $stmt = $this->conn->prepare("SELECT * from View1_AverageRate");
+            $stmt = $this->conn->prepare("SELECT * from view1_averagerate");
             $stmt->execute();
             $data = $stmt->fetchAll(PDO::FETCH_OBJ);
-            header('Content-Type:application/json');
+            if(!headers_sent()){
+               header('Content-Type:application/json');
+           }
             return $data;
 		}
 		catch(PDOException $e)
@@ -139,6 +141,17 @@ public function no_rent(){
 			echo $e->getMessage();
 		}
     }
-    
+
 } // end class
+
+
+
+
+
+
+
+
+
+
+
 ?>

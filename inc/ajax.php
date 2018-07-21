@@ -9,4 +9,5 @@ if(isset( $_POST['btn-avg'] )) {
 } else if(isset( $_POST['btn-norent'] )) {
      $result = $prop->get_no_rent();
      echo json_encode($result);
+    //echo $result;
 }

@@ -43,6 +43,10 @@
                                         <?php print $prop->avg_rate(); ?>
                                     </div>
                                     <div class="col-6" id="avg_rate">
+                                        <!--
+                                        Use for Google Charts
+                                        <div id="myChart"></div>
+                                        -->
                                         <canvas id="myChart"></canvas>
                                     </div>
                                 </div>
