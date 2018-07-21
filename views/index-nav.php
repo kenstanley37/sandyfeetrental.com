@@ -73,8 +73,8 @@ fixed-top
                             <li class="nav-item dropdown order-1">
                                 <button type="button" id="dropdownMenu1" data-toggle="dropdown" class="btn btn-outline-dark dropdown-toggle">Welcome <?php print($ufname); ?> <span class="caret"></span></button>
                                   <div class="dropdown-menu">
-                                    <a class="dropdown-item" href="profile.php">Profile</a>
-                                    <a class="dropdown-item" href="logout.php?logout=true">Logout</a>
+                                    <a class="dropdown-item" href="<?php echo ROOT_URL ?>/profile.php">Profile</a>
+                                    <a class="dropdown-item" href="<?php echo ROOT_URL ?>/logout.php?logout=true">Logout</a>
                                   </div>
                             </li>
                         <?php
@@ -117,7 +117,7 @@ fixed-top
                                                         </div>
                                                         <div class="col-xs-5">
                                                          <button type="submit" name="btn-login" class="btn btn-default">
-                                                            <img src="assets/open-iconic/svg/account-login.svg" alt="account login"> &nbsp; SIGN IN
+                                                            <img src="<?php echo ROOT_URL ?>/assets/open-iconic/svg/account-login.svg" alt="account login"> &nbsp; SIGN IN
                                                         </button>
                                                         </div>
                                                     </div>
@@ -136,7 +136,7 @@ fixed-top
                                                     </div>
                                                 </div>
                                                 <br>
-                                                <label>Don't have account yet? <a href="sign-up.php">Sign Up</a></label>
+                                                <label>Don't have account yet? <a href="<?php echo ROOT_URL ?>/sign-up.php">Sign Up</a></label>
                                           </form>
                                     </li>
                                 </ul>

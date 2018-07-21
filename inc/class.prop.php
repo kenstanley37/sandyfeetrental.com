@@ -111,7 +111,7 @@ public function no_rent(){
     public function avg_rate_array(){
        try
 		{
-            $stmt = $this->conn->prepare("SELECT * from view1_averagerate");
+            $stmt = $this->conn->prepare("SELECT * from View1_AverageRate");
             $stmt->execute();
             $data = $stmt->fetchAll(PDO::FETCH_OBJ);
             if(!headers_sent()){
@@ -143,15 +143,5 @@ public function no_rent(){
     }
 
 } // end class
-
-
-
-
-
-
-
-
-
-
 
 ?>

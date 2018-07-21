@@ -28,7 +28,7 @@ function avg_rate_graph(e){
     var canvas = $('#myChart');
     canvas.empty();
     $.ajax({
-        url:'/sandyfeetrental.com/inc/ajax.php',
+        url:'/inc/ajax.php',
         method: "POST",
         data: 'btn-avg',
         success:function(response){
@@ -40,9 +40,8 @@ function avg_rate_graph(e){
                 data.push(response[i].Avg_Prop_Rate);
             }
              
-            var graph = new Chart(canvas,{
+             var graph = new Chart(canvas,{
                 type:'pie',
-                label:'State',
                 data:{
                     labels:label,
                     datasets:[{
@@ -93,7 +92,7 @@ function avg_rate_graph(e){
                       },
                     title: {
                         display: true,
-                        text: 'Per State',
+                        //text: 'Per State',
                         fontColor: 'rgb(0, 0, 0)'
                         
                     }
@@ -113,7 +112,7 @@ function get_no_rent(e){
     var canvas = $('#myChart');
     canvas.empty();
     $.ajax({
-        url:'/sandyfeetrental.com/inc/ajax.php',
+        url:'/inc/ajax.php',
         method: "POST",
         data: 'btn-norent',
         success:function(response){

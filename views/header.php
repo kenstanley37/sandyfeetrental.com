@@ -34,12 +34,7 @@
     <script type="text/javascript" src="<?php echo ROOT_URL ?>/assets/js/jquery-ui.min-1.12.1.js"></script>
     <script type="text/javascript" src="<?php echo ROOT_URL ?>/assets/js/popper.js"></script>
     <script type="text/javascript" src="<?php echo ROOT_URL ?>/assets/js/bootstrap.min.js"></script>
-    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
-    <!--
-    <script type="text/javascript" src="<?php echo ROOT_URL ?>/assets/flot/jquery.flot.js"></script>
-	<script type="text/javascript" src="<?php echo ROOT_URL ?>/assets/flot/jquery.flot.pie.js"></script>
-    -->
-    <script type="text/javascript" src="<?php echo ROOT_URL ?>/assets/js/Chart.min.js"></script>
+    <script type="text/javascript" src="<?php echo ROOT_URL ?>/assets/js/Chart.bundle.min.js"></script>
     <script type="text/javascript" src="<?php echo ROOT_URL ?>/assets/js/sandy.js"></script>
     
     
