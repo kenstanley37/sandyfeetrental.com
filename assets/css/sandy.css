@@ -187,6 +187,10 @@ table.avgTable tfoot .links a{
     margin-top: 15px;
 }
 
+.active, .btn:hover {
+
+}
+
 /* mobile fix */
 @media (max-width: 768px) {
 	.dropdown-lr h3 {

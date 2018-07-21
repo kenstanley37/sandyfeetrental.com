@@ -5,6 +5,8 @@
     require_once(ROOT_DIR."/inc/class.prop.php");
     $login = new USER();
     $prop = new PROP();
+    
+    $myID = '';
 
     if($login->is_loggedin()!="")
     {
@@ -12,7 +14,6 @@
         $rank = $login->check_rank();
 
     }
-
 
     include $path."/views/header.php"; 
     include $path."/views/index-nav.php"; 
@@ -32,6 +33,7 @@
 
     <?php
         if(isset($_POST["btn-avg"])){
+            $myID = "btn-avg";
             ?>
                 <div class="row" id="avg_report_area">
                     <div class="col-12">
@@ -61,8 +63,9 @@
             </div> <!-- End container -->
         <?php
         }
-        if(isset($_POST["btn-norent"])){
-            ?>
+            if(isset($_POST["btn-norent"])){
+                $myID = "btn-norent";
+        ?>
                 <div class="row" id="norent_report_area">
                     <div class="col-12">
                         <div class="row" id="report_area">
@@ -87,9 +90,9 @@
                     </div>
                 </div>
             </div> <!-- End container -->
-            <?php
+        <?php
         }
-    ?>
+        ?>
     
     
 
@@ -97,4 +100,7 @@
 
 
     include $path."/views/footer.php"; 
+    ?>
+    <div id="idTheID"><?php echo $myID; ?></div>
+    <?php
 ?>

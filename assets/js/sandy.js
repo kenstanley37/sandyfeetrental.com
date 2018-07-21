@@ -13,8 +13,17 @@ $(document).ready(function(){
     }
     
     buttonClicks();
+    reportFromBtnHandler();
 });
 
+
+function reportFromBtnHandler(){
+    $('#idTheID').hide();
+    var myID = $('#idTheID').text();
+    //alert(myID);
+    //var myBtn = $('#btns-report-group button');
+    $("#"+myID).attr('class','active');
+}
 
 function buttonClicks(){
     $('#reset-db').click(function(e){
