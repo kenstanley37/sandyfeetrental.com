@@ -24,6 +24,10 @@
                 <div class="row admin-nav">
                     <div class="col-12"><?php include $path."/views/admin/admin-nav.php"; ?></div>
                 </div>
+                <div class="row">
+                    <div class="col" id="resetDB"></div>
+                </div>
+                
     
 
     <?php

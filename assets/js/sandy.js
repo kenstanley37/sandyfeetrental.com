@@ -11,8 +11,17 @@ $(document).ready(function(){
         //$('#myTable').append('<p>I rock</p>');
         get_no_rent();
     }
+    
+    buttonClicks();
 });
 
+
+function buttonClicks(){
+    $('#reset-db').click(function(e){
+        e.preventDefault();
+        resetall();
+    });
+}
 
 function labelFormatter(label, series) {
     return "<div style='font-size:8pt; text-align:center; padding:2px; color:white;'>" + label + "<br/>" + Math.round(series.percent) + "%</div>";
@@ -193,3 +202,26 @@ function get_no_rent(e){
         
        });
 } //end avg_rate_graph
+
+
+function resetall(){
+    var canvas = $('#myChart');
+    canvas.empty();
+    //alert('im working');
+    $.ajax({
+        type: 'post',
+        url: '/inc/reset-db.php',
+        data: 'resetall',
+        beforeSend:function(){
+         return confirm("Are you sure you want to reset the database?");
+        },
+        success: function (response) {
+        // We get the element having id of display_info and put the response inside it
+        $('#resetDB').html(response);
+        console.log(response);   
+        },
+        error:function(response){
+            console.log(response);
+        }
+    }); //end first AJAX
+}

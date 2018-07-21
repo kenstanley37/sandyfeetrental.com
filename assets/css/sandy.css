@@ -151,7 +151,7 @@ table.avgTable tfoot .links a{
 #report_area {
     padding: 25px;
     border-radius: 25px;
-    background-color: rgba(41,163,183);
+    background-color: rgba(41,163,183, 0.5);
 	border: 5px solid rgb(41,163,183);
 }
 

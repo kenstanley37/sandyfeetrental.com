@@ -105,13 +105,13 @@ class USER
     {
         $urank = $_SESSION['user_rank'];
         if($urank === "admin"){
-            $this->redirect('admin/index.php');
+            //$this->redirect('admin/index.php');
             return "admin";
         }else if($urank === "renter"){
-            $this->redirect('renter/index.php');
+            //$this->redirect('renter/index.php');
             return "renter";
         }else if($urank === "owner"){
-            $this->redirect('owner/index.php');
+            //$this->redirect('owner/index.php');
             return "owner";
         }
     }
