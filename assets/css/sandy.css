@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css?family=PT+Serif');
+
 body {
     background-image: url("../images/bg-pattern.jpg");
 }
@@ -35,25 +37,14 @@ ul.dropdown-lr {
 	background-color: #80be8b;
 }
 
- /* unvisited link */
-.admin-nav a:link {
-    color: #fff;
+.admin-nav {
+    margin-bottom: 15px;
 }
 
-/* visited link */
-.admin-nav a:visited {
-    color: #fff;
+.btn-toolbar button {
+    margin-right: 5px;
+    margin-left: 5px;
 }
-
-/* mouse over link */
-.admin-nav a:hover {
-    color: #80be8b;
-}
-
-/* selected link */
-.admin-nav a:active {
-    color: blue;
-} 
 
 .navProp {
 	max-height: 20px;
@@ -71,7 +62,7 @@ ul.dropdown-lr {
 
 .userinfobk {
     border-radius: 5px;
-    background: rgb(0,123,255, 0.6);
+    background: rgba(0,123,255, 0.6);
     color: #fff;
     width: 500px;
     height: 100px;
@@ -81,24 +72,29 @@ ul.dropdown-lr {
     color: #003;
 }
 
-table.greenTable {
-  border: 1px solid #1C6EA4;
-  background-color: #EEEEEE;
-  width: 100%;
-  text-align: left;
-  border-collapse: collapse;
+table.avgTable {
+    box-shadow: 5px 5px;
+    border: 1px solid #1C6EA4;
+    background-color: #eee;
+    width: 100%;
+    text-align: left;
+    border-collapse: collapse;
 }
-table.greenTable td, table.greenTable th {
-  border: 1px solid #AAAAAA;
+
+table.avgTable td, table.avgTable th {
+  border: 1px solid #aaa;
   padding: 3px 2px;
 }
-table.greenTable tbody td {
+
+table.avgTable tbody td {
   font-size: 13px;
 }
-table.greenTable tr:nth-child(even) {
+
+table.avgTable tr:nth-child(even) {
   background: #D0E4F5;
 }
-table.greenTable thead th{
+
+table.avgTable thead th{
   background: #1C6EA4;
   background: -moz-linear-gradient(top, #5592bb 0%, #327cad 66%, #1C6EA4 100%);
   background: -webkit-linear-gradient(top, #5592bb 0%, #327cad 66%, #1C6EA4 100%);
@@ -106,37 +102,41 @@ table.greenTable thead th{
   border-bottom: 2px solid #444444;
 }
 
-table.greenTable thead tr:first-child {
+table.avgTable thead tr:first-child {
 	text-align: center;
 }
 
-table.greenTable thead th {
+table.avgTable thead th {
   font-size: 15px;
   font-weight: bold;
   color: #FFFFFF;
   border-left: 2px solid #D0E4F5;
 }
-table.greenTable thead th {
+
+table.avgTable thead th {
   border-left: none;
 }
 
-table.greenTable tfoot {
+table.avgTable tfoot {
   font-size: 14px;
   font-weight: bold;
-  color: #FFFFFF;
+  color: #fff;
   background: #D0E4F5;
   background: -moz-linear-gradient(top, #dcebf7 0%, #d4e6f6 66%, #D0E4F5 100%);
   background: -webkit-linear-gradient(top, #dcebf7 0%, #d4e6f6 66%, #D0E4F5 100%);
   background: linear-gradient(to bottom, #dcebf7 0%, #d4e6f6 66%, #D0E4F5 100%);
   border-top: 2px solid #444444;
 }
-table.greenTable tfoot td {
+
+table.avgTable tfoot td {
   font-size: 14px;
 }
-table.greenTable tfoot .links {
+
+table.avgTable tfoot .links {
   text-align: right;
 }
-table.greenTable tfoot .links a{
+
+table.avgTable tfoot .links a{
   display: inline-block;
   background: #1C6EA4;
   color: #FFFFFF;
@@ -144,12 +144,29 @@ table.greenTable tfoot .links a{
   border-radius: 5px;
 }
 
+#admin {
+    margin-top: 25px;
+}
+
+#report_area {
+    padding: 25px;
+    border-radius: 25px;
+    background-color: rgba(41,163,183);
+	border: 5px solid rgb(41,163,183);
+}
+
+#report_area  h1 {
+    font-family: 'PT Serif', serif;
+    color: #fff;
+    text-shadow: 1px 1px #000;
+}
+
 .footer {
     position: fixed;
     left: 0;
     bottom: 0;
     width: 100%;
-    background-color: blue;
+    background-color: rgba(41,163,183);
     color: white;
     text-align: center;
 }
@@ -166,6 +183,9 @@ table.greenTable tfoot .links a{
     margin-left: 25px;
 }
 
+#norent_pie {
+    margin-top: 15px;
+}
 
 /* mobile fix */
 @media (max-width: 768px) {

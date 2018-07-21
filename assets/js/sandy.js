@@ -1,9 +1,18 @@
 $(document).ready(function(){
     $.ajaxSetup({ cache: false });  // Prevent browser from caching the page. This is !important
     register();
+
+    if($('#avg_report_area').length){
+        //$('#myTable').append('<p>I rock</p>');
+        avg_rate_graph();
+    }
     
-    avg_rate_graph();
+    if($('#norent_report_area').length){
+        //$('#myTable').append('<p>I rock</p>');
+        get_no_rent();
+    }
 });
+
 
 function labelFormatter(label, series) {
     return "<div style='font-size:8pt; text-align:center; padding:2px; color:white;'>" + label + "<br/>" + Math.round(series.percent) + "%</div>";
@@ -15,10 +24,13 @@ function register(){
     });
 }
 
-function avg_rate_graph(){
+function avg_rate_graph(e){
+    var canvas = $('#myChart');
+    canvas.empty();
     $.ajax({
         url:'/sandyfeetrental.com/inc/ajax.php',
-        method: "GET",
+        method: "POST",
+        data: "btn-avg",
         success:function(response){
             console.log(response);
             var label = [];
@@ -27,15 +39,14 @@ function avg_rate_graph(){
                 label.push(response[i].Prop_Type);
                 donne.push(response[i].Avg_Prop_Rate);
             }
-            
-            var avg = $('#avg_rate_pie');
-            var graph = new Chart(avg,{
+            //alert(label);
+            var graph = new Chart(canvas,{
                 type:'pie',
                 label:'test',
                 data:{
                     labels:label,
                     datasets:[{
-                        label:"Ken is awesome",
+                        label:"Average Rate",
                         data:donne,
                         backgroundColor: [
                             'rgba(255, 99, 132)',
@@ -66,8 +77,92 @@ function avg_rate_graph(){
                         }
                     }
                 }
-                
-            });
+
+            }); //end graph
+        },
+        error:function(response){
+            console.log(response);
+        }
+       }); // end AJAX
+} //end avg_rate_graph
+
+function get_no_rent(e){
+    var canvas = $('#myChart');
+    canvas.empty();
+    $.ajax({
+        url:'/sandyfeetrental.com/inc/ajax.php',
+        method: "POST",
+        data: 'btn-norent',
+        success:function(response){
+            console.log(response);
+            var label = [];
+            var data = [];
+            for(var i = 0; i < response.length;i++){
+                label.push(response[i].State);
+                data.push(response[i].count);
+            }
+             
+   
+            var graph = new Chart(canvas,{
+                type:'pie',
+                label:'State',
+                data:{
+                    labels:label,
+                    datasets:[{
+                        label:"State",
+                        data:data,
+                        backgroundColor: [
+                            'rgba(255, 99, 132)',
+                            'rgba(54, 162, 235)',
+                            'rgba(255, 206, 86)',
+                            'rgba(75, 192, 192)',
+                            'rgba(153, 102, 255)',
+                            'rgba(255, 159, 64)'
+                        ],
+                        borderColor: [
+                            'rgba(255,99,132,1)',
+                            'rgba(54, 162, 235, 1)',
+                            'rgba(255, 206, 86, 1)',
+                            'rgba(75, 192, 192, 1)',
+                            'rgba(153, 102, 255, 1)',
+                            'rgba(255, 159, 64, 1)'
+                        ],
+                        borderWidth: 1
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    legend: {
+                        display: true,
+                        position: 'top',
+                        labels: {
+                            fontColor: 'rgb(0, 0, 0)'
+                        }
+                    },
+                    tooltips: {
+                        callbacks: {
+                          label: function(tooltipItem, data) {
+                            var dataset = data.datasets[tooltipItem.datasetIndex];
+                            var meta = dataset._meta[Object.keys(dataset._meta)[0]];
+                            var total = meta.total;
+                            var currentValue = dataset.data[tooltipItem.index];
+                            var percentage = parseFloat((currentValue/total*100).toFixed(1));
+                            return currentValue + ' (' + percentage + '%)';
+                          },
+                          title: function(tooltipItem, data) {
+                            return data.labels[tooltipItem[0].index];
+                          }
+                        }
+                      },
+                    title: {
+                        display: true,
+                        text: 'Per State',
+                        fontColor: 'rgb(0, 0, 0)'
+                        
+                    }
+                }
+
+            }); //end graph
         },
         
         error:function(response){
@@ -75,5 +170,4 @@ function avg_rate_graph(){
         }
         
        });
-
 } //end avg_rate_graph

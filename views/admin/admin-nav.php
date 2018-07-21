@@ -1,14 +1,14 @@
-<ul class="nav flex-column navbar-dark bg-info admin-nav">
-  <li class="nav-item">
-    <a class="nav-link active" href="#">Active</a>
-  </li>
-  <li class="nav-item">
-    <a class="nav-link" href="#">Link</a>
-  </li>
-  <li class="nav-item">
-    <a class="nav-link" href="#">Link</a>
-  </li>
-  <li class="nav-item">
-    <a class="nav-link disabled" href="#">Disabled</a>
-  </li>
-</ul>
+<form method="post">
+    <div class="btn-toolbar" id="btns-report-group" role="group" aria-label="Admin Nav">
+        <button type="submit" id="btn-avg" name="btn-avg" class="btn btn-info">Average Rate</button>
+        <button type="submit" id="btn-norent" name="btn-norent" class="btn btn-info">No Rent</button>
+        <button type="submit" class="btn btn-info">Secondary</button>
+        <button type="submit" class="btn btn-info">Success</button>
+        <button type="submit" class="btn btn-info">Info</button>
+        <button type="submit" class="btn btn-info">Warning</button>
+        <button type="submit" class="btn btn-info">Danger</button>
+        <button type="submit" class="btn btn-info">Dark</button>
+        <button type="submit" class="btn btn-info">Light</button>
+        <button type="submit" class="btn btn-info">Link</button>
+    </div>
+</form>

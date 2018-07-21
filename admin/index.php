@@ -6,8 +6,6 @@
     $login = new USER();
     $prop = new PROP();
 
-    //$avg_rate[] = $prop->avg_rate_array();
-
     if($login->is_loggedin()!="")
     {
         //$login->redirect('home.php');
@@ -21,25 +19,70 @@
     //echo ROOT_URL;
     //echo ROOT_DIR;
     ?>
-    <div class="container">
-        <div class="row">
-            <div class="col-2"><?php include $path."/views/admin/admin-nav.php"; ?></div>
-            <div class="col-10">
-                <div class="row">
-                    <div class="col-6"><?php print $prop->avg_rate(); ?>
-                    </div>
-                    <div class="col-6" id="avg_rate">
-                        <canvas id="avg_rate_pie"></canvas>
-                    </div>
-                </div>
-            </div>
-        </div>
 
+            <div class="container" id="admin">
+                <div class="row admin-nav">
+                    <div class="col-12"><?php include $path."/views/admin/admin-nav.php"; ?></div>
+                </div>
     
 
-
-
-    </div>
+    <?php
+        if(isset($_POST["btn-avg"])){
+            ?>
+                <div class="row" id="avg_report_area">
+                    <div class="col-12">
+                        <div class="row" id="report_area">
+                            <div class="col">
+                                <div class="row">
+                                    <div class="col-12 text-center">
+                                        <h1>Average Rate</h1>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-6" id="myTable">
+                                        <?php print $prop->avg_rate(); ?>
+                                    </div>
+                                    <div class="col-6" id="avg_rate">
+                                        <canvas id="myChart"></canvas>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div> <!-- End container -->
+        <?php
+        }
+        if(isset($_POST["btn-norent"])){
+            ?>
+                <div class="row" id="norent_report_area">
+                    <div class="col-12">
+                        <div class="row" id="report_area">
+                            <div class="col">
+                                <div class="row">
+                                    <div class="col-12 text-center">
+                                        <h1>Customers who have not rented</h1>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-12" id="myTable">
+                                        <?php print $prop->no_rent(); ?>
+                                    </div>
+                                </div>
+                                <div class="row" id="norent_pie">
+                                    <div class="col-6">
+                                        <canvas id="myChart"></canvas>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div> <!-- End container -->
+            <?php
+        }
+    ?>
+    
     
 
     <?php

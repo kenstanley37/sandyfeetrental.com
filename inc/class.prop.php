@@ -13,6 +13,7 @@ class PROP
 		$database = new Database();
 		$db = $database->dbConnection();
 		$this->conn = $db;
+        //header('Content-Type:application/json');
     }
 	
 	public function runQuery($sql)
@@ -27,11 +28,8 @@ class PROP
             $stmt = $this->conn->prepare("SELECT * from View1_AverageRate");
             $stmt->execute();
            ?> 
-            <table class="greenTable">
+            <table class="avgTable">
             <thead>
-                <tr>
-                    <th colspan="2">Average Rate</th>
-                </tr>
                 <tr>
                     <th>Property</th>
                     <th>Average Rate</th>
@@ -61,26 +59,86 @@ class PROP
 		}
     }
     
-    public function avg_rate_array(){
+public function no_rent(){
        try
 		{
-           //$check = [];
-            $stmt = $this->conn->prepare("SELECT * from View1_AverageRate");
+            $stmt = $this->conn->prepare("SELECT * from View2_non_user");
             $stmt->execute();
-            //$check[] = $stmt->fetchAll(\PDO::FETCH_ASSOC);
-            //$stmt->setFetchMode(PDO::FETCH_ASSOC);
-           $data = $stmt->fetchAll(PDO::FETCH_OBJ);
-           //while($row = $stmt->fetch()){
-           //        $fred[] = [$row['Prop_Type'], (int)$row['Avg_Prop_Rate']];
-           //}
-            //return($check);
-           header('Content-Type:application/json');
-           return $data;
+           ?> 
+            <table class="avgTable">
+            <thead>
+                <tr>
+                    <th>First Name</th>
+                    <th>Last Name</th>
+                    <th>Stree Address</th>
+                    <th>City</th>
+                    <th>State</th>
+                    <th>Zip</th>
+                    <th>Phone</th>
+                    <th>E-Mail</th>
+                </tr>    
+            </thead>
+            <tbody>
+            <?php
+            while ($row = $stmt->fetch()) {
+                //$avg_rate[] = array($row['Prop_Type'],$row['Avg_Prop_Rate']);
+                ?>
+                <tr>
+                    <td><?php echo $row['First_Name']."<br />\n"; ?></td>
+                    <td><?php echo $row['Last_Name']."<br />\n"; ?></td>
+                    <td><?php echo $row['Street']."<br />\n"; ?></td>
+                    <td><?php echo $row['City']."<br />\n"; ?></td>
+                    <td><?php echo $row['State']."<br />\n"; ?></td>
+                    <td><?php echo $row['Zip']."<br />\n"; ?></td>
+                    <td><?php echo $row['Phone']."<br />\n"; ?></td>
+                    <td><?php echo $row['Email']."<br />\n"; ?></td>
+                </tr>
+               
+                <?php
+            }
+            ?>
+            </tbody>
+            </table> 
+            
+            <?php
 		}
 		catch(PDOException $e)
 		{
 			echo $e->getMessage();
 		}
     }
-}
+    
+    public function avg_rate_array(){
+       try
+		{
+            $stmt = $this->conn->prepare("SELECT * from View1_AverageRate");
+            $stmt->execute();
+            $data = $stmt->fetchAll(PDO::FETCH_OBJ);
+            header('Content-Type:application/json');
+            return $data;
+		}
+		catch(PDOException $e)
+		{
+			echo $e->getMessage();
+		}
+    }
+    
+    public function get_no_rent(){
+       try
+		{
+            $stmt = $this->conn->prepare("SELECT State, count(*) as count from View2_non_user group by state");
+            $stmt->execute();
+            $data = $stmt->fetchAll(PDO::FETCH_OBJ);
+           if(!headers_sent()){
+               header('Content-Type:application/json');
+           }
+            return $data;
+		}
+		catch(PDOException $e)
+		{
+			echo $e->getMessage();
+		}
+    }
+    
+} // end class
 ?>
