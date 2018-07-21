@@ -35,6 +35,7 @@
     <script type="text/javascript" src="<?php echo ROOT_URL ?>/assets/js/popper.js"></script>
     <script type="text/javascript" src="<?php echo ROOT_URL ?>/assets/js/bootstrap.min.js"></script>
     <script type="text/javascript" src="<?php echo ROOT_URL ?>/assets/js/Chart.bundle.min.js"></script>
+    <script type="text/javascript" src="<?php echo ROOT_URL ?>/assets/js/palette.js"></script>
     <script type="text/javascript" src="<?php echo ROOT_URL ?>/assets/js/sandy.js"></script>
     
     

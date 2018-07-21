@@ -12,8 +12,19 @@ $(document).ready(function(){
         get_no_rent();
     }
     
+    if($('#freq_report_area').length){
+        //$('#myTable').append('<p>I rock</p>');
+        get_freq_renters();
+    }
+    
     buttonClicks();
     reportFromBtnHandler();
+    var dynamicColors = function() {
+        var r = Math.floor(Math.random() * 255);
+        var g = Math.floor(Math.random() * 255);
+        var b = Math.floor(Math.random() * 255);
+        return "rgb(" + r + "," + g + "," + b + ")";
+    }
 });
 
 
@@ -65,22 +76,12 @@ function avg_rate_graph(e){
                     datasets:[{
                         label:"State",
                         data:data,
-                        backgroundColor: [
-                            'rgba(255, 99, 132)',
-                            'rgba(54, 162, 235)',
-                            'rgba(255, 206, 86)',
-                            'rgba(75, 192, 192)',
-                            'rgba(153, 102, 255)',
-                            'rgba(255, 159, 64)'
-                        ],
-                        borderColor: [
-                            'rgba(255,99,132,1)',
-                            'rgba(54, 162, 235, 1)',
-                            'rgba(255, 206, 86, 1)',
-                            'rgba(75, 192, 192, 1)',
-                            'rgba(153, 102, 255, 1)',
-                            'rgba(255, 159, 64, 1)'
-                        ],
+                        backgroundColor: palette('rainbow', data.length).map(function(hex) {
+                            return '#' + hex;
+                          }),
+                        borderColor: palette('rainbow', data.length).map(function(hex) {
+                            return '#' + hex;
+                          }),
                         borderWidth: 1
                     }]
                 },
@@ -151,22 +152,12 @@ function get_no_rent(e){
                     datasets:[{
                         label:"State",
                         data:data,
-                        backgroundColor: [
-                            'rgba(255, 99, 132)',
-                            'rgba(54, 162, 235)',
-                            'rgba(255, 206, 86)',
-                            'rgba(75, 192, 192)',
-                            'rgba(153, 102, 255)',
-                            'rgba(255, 159, 64)'
-                        ],
-                        borderColor: [
-                            'rgba(255,99,132,1)',
-                            'rgba(54, 162, 235, 1)',
-                            'rgba(255, 206, 86, 1)',
-                            'rgba(75, 192, 192, 1)',
-                            'rgba(153, 102, 255, 1)',
-                            'rgba(255, 159, 64, 1)'
-                        ],
+                        backgroundColor: palette('rainbow', data.length).map(function(hex) {
+                            return '#' + hex;
+                          }),
+                        borderColor: palette('rainbow', data.length).map(function(hex) {
+                            return '#' + hex;
+                          }),
                         borderWidth: 1
                     }]
                 },
@@ -211,6 +202,85 @@ function get_no_rent(e){
         
        });
 } //end avg_rate_graph
+
+function get_freq_renters(e){
+    var canvas = $('#myChart');
+    canvas.empty();
+    $.ajax({
+        url:'/inc/ajax.php',
+        method: "POST",
+        data: 'btn-freq',
+        success:function(response){
+            console.log(response);
+            var label = [];
+            var data = [];
+            for(var i = 0; i < response.length;i++){
+                label.push(response[i].Name);
+                data.push(response[i].Times_Rented);
+            }
+             
+   
+            var graph = new Chart(canvas,{
+                type:'pie',
+                label:'State',
+                data:{
+                    labels:label,
+                    datasets:[{
+                        label:"State",
+                        data:data,
+                        backgroundColor: palette('rainbow', data.length).map(function(hex) {
+                            return '#' + hex;
+                          }),
+                        borderColor: palette('rainbow', data.length).map(function(hex) {
+                            return '#' + hex;
+                          }),
+                        borderWidth: 1
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    legend: {
+                        display: true,
+                        position: 'right',
+                        labels: {
+                            fontColor: 'rgb(0, 0, 0)'
+                        }
+                    },
+                    tooltips: {
+                        callbacks: {
+                          label: function(tooltipItem, data) {
+                            var dataset = data.datasets[tooltipItem.datasetIndex];
+                            var meta = dataset._meta[Object.keys(dataset._meta)[0]];
+                            var total = meta.total;
+                            var currentValue = dataset.data[tooltipItem.index];
+                            var percentage = parseFloat((currentValue/total*100).toFixed(1));
+                            return currentValue + ' (' + percentage + '%)';
+                          },
+                          title: function(tooltipItem, data) {
+                            return data.labels[tooltipItem[0].index];
+                          }
+                        }
+                      },
+                    title: {
+                        display: true,
+                        //text: 'Per State',
+                        fontColor: 'rgb(0, 0, 0)'
+                        
+                    }
+                }
+
+            }); //end graph
+        },
+        
+        error:function(response){
+            console.log(response);
+        }
+        
+       });
+} //end avg_rate_graph
+
+
+
 
 
 function resetall(){

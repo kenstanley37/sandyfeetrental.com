@@ -59,7 +59,24 @@ public function avg_rate(){
     }
 }
     
-public function no_rent(){
+    public function avg_rate_array(){
+       try
+		{
+            $stmt = $this->conn->prepare("SELECT * from View1_AverageRate");
+            $stmt->execute();
+            $data = $stmt->fetchAll(PDO::FETCH_OBJ);
+            if(!headers_sent()){
+               header('Content-Type:application/json');
+           }
+            return $data;
+		}
+		catch(PDOException $e)
+		{
+			echo $e->getMessage();
+		}
+    }    
+    
+    public function no_rent(){
        try
 		{
             $stmt = $this->conn->prepare("SELECT * from View2_non_user");
@@ -108,23 +125,6 @@ public function no_rent(){
 		}
     }
     
-    public function avg_rate_array(){
-       try
-		{
-            $stmt = $this->conn->prepare("SELECT * from View1_AverageRate");
-            $stmt->execute();
-            $data = $stmt->fetchAll(PDO::FETCH_OBJ);
-            if(!headers_sent()){
-               header('Content-Type:application/json');
-           }
-            return $data;
-		}
-		catch(PDOException $e)
-		{
-			echo $e->getMessage();
-		}
-    }
-    
     public function get_no_rent(){
        try
 		{
@@ -141,6 +141,70 @@ public function no_rent(){
 			echo $e->getMessage();
 		}
     }
+    
+    public function freq_renters(){
+       try
+		{
+            $stmt = $this->conn->prepare("SELECT * from View3_most_frequent_users");
+            $stmt->execute();
+           ?> 
+            <table class="avgTable">
+            <thead>
+                <tr>
+                    <th>First Name</th>
+                    <th>Last Name</th>
+                    <th>Times Rented</th>
+                </tr>    
+            </thead>
+            <tbody>
+            <?php
+            while ($row = $stmt->fetch()) {
+                //$avg_rate[] = array($row['Prop_Type'],$row['Avg_Prop_Rate']);
+                ?>
+                <tr>
+                    <td><?php echo $row['First_Name']."<br />\n"; ?></td>
+                    <td><?php echo $row['Last_Name']."<br />\n"; ?></td>
+                    <td><?php echo (int)$row['Times_Rented']."<br />\n"; ?></td>
+                </tr>
+               
+                <?php
+            }
+            ?>
+            </tbody>
+            </table> 
+            
+            <?php
+		}
+		catch(PDOException $e)
+		{
+			echo $e->getMessage();
+		}
+    }
+    
+    public function get_freq_renters(){
+       try
+		{
+            $stmt = $this->conn->prepare("SELECT concat(First_Name,' ,',Last_Name) as Name, Times_Rented from View3_most_frequent_users");
+            $stmt->execute();
+            $data = $stmt->fetchAll(PDO::FETCH_OBJ);
+           if(!headers_sent()){
+               header('Content-Type:application/json');
+           }
+            return $data;
+		}
+		catch(PDOException $e)
+		{
+			echo $e->getMessage();
+		}
+    }
+    
+    
+    
+    
+    
+    
+    
+    
 
 } // end class
 

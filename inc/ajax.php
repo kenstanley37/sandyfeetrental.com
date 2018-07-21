@@ -14,4 +14,8 @@ if(isset( $_POST['btn-avg'] )) {
      $result = $prop->get_no_rent();
      echo json_encode($result);
     //echo $result;
+} else if(isset( $_POST['btn-freq'] )) {
+     $result = $prop->get_freq_renters();
+     echo json_encode($result);
+    //echo $result;
 }

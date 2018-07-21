@@ -316,9 +316,9 @@ order by user_lName;
 
 create or replace view View3_most_frequent_users AS
 select
-b.user_fName as "First Name",
-b.user_lName as "Last Name",
-count(a.user_id) as "Times Rented"
+b.user_fName as "First_Name",
+b.user_lName as "Last_Name",
+count(a.user_id) as "Times_Rented"
 from user b
 left join transactions a on a.user_id = b.user_id
 group by a.user_id, b.user_fName, b.user_lName
@@ -327,8 +327,8 @@ order by count(a.user_id) desc;
 
 create or replace view View4_2017_users AS
 select
-a.user_fName as "First Name", 
-a.user_lName as "Last Name", 
+a.user_fName as "First_Name", 
+a.user_lName as "Last_Name", 
 a.user_street as "Street",
 a.user_city as "City",
 a.user_state as "State",
@@ -350,23 +350,23 @@ a.user_email;
 
 create or replace view View5_ov_rate_increase AS
 select 
-b.prop_type as "Property Type", 
-a.prop_rate as "Current Rate",
-round(a.prop_rate*1.06 ,2) as "New Rate"
+b.prop_type as "Property_Type", 
+a.prop_rate as "Current_Rate",
+round(a.prop_rate*1.06 ,2) as "New_Rate"
 from property_rate a 
 left join property_type b on b.prop_type_id = a.prop_type_id 
 where b.prop_type_view = 'oceanview' and prop_rate_start <= curdate() and prop_rate_end >= curdate();
 
 create or replace view View6_yearly_earning AS
 select
-a.prop_num as "Property ID",
+a.prop_num as "Property_ID",
 year(b.trans_depart_dt) as "Year",
-sum(b.trans_rate) as "Total Rent",
+sum(b.trans_rate) as "Total_Rent",
 sum(b.trans_cleaning_fee) as "Cleaning",
 sum(b.trans_pet_deposit) as "Pet",
-sum(b.trans_rate)+sum(b.trans_cleaning_fee)+sum(b.trans_pet_deposit) as "Property Total Collected",
-round((sum(b.trans_rate)* .25)+sum(b.trans_pet_deposit) ,2) as "SFRC Earning",
-round((sum(b.trans_rate)* .75) ,2) as "user Earning"
+sum(b.trans_rate)+sum(b.trans_cleaning_fee)+sum(b.trans_pet_deposit) as "Property_Total_Collected",
+round((sum(b.trans_rate)* .25)+sum(b.trans_pet_deposit) ,2) as "SFRC_Earning",
+round((sum(b.trans_rate)* .75) ,2) as "user_Earning"
 from property a 
 left join transactions b on b.prop_id = a.prop_id
 group by a.prop_num, year(b.trans_depart_dt)
@@ -374,8 +374,8 @@ order by a.prop_num ,year(b.trans_depart_dt);
 
 create or replace view View7_SFRC_pay_type AS
 select
-a.user_pay_type as "Payment Type",
-sum(b.trans_rate)+sum(b.trans_cleaning_fee)+sum(b.trans_pet_deposit) as "Total Collected"
+a.user_pay_type as "Payment_Type",
+sum(b.trans_rate)+sum(b.trans_cleaning_fee)+sum(b.trans_pet_deposit) as "Total_Collected"
 from user_payment_type a 
 left join transactions b on b.user_pay_id = a.user_pay_id
 group by a.user_pay_type;
@@ -385,9 +385,9 @@ group by a.user_pay_type;
 
 create or replace view View8_user_pet AS
 select
-a.user_fName as "First Name",
-a.user_lName as "Last Name",
-a.user_street as "Street Address",
+a.user_fName as "First_Name",
+a.user_lName as "Last_Name",
+a.user_street as "Street_Address",
 a.user_city as "City",
 a.user_state as "State",
 a.user_zip as "Zip",
@@ -408,11 +408,11 @@ a.user_zip;
 -- Build a report that shows the user, property, how many rentals have occured in 2017
 create or replace view View9_2017_times_rented AS
 (select
-a.user_fName as "First Name",
-a.user_lName as "Last Name",
-b.prop_num as "Property ID",
+a.user_fName as "First_Name",
+a.user_lName as "Last_Name",
+b.prop_num as "Property_ID",
 d.building_name as "Building",
-count(c.prop_id) as "Times Rented"
+count(c.prop_id) as "Times_Rented"
 from property b 
 left join user a on b.user_id = a.user_id
 left join transactions c on c.prop_id = b.prop_id
@@ -427,11 +427,11 @@ d.building_name)
 union
 
 (select
-a.user_fName as "First Name",
-a.user_lName as "Last Name",
-b.prop_num as "Property ID",
+a.user_fName as "First_Name",
+a.user_lName as "Last_Name",
+b.prop_num as "Property_ID",
 d.building_name as "Building",
-count(c.prop_id) as "Times Rented"
+count(c.prop_id) as "Times_Rented"
 from property b 
 left join user a on b.user_id = a.user_id
 left join transactions c on c.prop_id = b.prop_id

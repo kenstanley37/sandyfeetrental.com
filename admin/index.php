@@ -92,6 +92,38 @@
             </div> <!-- End container -->
         <?php
         }
+            if(isset($_POST["btn-freq"])){
+                $myID = "btn-freq";
+        ?>
+
+            <div class="row" id="freq_report_area">
+                    <div class="col-12">
+                        <div class="row" id="report_area">
+                            <div class="col">
+                                <div class="row">
+                                    <div class="col-12 text-center">
+                                        <h1>Customers who have not rented</h1>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-6" id="myTable">
+                                        <?php print $prop->freq_renters(); ?>
+                                    </div>
+                                    <div class="col-6" id="freq_pie">
+                                        <!--
+                                        Use for Google Charts
+                                        <div id="myChart"></div>
+                                        -->
+                                        <canvas id="myChart"></canvas>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div> <!-- End container -->
+        <?php
+        }
         ?>
     
     
