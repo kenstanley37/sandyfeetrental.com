@@ -69,6 +69,10 @@ public function avg_rate(){
                header('Content-Type:application/json');
            }
             return $data;
+           if (headers_sent()) {
+              foreach (headers_list() as $header)
+                header_remove($header);
+            }
 		}
 		catch(PDOException $e)
 		{
@@ -135,6 +139,10 @@ public function avg_rate(){
                header('Content-Type:application/json');
            }
             return $data;
+           if (headers_sent()) {
+              foreach (headers_list() as $header)
+                header_remove($header);
+            }
 		}
 		catch(PDOException $e)
 		{
@@ -191,6 +199,10 @@ public function avg_rate(){
                header('Content-Type:application/json');
            }
             return $data;
+           if (headers_sent()) {
+              foreach (headers_list() as $header)
+                header_remove($header);
+            }
 		}
 		catch(PDOException $e)
 		{

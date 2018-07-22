@@ -1,5 +1,4 @@
 <?php
-
 require_once('dbconfig.php');
 
 class USER
@@ -103,21 +102,27 @@ class USER
     
     public function check_rank()
     {
-        $urank = $_SESSION['user_rank'];
-        if($urank === "admin"){
+        if(isset($_SESSION['user_rank'])){
+            $urank = $_SESSION['user_rank'];
+            if($urank === "admin"){
             //$this->redirect('admin/index.php');
             return "admin";
-        }else if($urank === "renter"){
-            //$this->redirect('renter/index.php');
-            return "renter";
-        }else if($urank === "owner"){
-            //$this->redirect('owner/index.php');
-            return "owner";
+            }else if($urank === "renter"){
+                //$this->redirect('renter/index.php');
+                return "renter";
+            }else if($urank === "owner"){
+                //$this->redirect('owner/index.php');
+                return "owner";
+            }
+        } else {
+            return "loggedout";
         }
+        
     }
 	
 	public function redirect($url)
 	{
+        $this->doLogout();
 		header("Location: $url");
 	}
 	

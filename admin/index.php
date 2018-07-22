@@ -4,19 +4,27 @@
     require_once(ROOT_DIR."/inc/class.user.php");
     require_once(ROOT_DIR."/inc/class.prop.php");
     $login = new USER();
+
+        if($login->is_loggedin()!="true")
+    {
+        //header("Location: /index.php");
+        $rank = $login->check_rank();
+        if($rank != 'admin' or 'super_admin'){
+            header("Location: /index.php");
+        }
+        //echo $rank;
+    }
+
+
     $prop = new PROP();
     
+
     $myID = '';
-
-    if($login->is_loggedin()!="")
-    {
-        //$login->redirect('home.php');
-        $rank = $login->check_rank();
-
-    }
 
     include $path."/views/header.php"; 
     include $path."/views/index-nav.php"; 
+    
+
     //echo ROOT_URL;
     //echo ROOT_DIR;
     ?>
@@ -102,7 +110,7 @@
                             <div class="col">
                                 <div class="row">
                                     <div class="col-12 text-center">
-                                        <h1>Customers who have not rented</h1>
+                                        <h1>Frequent Customers</h1>
                                     </div>
                                 </div>
                                 <div class="row">

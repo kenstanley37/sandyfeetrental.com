@@ -222,11 +222,11 @@ function get_freq_renters(e){
    
             var graph = new Chart(canvas,{
                 type:'pie',
-                label:'State',
+                label:'Freq',
                 data:{
                     labels:label,
                     datasets:[{
-                        label:"State",
+                        label:"Freq",
                         data:data,
                         backgroundColor: palette('rainbow', data.length).map(function(hex) {
                             return '#' + hex;
