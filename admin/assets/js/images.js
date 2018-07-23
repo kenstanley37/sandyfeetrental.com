@@ -15,19 +15,23 @@ function pop_dropdown(){
         $('select[name="property"]').change(function(){
             //alert('test');
             var prop_id = $(this).val();
-              $.ajax({
-               url:"/inc/ajax.php",
-               method:"POST",
-               data: {'img_fetch' : prop_id},    
-               success:function(data)
-               {
-                $('#image_table').html(data);
-               },
-               error:function(data){
-                   $('#image_table').html(data);
-                   console.log(data);
-               }
-              });
+            if(prop_id === ''){
+                $('#image_table').empty();
+            } else {
+                 $.ajax({
+                       url:"/inc/ajax.php",
+                       method:"POST",
+                       data: {'img_fetch' : prop_id},    
+                       success:function(data)
+                       {
+                        $('#image_table').html(data);
+                       },
+                       error:function(data){
+                           $('#image_table').html(data);
+                           console.log(data);
+                       }
+                  });   
+            }
         });
         },
         error:function(data){

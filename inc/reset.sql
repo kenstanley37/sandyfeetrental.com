@@ -120,6 +120,7 @@ CREATE TABLE prop_pics
   prop_pic_name    			VARCHAR(250)   	NOT NULL,
   prop_pic_desc        		TEXT,
   prop_pic_link    			VARCHAR(250),
+  prop_pic_date_added		DATETIME        DEFAULT CURRENT_TIMESTAMP,
   CONSTRAINT prop_pic_fk_property
     FOREIGN KEY (prop_id)
     REFERENCES property (prop_id)
@@ -293,6 +294,14 @@ INSERT INTO transactions VALUES
     (NULL,12,20,'2017-09-02','2017-09-09',100,0,NULL,60,525,2),
     (NULL,10,14,'2017-09-09','2017-09-16',100,150,'Dog',60,400,6),
     (NULL,4,26,'2017-09-16','2017-09-23',100,0,NULL,60,400,2);
+	
+	
+	
+INSERT INTO prop_pics VALUES
+    (NULL,6,'1.jpeg','First image upload','uploads/110T/1.jpeg',NULL),
+    (NULL,6,'2.jpg','First second upload','uploads/110T/2.jpg',NULL),
+	(NULL,6,'3.jpg','First third upload','uploads/110T/3.jpg',NULL),
+	(NULL,6,'4.jpg','First third upload','uploads/110T/4.jpg',NULL);
 
 create or replace view View1_AverageRate AS
 select distinct(prop_type) as "Prop_Type", round(avg(prop_rate) ,2) as "Avg_Prop_Rate"
