@@ -266,7 +266,9 @@ public function avg_rate(){
         $output .= '
          <table class="table table-bordered table-striped">
             <tr>
-                <th>Property ID</th>
+                <th class="text-center" id="tbl-head" colspan="7">Property ID: '.$img_fetch.'</th>
+            </tr>
+            <tr>
                 <th>Pic ID</th>
                 <th>Image</th>
                 <th>Name</th>
@@ -283,7 +285,6 @@ public function avg_rate(){
           $count ++; 
           $output .= '
             <tr>
-                <td>'.$row["prop_num"].'</td>
                 <td>'.$row["prop_pic_id"].'</td>
                 <td><a href="uploads/'.$row["prop_pic_name"].'"><img src="'.$row["prop_pic_link"].'" class="img-thumbnail" width="100" height="100" /></a></td>
                 <td>'.$row["prop_pic_name"].'</td>
