@@ -43,7 +43,11 @@ fixed-top
                 <li class="nav-item"><a href="#" class="nav-link">About</a></li>
                 <li class="nav-item"><a href="#" class="nav-link">Browse</a></li>
                 <?php if($rank === "admin" or $rank === "super_admin" ){
-                    ?><li class="nav-item"><a href="<?php echo ROOT_URL ?>/admin" class="nav-link">Admin</a></li><?php
+                    ?>
+                    <li class="nav-item"><a href="<?php echo ROOT_URL ?>/admin/reports.php" class="nav-link">Reports</a></li>
+                    <li class="nav-item"><a href="<?php echo ROOT_URL ?>/admin/photo.php" class="nav-link">Property Pictures</a></li>
+                
+                <?php
                 }
                 ?>
             </ul>

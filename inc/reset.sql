@@ -187,7 +187,8 @@ INSERT INTO `user` (`user_id`, `user_fName`, `user_lName`, `user_street`, `user_
 (31, 'Elliot', 'Harvey', '34 Kerry Drive  ', 'El Mano', 'MD', '23646', '(505)406-4647', 'ellioth@com.net', '$2y$10$kbrE1OB0WZnWiraN0iAJluIuImTRcRVjRk5cuNAJ1AkRocP6dDGh6', 'renter', '2018-06-30 21:04:35'),
 (32, 'Carrie', 'Zygote', '8607 Ferndale ', 'St  Montgomery', 'AL', '60631', '(303)406-3104', 'carriez@com.net', '$2y$10$kbrE1OB0WZnWiraN0iAJluIuImTRcRVjRk5cuNAJ1AkRocP6dDGh6', 'renter', '2018-06-30 21:04:35'),
 (36, 'Kenneth', 'Stanley', '123 Superman Ave.', 'Krypton', 'NC', '28787', '(828)777-7777', 'kennethlstanley@students.abtech.edu', '$2y$10$kbrE1OB0WZnWiraN0iAJluIuImTRcRVjRk5cuNAJ1AkRocP6dDGh6', 'super_admin', '2018-06-30 21:04:35'),
-(40, 'Test', 'Tester', '123 Testing', '', 'NC', '28787', '8283374359', 'test@stanleysoft.org', '$2y$10$IKaKP1YlU6lpkNGa95K6eueMM3wxCMwB.tqa0cp0OzOp.RSZH.TsK', 'admin', '2018-07-01 10:49:42');
+(40, 'Test', 'Tester', '123 Testing', '', 'NC', '28787', '8283374359', 'test@stanleysoft.org', '$2y$10$IKaKP1YlU6lpkNGa95K6eueMM3wxCMwB.tqa0cp0OzOp.RSZH.TsK', 'admin', '2018-07-01 10:49:42'),
+(41, 'Brenda', 'McFarland', 'ABTech', '', 'NC', '28787', '8280000000', 'brenda', '$2y$10$IKaKP1YlU6lpkNGa95K6eueMM3wxCMwB.tqa0cp0OzOp.RSZH.TsK', 'super_admin', '2018-07-01 10:49:42');
 
 
 INSERT INTO user_payment_type VALUES

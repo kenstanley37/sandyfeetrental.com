@@ -1,9 +1,15 @@
 $(document).ready(function(){
+    hide_header();
     pop_dropdown();
     load_image_data();
     //alert("I'm working");
 });
 
+function hide_header(){
+    $('header').slideUp('slow', function(){
+       // Animation complete 
+    });
+}
 
 function pop_dropdown(){
     $.ajax({
