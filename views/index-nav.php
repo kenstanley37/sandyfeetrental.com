@@ -6,7 +6,7 @@
     }else if($page_name === "sign-up.php"){
         $ufname = $user->fname(); 
     }else{
-        $ufname = $auth_user->fname(); 
+        $ufname = $login->fname(); 
     }
 
     if(isset($_SESSION['user_rank'])){
@@ -14,6 +14,7 @@
     } 
 
 ?>
+<body>
 <header class="container-fluid sticky-top sandy">
         <div class="row">
             <div class="col-0 col-sm-0 col-md-0 col-lg-2 col-xl-7"></div>

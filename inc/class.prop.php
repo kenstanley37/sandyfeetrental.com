@@ -208,10 +208,119 @@ public function avg_rate(){
 		{
 			echo $e->getMessage();
 		}
+    } // end get_freq_renters
+    
+    public function get_prop_list(){
+       try
+		{
+            $stmt = $this->conn->prepare("SELECT * from property order by prop_num");
+            $stmt->execute();
+            $result = $stmt->fetchAll();
+            $number_of_rows = $stmt->rowCount();
+            $output = '';
+        $output .= '
+            <select name="property" id="property_list">
+                <option value=""></option>
+        ';
+        if($number_of_rows > 0)
+        {
+         $count = 0;
+         foreach($result as $row)
+         {
+          $count ++; 
+          $output .= '
+            <option>'.$row["prop_num"].'</option>
+          ';
+         }
+        }
+        else
+        {
+         $output .= '
+            <tr>
+                <td colspan="7" align="center">No Data Found</td>
+            </tr>
+         ';
+        }
+        $output .= '</select>';
+        echo $output;           
+           
+           
+        }
+		catch(PDOException $e)
+		{
+			echo $e->getMessage();
+		}
+    } // end get_freq_renters
+    
+    public function img_fetch($img_fetch){
+        $query = "SELECT p.prop_num, pp.prop_pic_id, pp.prop_pic_name, pp.prop_pic_desc, pp.prop_pic_name, pp.prop_pic_link FROM prop_pics pp
+        left join property p on pp.prop_id = p.prop_id
+        WHERE p.prop_num = :img_fetch
+        ORDER BY pp.prop_id, pp.prop_pic_id DESC";
+        $stmt = $this->conn->prepare($query);
+        $stmt->bindParam(':img_fetch', $img_fetch);
+        $stmt->execute();
+        $result = $stmt->fetchAll();
+        $number_of_rows = $stmt->rowCount();
+        $output = '';
+        $output .= '
+         <table class="table table-bordered table-striped">
+            <tr>
+                <th>Property ID</th>
+                <th>Pic ID</th>
+                <th>Image</th>
+                <th>Name</th>
+                <th>Description</th>
+                <th>Edit</th>
+                <th>Delete</th>
+            </tr>
+        ';
+        if($number_of_rows > 0)
+        {
+         $count = 0;
+         foreach($result as $row)
+         {
+          $count ++; 
+          $output .= '
+            <tr>
+                <td>'.$row["prop_num"].'</td>
+                <td>'.$row["prop_pic_id"].'</td>
+                <td><a href="uploads/'.$row["prop_pic_name"].'"><img src="'.$row["prop_pic_link"].'" class="img-thumbnail" width="100" height="100" /></a></td>
+                <td>'.$row["prop_pic_name"].'</td>
+                <td>'.$row["prop_pic_desc"].'</td>
+                <td><button type="button" class="btn btn-warning btn-xs edit" id="'.$row["prop_pic_id"].'">Edit</button></td>
+                <td><button type="button" class="btn btn-danger btn-xs delete" id="'.$row["prop_pic_id"].'" data-image_name="'.$row["prop_pic_name"].'">Delete</button></td>
+            </tr>
+          ';
+         }
+        }
+        else
+        {
+         $output .= '
+            <tr>
+                <td colspan="7" align="center">No Data Found</td>
+            </tr>
+         ';
+        }
+        $output .= '</table>';
+        echo $output;
     }
     
+    public function img_upload(){
+        
+    }
     
+    public function img_edit(){
+        
+    }
     
+    public function img_update(){
+        
+    }
+    
+    public function img_delete(){
+        
+    }
     
     
     

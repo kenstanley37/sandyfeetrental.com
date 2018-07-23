@@ -22,13 +22,16 @@
     $myID = '';
 
     include $path."/views/header.php"; 
+?>
+</head>
+
+<?php
     include $path."/views/index-nav.php"; 
     
 
     //echo ROOT_URL;
     //echo ROOT_DIR;
     ?>
-
             <div class="container" id="admin">
                 <div class="row admin-nav">
                     <div class="col-12"><?php include $path."/views/admin/admin-nav.php"; ?></div>
@@ -133,12 +136,7 @@
         <?php
         }
         ?>
-    
-    
-
-    <?php
-
-
+     <?php
     include $path."/views/footer.php"; 
     ?>
     <div id="idTheID"><?php echo $myID; ?></div>

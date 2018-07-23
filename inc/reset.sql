@@ -117,8 +117,9 @@ CREATE TABLE prop_pics
 (
   prop_pic_id           	INT           	PRIMARY KEY   AUTO_INCREMENT,
   prop_id            		INT            	NOT NULL,
+  prop_pic_name    			VARCHAR(250)   	NOT NULL,
   prop_pic_desc        		TEXT,
-  prop_pic         			BLOB   			NOT NULL,
+  prop_pic_link    			VARCHAR(250),
   CONSTRAINT prop_pic_fk_property
     FOREIGN KEY (prop_id)
     REFERENCES property (prop_id)

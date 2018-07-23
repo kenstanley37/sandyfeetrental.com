@@ -30,32 +30,33 @@ if(isset($_POST['btn-login']))
 ?>
 <?php 
 include "views/header.php"; 
+?> </head> <?php
 include "views/index-nav.php"; 
 //echo ROOT_DIR;
 ?>
-
-<div class="container">
-    <div class="row">
-        <div class="col" id="index-img"></div>
-    </div> <!-- End Row -->
-    <div class="row">
-        <div class="col">
-            <p>Paragraph about Sandy Feet Rental</p>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-10">
-            <div class="row">
-                <div class="col">
-                    Blog Here
-                </div>
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col" id="index-img"></div>
+        </div> <!-- End Row -->
+        <div class="row">
+            <div class="col">
+                <p>Paragraph about Sandy Feet Rental</p>
             </div>
         </div>
-        <div class="col-2">
-            Img Here
+        <div class="row">
+            <div class="col-10">
+                <div class="row">
+                    <div class="col">
+                        Blog Here
+                    </div>
+                </div>
+            </div>
+            <div class="col-2">
+                Img Here
+            </div>
         </div>
-    </div>
-</div> <!-- End Main Container -->
-
+    </div> <!-- End Main Container -->
+</body>
 
 <?php include "views/footer.php" ?>

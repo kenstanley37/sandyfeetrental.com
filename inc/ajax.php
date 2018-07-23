@@ -18,4 +18,13 @@ if(isset( $_POST['btn-avg'] )) {
      $result = $prop->get_freq_renters();
      echo json_encode($result);
     //echo $result;
+} else if(isset( $_POST['img_fetch'] )) {
+     $img_fetch = $_POST['img_fetch'];
+     $result = $prop->img_fetch($img_fetch);
+     print_r($result);
+} else if(isset( $_POST['get_prop_list'] )) {
+     $result = $prop->get_prop_list();
+     print_r($result);
+}else {
+    echo "<h1>NOTHING HERE DUDE</h1>";
 }

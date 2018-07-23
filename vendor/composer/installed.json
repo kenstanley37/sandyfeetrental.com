@@ -1,0 +1,27 @@
+[
+    {
+        "name": "fineuploader/php-traditional-server",
+        "version": "1.1.0",
+        "version_normalized": "1.1.0.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/FineUploader/php-traditional-server.git",
+            "reference": "b3b0a2898dc32dcd3742cba7a8db89482a984fcc"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/FineUploader/php-traditional-server/zipball/b3b0a2898dc32dcd3742cba7a8db89482a984fcc",
+            "reference": "b3b0a2898dc32dcd3742cba7a8db89482a984fcc",
+            "shasum": ""
+        },
+        "time": "2016-07-08T19:15:10+00:00",
+        "type": "library",
+        "installation-source": "dist",
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "MIT"
+        ],
+        "description": "Endpoint handler for Fine Uploader's traditional server requests.",
+        "homepage": "http://fineuploader.com"
+    }
+]

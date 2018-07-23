@@ -76,70 +76,71 @@ if(isset($_POST['btn-login']))
 ?>
 <?php 
 include "views/header.php"; 
+
+?></head><?php
+
 include "views/index-nav.php"; 
 ?>
-
-<div class="signin-form">
-
-<div class="container">
-    	
-        <form method="post" class="form-signin">
-            <h2 class="form-signin-heading">Sign up.</h2><hr />
-            <?php
-			if(isset($error))
-			{
-			 	foreach($error as $error)
-			 	{
-					 ?>
-                     <div class="alert alert-danger">
-                        <i class="glyphicon glyphicon-warning-sign"></i> &nbsp; <?php echo $error; ?>
+<body>
+    <div class="signin-form">
+        <div class="container">
+            <form method="post" class="form-signin">
+                <h2 class="form-signin-heading">Sign up.</h2><hr />
+                <?php
+                if(isset($error))
+                {
+                    foreach($error as $error)
+                    {
+                         ?>
+                         <div class="alert alert-danger">
+                            <i class="glyphicon glyphicon-warning-sign"></i> &nbsp; <?php echo $error; ?>
+                         </div>
+                         <?php
+                    }
+                }
+                else if(isset($_GET['joined']))
+                {
+                     ?>
+                     <div class="alert alert-info">
+                          <i class="glyphicon glyphicon-log-in"></i> &nbsp; Successfully registered <a href='index.php'>login</a> here
                      </div>
                      <?php
-				}
-			}
-			else if(isset($_GET['joined']))
-			{
-				 ?>
-                 <div class="alert alert-info">
-                      <i class="glyphicon glyphicon-log-in"></i> &nbsp; Successfully registered <a href='index.php'>login</a> here
-                 </div>
-                 <?php
-			}
-			?>
-            <div class="form-group">
-                <input type="text" class="form-control" id="txt_ufname" name="txt_ufname" placeholder="Enter First Name" value="<?php if(isset($error)){echo $ufname;}?>" />
-            </div>
-            <div class="form-group">
-                <input type="text" class="form-control" name="txt_ulname" placeholder="Enter Last Name" value="<?php if(isset($error)){echo $ulname;}?>" />
-            </div>
-             <div class="form-group">
-                <input type="text" class="form-control" name="txt_ustreet" placeholder="Street Address" value="<?php if(isset($error)){echo $ustreet;}?>" />
-            </div>
-            <div class="form-group">
-                <input type="text" pattern=".{2,}" class="form-control" name="txt_ustate" placeholder="2 Letter State" value="<?php if(isset($error)){echo $ustate;}?>" />
-            </div>
-            <div class="form-group">
-                <input type="text" pattern="[0-9]{5}" class="form-control" name="txt_uzip" placeholder="5 Digit Zip Code" value="<?php if(isset($error)){echo $uzip;}?>" />
-            </div>
-            <div class="form-group">
-                <input type="text" class="form-control" name="txt_uphone" placeholder="Phone" value="<?php if(isset($error)){echo $uphone;}?>" />
-            </div>
-            <div class="form-group">
-             <input type="email" class="form-control" id="txt_umail" name="txt_umail" placeholder="E-Mail Address" value="<?php if(isset($error)){echo $umail;}?>" />
-            </div>
-            <div class="form-group">
-            	<input type="password" class="form-control" name="txt_upass" placeholder="Enter Password" />
-            </div>
-            <div class="clearfix"></div><hr />
-            <div class="form-group">
-            	<button type="submit" class="btn btn-primary" name="btn-signup">
-                	<i class="glyphicon glyphicon-open-file"></i>&nbsp;SIGN UP
-                </button>
-            </div>
-            <br />
-            <label>Have an account? <a href="index.php">Sign In</a></label>
-        </form>
-       </div>
-</div>
-
+                }
+                ?>
+                <div class="form-group">
+                    <input type="text" class="form-control" id="txt_ufname" name="txt_ufname" placeholder="Enter First Name" value="<?php if(isset($error)){echo $ufname;}?>" />
+                </div>
+                <div class="form-group">
+                    <input type="text" class="form-control" name="txt_ulname" placeholder="Enter Last Name" value="<?php if(isset($error)){echo $ulname;}?>" />
+                </div>
+                 <div class="form-group">
+                    <input type="text" class="form-control" name="txt_ustreet" placeholder="Street Address" value="<?php if(isset($error)){echo $ustreet;}?>" />
+                </div>
+                <div class="form-group">
+                    <input type="text" pattern=".{2,}" class="form-control" name="txt_ustate" placeholder="2 Letter State" value="<?php if(isset($error)){echo $ustate;}?>" />
+                </div>
+                <div class="form-group">
+                    <input type="text" pattern="[0-9]{5}" class="form-control" name="txt_uzip" placeholder="5 Digit Zip Code" value="<?php if(isset($error)){echo $uzip;}?>" />
+                </div>
+                <div class="form-group">
+                    <input type="text" class="form-control" name="txt_uphone" placeholder="Phone" value="<?php if(isset($error)){echo $uphone;}?>" />
+                </div>
+                <div class="form-group">
+                 <input type="email" class="form-control" id="txt_umail" name="txt_umail" placeholder="E-Mail Address" value="<?php if(isset($error)){echo $umail;}?>" />
+                </div>
+                <div class="form-group">
+                    <input type="password" class="form-control" name="txt_upass" placeholder="Enter Password" />
+                </div>
+                <div class="clearfix"></div><hr />
+                <div class="form-group">
+                    <button type="submit" class="btn btn-primary" name="btn-signup">
+                        <i class="glyphicon glyphicon-open-file"></i>&nbsp;SIGN UP
+                    </button>
+                </div>
+                <br />
+                <label>Have an account? <a href="index.php">Sign In</a></label>
+            </form>
+        </div>
+    </div>
+</body>
 <?php include "views/footer.php" ?>

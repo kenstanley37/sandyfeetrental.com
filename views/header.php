@@ -35,12 +35,10 @@
     <script type="text/javascript" src="<?php echo ROOT_URL ?>/assets/js/popper.js"></script>
     <script type="text/javascript" src="<?php echo ROOT_URL ?>/assets/js/bootstrap.min.js"></script>
     <script type="text/javascript" src="<?php echo ROOT_URL ?>/assets/js/Chart.bundle.min.js"></script>
+    <!-- Palette is used to give a color scheme to ChartJS -->
     <script type="text/javascript" src="<?php echo ROOT_URL ?>/assets/js/palette.js"></script>
+    <!-- Used for drag and drop file uploading -->
     <script type="text/javascript" src="<?php echo ROOT_URL ?>/assets/js/sandy.js"></script>
-    
-    
-    
 
     
     <link href="<?php echo ROOT_URL ?>/favicon.ico" rel="icon" type="image/x-icon" />
-</head>
