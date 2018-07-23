@@ -266,7 +266,7 @@ public function avg_rate(){
         $output .= '
          <table class="table table-bordered table-striped">
             <tr>
-                <th class="text-center" id="tbl-head" colspan="7">Property ID: '.$img_fetch.'</th>
+                <th id="tbl-head" colspan="7">Property ID: '.$img_fetch.'</th>
             </tr>
             <tr>
                 <th>Pic ID</th>
