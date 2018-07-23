@@ -1,12 +1,12 @@
 $(document).ready(function(){
-    hide_header();
+    //hide_header();
     pop_dropdown();
     load_image_data();
     //alert("I'm working");
 });
 
 function hide_header(){
-    $('header').slideUp('slow', function(){
+    $('header').slideUp('slow', 'linear', function(){
        // Animation complete 
     });
 }

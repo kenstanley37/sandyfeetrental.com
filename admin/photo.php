@@ -25,8 +25,8 @@
 ?>
 
 <!-- ADD MORE LINKS TO JS OR CSS HERE -->
-<link rel="stylesheet" href="assets/css/photo.css">
-<script src='assets/js/images.js' type='text/javascript'></script>
+<link rel="stylesheet" href="assets/css/admin.css">
+<script src='assets/js/admin.js' type='text/javascript'></script>
 </head>
 
 <?php
