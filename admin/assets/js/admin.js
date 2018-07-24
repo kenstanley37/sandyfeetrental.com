@@ -1,8 +1,10 @@
 $(document).ready(function(){
+    $('#reportTable').DataTable();
     //hide_header();
     pop_dropdown();
     load_image_data();
     //alert("I'm working");
+    
 });
 
 function hide_header(){

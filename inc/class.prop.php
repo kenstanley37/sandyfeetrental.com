@@ -28,7 +28,7 @@ public function avg_rate(){
         $stmt = $this->conn->prepare("SELECT * from View1_AverageRate");
         $stmt->execute();
        ?> 
-        <table class="avgTable">
+        <table id="reportTable" class="avgTable">
         <thead>
             <tr>
                 <th>Property</th>
@@ -86,7 +86,7 @@ public function avg_rate(){
             $stmt = $this->conn->prepare("SELECT * from View2_non_user");
             $stmt->execute();
            ?> 
-            <table class="avgTable">
+            <table id="reportTable" class="avgTable">
             <thead>
                 <tr>
                     <th>First Name</th>
@@ -156,7 +156,7 @@ public function avg_rate(){
             $stmt = $this->conn->prepare("SELECT * from View3_most_frequent_users");
             $stmt->execute();
            ?> 
-            <table class="avgTable">
+            <table id="reportTable" class="avgTable">
             <thead>
                 <tr>
                     <th>First Name</th>
