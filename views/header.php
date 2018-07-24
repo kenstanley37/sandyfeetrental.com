@@ -23,6 +23,7 @@
     <link rel="stylesheet" href="<?php echo ROOT_URL ?>/assets/css/bootstrap.min.css">
     <link rel="stylesheet" href="<?php echo ROOT_URL ?>/assets/css/jquery-ui.min.css">
     <link rel="stylesheet" href="<?php echo ROOT_URL ?>/assets/css/jquery-ui.structure.css">
+    <link rel="stylesheet" href="<?php echo ROOT_URL ?>/assets/css/jquery-ui.theme.min.css">
     <link rel="stylesheet" href="<?php echo ROOT_URL ?>/assets/css/font-awesome.min.css">
     <link rel="stylesheet" href="<?php echo ROOT_URL ?>/assets/css/open-iconic.css">
     <link rel="stylesheet" href="<?php echo ROOT_URL ?>/assets/css/open-iconic-bootstrap.css">

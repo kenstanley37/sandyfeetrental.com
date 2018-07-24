@@ -1,5 +1,6 @@
 $(document).ready(function(){
     $.ajaxSetup({ cache: false });  // Prevent browser from caching the page. This is !important
+    datePicker();
     register();
 
     if($('#avg_report_area').length){
@@ -19,6 +20,7 @@ $(document).ready(function(){
     
     buttonClicks();
     reportFromBtnHandler();
+    
     var dynamicColors = function() {
         var r = Math.floor(Math.random() * 255);
         var g = Math.floor(Math.random() * 255);
@@ -27,6 +29,11 @@ $(document).ready(function(){
     }
 });
 
+function datePicker(){
+    //alert('test');
+    $('#arriveDate').datepicker();
+    $('#departDate').datepicker();
+}
 
 function reportFromBtnHandler(){
     $('#idTheID').hide();

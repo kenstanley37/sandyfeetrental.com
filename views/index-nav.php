@@ -32,21 +32,28 @@ fixed-top
 -->
 
 
-<nav class="navbar navbar-expand-lg navbar-dark bg-info" role="navigation" >
+<nav class="navbar navbar-expand-lg navbar-dark index-nav" role="navigation" >
     <div class="container">
-        <a class="navbar-brand" href="#">SandyFeetRental</a>
+        <a class="navbar-brand" href="/index.php">SandyFeetRental</a>
         <button class="navbar-toggler border-0" type="button" data-toggle="collapse" data-target="#exCollapsingNavbar">
             &#9776;
         </button>
         <div class="collapse navbar-collapse" id="exCollapsingNavbar">
             <ul class="nav navbar-nav">
-                <li class="nav-item"><a href="#" class="nav-link">About</a></li>
-                <li class="nav-item"><a href="#" class="nav-link">Browse</a></li>
+                <!--
+                <li class="nav-item"><button class="btn btn-sm btn-success" data-toggle="button" aria-pressed="false" autocomplete="off">About</button></li>
+                <li class="nav-item"><button class="btn btn-sm btn-success" data-toggle="button" aria-pressed="false" autocomplete="off" onclick="location.href = '#';">Browse</button></li>
+                -->
                 <?php if($rank === "admin" or $rank === "super_admin" ){
                     ?>
+                    <li class="nav-item"><button class="btn btn-sm btn-outline-warning" data-toggle="button" aria-pressed="false" autocomplete="off" onclick="location.href = '<?php echo ROOT_URL ?>/admin/reports.php';">Reports</button></li>
+                
+                    <li class="nav-item"><button class="btn btn-sm btn-outline-warning" data-toggle="button" aria-pressed="false" autocomplete="off" onclick="location.href = '<?php echo ROOT_URL ?>/admin/photo.php';">Pictures</button></li>
+                    
+                    <!--
                     <li class="nav-item"><a href="<?php echo ROOT_URL ?>/admin/reports.php" class="nav-link">Reports</a></li>
                     <li class="nav-item"><a href="<?php echo ROOT_URL ?>/admin/photo.php" class="nav-link">Property Pictures</a></li>
-                
+                    -->
                 <?php
                 }
                 ?>
@@ -76,7 +83,7 @@ fixed-top
                     if(isset($ufname)){
                         ?>
                             <li class="nav-item dropdown order-1">
-                                <button type="button" id="dropdownMenu1" data-toggle="dropdown" class="btn btn-outline-dark dropdown-toggle">Welcome <?php print($ufname); ?> <span class="caret"></span></button>
+                                <button type="button" id="dropdownMenu1" data-toggle="dropdown" class="btn btn-info dropdown-toggle">Welcome <?php print($ufname); ?> <span class="caret"></span></button>
                                   <div class="dropdown-menu">
                                     <a class="dropdown-item" href="<?php echo ROOT_URL ?>/profile.php">Profile</a>
                                     <a class="dropdown-item" href="<?php echo ROOT_URL ?>/logout.php?logout=true">Logout</a>
@@ -86,7 +93,7 @@ fixed-top
                     }else {
                         ?>
                             <li class="dropdown order-1">
-                                <button type="button" id="dropdownMenu1" data-toggle="dropdown" class="btn btn-outline-secondary dropdown-toggle">Login <span class="caret"></span></button>
+                                <button type="button" id="dropdownMenu1" data-toggle="dropdown" class="btn btn-outline-warning dropdown-toggle">Login <span class="caret"></span></button>
                                 <ul class="dropdown-menu dropdown-menu-right mt-2">
                                    <li class="px-3 py-2">
                                        <form class="form-signin" method="post" id="login-form">

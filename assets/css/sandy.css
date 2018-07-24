@@ -34,7 +34,7 @@ ul.dropdown-lr {
 }
 
 .index-nav {
-	background-color: #80be8b;
+    background-color: #0077BE;
 }
 
 .admin-nav {
@@ -44,6 +44,29 @@ ul.dropdown-lr {
 .btn-toolbar button {
     margin-right: 5px;
     margin-left: 5px;
+}
+
+.navbar-nav button {
+    margin-top: 5px;
+    margin-right: 5px;
+    margin-left: 5px;
+}
+
+.main-car {
+    margin-top: 10px;
+    background: rgba(0,119,190, 0.3);
+    border-radius: 5px;
+    min-height: 500px;
+}
+
+#carouselExampleIndicators {
+    margin-top: 10%;
+    box-shadow: 5px 10px #000;
+    max-width: 720px;
+}
+
+.reservation {
+    margin-top: 20%;
 }
 
 .navProp {
@@ -61,6 +84,7 @@ ul.dropdown-lr {
 }
 
 .userinfobk {
+    display: none;
     border-radius: 5px;
     background: rgba(0,123,255, 0.6);
     color: #fff;

@@ -299,7 +299,7 @@ INSERT INTO transactions VALUES
 	
 	
 INSERT INTO prop_pics VALUES
-    (NULL,6,'1.jpeg','First image upload','uploads/110T/1.jpeg',NULL),
+    (NULL,6,'1.jpg','First image upload','uploads/110T/1.jpg',NULL),
     (NULL,6,'2.jpg','First second upload','uploads/110T/2.jpg',NULL),
 	(NULL,6,'3.jpg','First third upload','uploads/110T/3.jpg',NULL),
 	(NULL,6,'4.jpg','First third upload','uploads/110T/4.jpg',NULL);
