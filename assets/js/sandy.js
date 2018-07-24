@@ -2,7 +2,7 @@ $(document).ready(function(){
     $.ajaxSetup({ cache: false });  // Prevent browser from caching the page. This is !important
     datePicker();
     register();
-
+    mainNavButtonCheck();
     if($('#avg_report_area').length){
         //$('#myTable').append('<p>I rock</p>');
         avg_rate_graph();
@@ -28,6 +28,17 @@ $(document).ready(function(){
         return "rgb(" + r + "," + g + "," + b + ")";
     }
 });
+
+function mainNavButtonCheck(){
+    var temp1 = location.pathname;
+    var temp2 = temp1.lastIndexOf('/') +1;
+    var temp3 = temp1.substr(temp2);
+    var filename = temp3.substring(0, temp3.indexOf('.'));
+    
+    //alert(filename);
+    $('#'+filename).addClass('active');
+
+}
 
 function datePicker(){
     //alert('test');

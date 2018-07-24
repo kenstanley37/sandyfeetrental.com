@@ -300,9 +300,9 @@ INSERT INTO transactions VALUES
 	
 INSERT INTO prop_pics VALUES
     (NULL,6,'1.jpg','First image upload','uploads/110T/1.jpg',NULL),
-    (NULL,6,'2.jpg','First second upload','uploads/110T/2.jpg',NULL),
-	(NULL,6,'3.jpg','First third upload','uploads/110T/3.jpg',NULL),
-	(NULL,6,'4.jpg','First third upload','uploads/110T/4.jpg',NULL);
+    (NULL,6,'2.jpg','Second image upload','uploads/110T/2.jpg',NULL),
+	(NULL,6,'3.jpg','Third image upload','uploads/110T/3.jpg',NULL),
+	(NULL,6,'4.jpg','Fourth image upload','uploads/110T/4.jpg',NULL);
 
 create or replace view View1_AverageRate AS
 select distinct(prop_type) as "Prop_Type", round(avg(prop_rate) ,2) as "Avg_Prop_Rate"

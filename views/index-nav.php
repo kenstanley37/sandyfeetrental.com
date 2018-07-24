@@ -46,9 +46,9 @@ fixed-top
                 -->
                 <?php if($rank === "admin" or $rank === "super_admin" ){
                     ?>
-                    <li class="nav-item"><button class="btn btn-sm btn-outline-warning" data-toggle="button" aria-pressed="false" autocomplete="off" onclick="location.href = '<?php echo ROOT_URL ?>/admin/reports.php';">Reports</button></li>
+                    <li class="nav-item"><button id="reports" class="btn btn-sm btn-outline-warning" data-toggle="button" aria-pressed="false" autocomplete="off" onclick="location.href = '<?php echo ROOT_URL ?>/admin/reports.php';">Reports</button></li>
                 
-                    <li class="nav-item"><button class="btn btn-sm btn-outline-warning" data-toggle="button" aria-pressed="false" autocomplete="off" onclick="location.href = '<?php echo ROOT_URL ?>/admin/photo.php';">Pictures</button></li>
+                    <li class="nav-item"><button id="photo" class="btn btn-sm btn-outline-warning" data-toggle="button" aria-pressed="false" autocomplete="off" onclick="location.href = '<?php echo ROOT_URL ?>/admin/photo.php';">Pictures</button></li>
                     
                     <!--
                     <li class="nav-item"><a href="<?php echo ROOT_URL ?>/admin/reports.php" class="nav-link">Reports</a></li>
