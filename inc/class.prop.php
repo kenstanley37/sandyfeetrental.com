@@ -264,7 +264,7 @@ public function avg_rate(){
         $number_of_rows = $stmt->rowCount();
         $output = '';
         $output .= '
-         <table class="table table-bordered table-striped">
+         <table id="reportTable" class="table table-bordered table-striped">
             <tr>
                 <th id="tbl-head" colspan="7">Property ID: '.$img_fetch.'</th>
             </tr>

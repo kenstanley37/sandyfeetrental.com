@@ -23,10 +23,11 @@
 
     include $path."/views/header.php"; 
 ?>
-
 <link rel="stylesheet" href="assets/css/admin.css">
+<!-- <link rel="stylesheet" href="assets/css/jquery.dataTables.min.css"> -->
 <script src='assets/js/jquery.dataTables.min.js' type='text/javascript'></script>
 <script src='assets/js/admin.js' type='text/javascript'></script>
+<script src='assets/js/reports.js' type='text/javascript'></script>
 </head>
 
 <?php

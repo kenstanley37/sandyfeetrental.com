@@ -6,3 +6,75 @@
 header {
     display: none;
 }
+
+#reportTable {
+    box-shadow: 5px 5px;
+    border: 1px solid #1C6EA4;
+    background-color: #eee;
+    width: 100%;
+    text-align: left;
+    border-collapse: collapse;
+}
+
+#reportTable td, table.avgTable th {
+  border: 1px solid #aaa;
+  padding: 3px 2px;
+}
+
+#reportTable tbody td {
+  font-size: 13px;
+}
+
+#reportTable tr:nth-child(even) {
+  background: #D0E4F5;
+}
+
+#reportTable thead th{
+  background: #1C6EA4;
+  background: -moz-linear-gradient(top, #5592bb 0%, #327cad 66%, #1C6EA4 100%);
+  background: -webkit-linear-gradient(top, #5592bb 0%, #327cad 66%, #1C6EA4 100%);
+  background: linear-gradient(to bottom, #5592bb 0%, #327cad 66%, #1C6EA4 100%);
+  border-bottom: 2px solid #444444;
+}
+
+#reportTable thead tr:first-child {
+	text-align: center;
+}
+
+#reportTable thead th {
+  font-size: 15px;
+  font-weight: bold;
+  color: #FFFFFF;
+  border-left: 2px solid #D0E4F5;
+}
+
+#reportTable thead th {
+  border-left: none;
+}
+
+#reportTable tfoot {
+  font-size: 14px;
+  font-weight: bold;
+  color: #fff;
+  background: #D0E4F5;
+  background: -moz-linear-gradient(top, #dcebf7 0%, #d4e6f6 66%, #D0E4F5 100%);
+  background: -webkit-linear-gradient(top, #dcebf7 0%, #d4e6f6 66%, #D0E4F5 100%);
+  background: linear-gradient(to bottom, #dcebf7 0%, #d4e6f6 66%, #D0E4F5 100%);
+  border-top: 2px solid #444444;
+}
+
+#reportTable tfoot td {
+  font-size: 14px;
+}
+
+#reportTable tfoot .links {
+  text-align: right;
+}
+
+#reportTable tfoot .links a{
+  display: inline-block;
+  background: #1C6EA4;
+  color: #FFFFFF;
+  padding: 2px 8px;
+  border-radius: 5px;
+}
