@@ -188,16 +188,18 @@ public function avg_rate(){
 			echo $e->getMessage();
 		}
     }
-    
+    /*
     public function get_freq_renters(){
        try
 		{
             $stmt = $this->conn->prepare("SELECT concat(First_Name,' ,',Last_Name) as Name, Times_Rented from View3_most_frequent_users");
             $stmt->execute();
             $data = $stmt->fetchAll(PDO::FETCH_OBJ);
+           
            if(!headers_sent()){
                header('Content-Type:application/json');
            }
+           
             return $data;
            if (headers_sent()) {
               foreach (headers_list() as $header)
@@ -209,6 +211,35 @@ public function avg_rate(){
 			echo $e->getMessage();
 		}
     } // end get_freq_renters
+    */
+    
+     public function get_freq_renters(){
+       try
+		{
+            $stmt = $this->conn->prepare("SELECT concat(First_Name,' ,',Last_Name) as Name, Times_Rented from View3_most_frequent_users");
+            $stmt->execute();
+            //$result = $stmt->fetchAll(PDO::FETCH_OBJ);
+            if(!headers_sent()){
+               header('Content-Type:application/json');
+           }
+
+            while ($row = $stmt->fetch()) {
+                $rows[]=array("c"=>array("0"=>array("v"=>$row['Name'],"f"=>NULL),"1"=>array("v"=>(int)$row['Times_Rented'],"f" =>NULL)));
+            }
+           echo $format = '{
+            "cols":
+            [
+            {"id":"","label":"Subject","pattern":"","type":"string"},
+            {"id":"","label":"Number","pattern":"","type":"number"}
+            ],
+            "rows":'.json_encode($rows).'}';
+		}
+		catch(PDOException $e)
+		{
+			echo $e->getMessage();
+		}
+    } // end get_freq_renters
+    
     
     public function get_prop_list(){
        try
@@ -256,7 +287,7 @@ public function avg_rate(){
         $query = "SELECT p.prop_num, pp.prop_pic_id, pp.prop_pic_name, pp.prop_pic_desc, pp.prop_pic_name, pp.prop_pic_link FROM prop_pics pp
         left join property p on pp.prop_id = p.prop_id
         WHERE p.prop_num = :img_fetch
-        ORDER BY pp.prop_id, pp.prop_pic_id DESC";
+        ORDER BY pp.prop_pic_id";
         $stmt = $this->conn->prepare($query);
         $stmt->bindParam(':img_fetch', $img_fetch);
         $stmt->execute();
@@ -265,17 +296,20 @@ public function avg_rate(){
         $output = '';
         $output .= '
          <table id="reportTable" class="table table-bordered table-striped">
-            <tr>
-                <th id="tbl-head" colspan="7">Property ID: '.$img_fetch.'</th>
-            </tr>
-            <tr>
-                <th>Pic ID</th>
-                <th>Image</th>
-                <th>Name</th>
-                <th>Description</th>
-                <th>Edit</th>
-                <th>Delete</th>
-            </tr>
+            <thead>
+                <tr>
+                    <th id="tbl-head" colspan="7">Property ID: '.$img_fetch.'</th>
+                </tr>
+                <tr>
+                    <th>Pic ID</th>
+                    <th>Image</th>
+                    <th>Name</th>
+                    <th>Description</th>
+                    <th>Edit</th>
+                    <th>Delete</th>
+                </tr>
+            </thead>
+            <tbody>
         ';
         if($number_of_rows > 0)
         {
@@ -303,7 +337,9 @@ public function avg_rate(){
             </tr>
          ';
         }
-        $output .= '</table>';
+        $output .= '
+        </tbody>
+        </table>';
         echo $output;
     }
     

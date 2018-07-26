@@ -24,10 +24,17 @@
     include $path."/views/header.php"; 
 ?>
 <link rel="stylesheet" href="assets/css/admin.css">
-<!-- <link rel="stylesheet" href="assets/css/jquery.dataTables.min.css"> -->
+<!-- Load c3.css -->
+<link href="assets/css/c3.min.css" rel="stylesheet">
+<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+
 <script src='assets/js/jquery.dataTables.min.js' type='text/javascript'></script>
 <script src='assets/js/admin.js' type='text/javascript'></script>
 <script src='assets/js/reports.js' type='text/javascript'></script>
+
+<!-- Load d3.js and c3.js -->
+<script src="assets/js/d3.min.js" charset="utf-8"></script>
+<script src="assets/js/c3.min.js"></script>
 </head>
 
 <?php
@@ -95,12 +102,14 @@
                                     <div class="col-12" id="myTable">
                                         <?php print $prop->no_rent(); ?>
                                     </div>
-                                </div>
-                                <div class="row" id="norent_pie">
+                                    <div class="col-6">
+                                        <canvas id="myChart"></canvas>
+                                    </div>
                                     <div class="col-6">
                                         <canvas id="myChart"></canvas>
                                     </div>
                                 </div>
+                                
                             </div>
                         </div>
                     </div>
@@ -130,7 +139,8 @@
                                         Use for Google Charts
                                         <div id="myChart"></div>
                                         -->
-                                        <canvas id="myChart"></canvas>
+                                        <div id="myChart" class="myChart"></div>
+                                        <!-- <canvas id="myChart"></canvas> -->
                                     </div>
                                 </div>
                             </div>

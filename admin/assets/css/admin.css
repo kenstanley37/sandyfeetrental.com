@@ -1,5 +1,9 @@
 @import url('https://fonts.googleapis.com/css?family=PT+Serif');
 
+#idTheID {
+    color: #fff;
+}
+
 #admin {
 	position: relative;
 	top: 150px;
@@ -12,78 +16,6 @@
 #tbl-head {
 	text-align: center;
 	font-size: 25px;
-}
-
-#reportTable {
-    box-shadow: 5px 5px;
-    border: 1px solid #1C6EA4;
-    background-color: #eee;
-    width: 100%;
-    text-align: left;
-    border-collapse: collapse;
-}
-
-#reportTable td, table.avgTable th {
-	border: 1px solid #aaa;
-	padding: 3px 2px;
-}
-
-#reportTable tbody td {
-	font-size: 13px;
-}
-
-#reportTable tr:nth-child(even) {
-	background: #D0E4F5;
-}
-
-#reportTable thead th{
-	  background: #1C6EA4;
-	  background: -moz-linear-gradient(top, #5592bb 0%, #327cad 66%, #1C6EA4 100%);
-	  background: -webkit-linear-gradient(top, #5592bb 0%, #327cad 66%, #1C6EA4 100%);
-	  background: linear-gradient(to bottom, #5592bb 0%, #327cad 66%, #1C6EA4 100%);
-	  border-bottom: 2px solid #444444;
-}
-
-#reportTable thead tr:first-child {
-	text-align: center;
-}
-
-#reportTable thead th {
-	  font-size: 15px;
-	  font-weight: bold;
-	  color: #FFFFFF;
-	  border-left: 2px solid #D0E4F5;
-}
-
-#reportTable thead th {
-	border-left: none;
-}
-
-#reportTable tfoot {
-	  font-size: 14px;
-	  font-weight: bold;
-	  color: #fff;
-	  background: #D0E4F5;
-	  background: -moz-linear-gradient(top, #dcebf7 0%, #d4e6f6 66%, #D0E4F5 100%);
-	  background: -webkit-linear-gradient(top, #dcebf7 0%, #d4e6f6 66%, #D0E4F5 100%);
-	  background: linear-gradient(to bottom, #dcebf7 0%, #d4e6f6 66%, #D0E4F5 100%);
-	  border-top: 2px solid #444444;
-}
-
-#reportTable tfoot td {
-	font-size: 14px;
-}
-
-#reportTable tfoot .links {
-	text-align: right;
-}
-
-#reportTable tfoot .links a{
-	  display: inline-block;
-	  background: #1C6EA4;
-	  color: #FFFFFF;
-	  padding: 2px 8px;
-	  border-radius: 5px;
 }
 
 #txt_umail {
@@ -105,7 +37,7 @@ ul.dropdown-lr {
     margin-left: 5px;
 }
 
-table.avgTable {
+#reportTable {
     box-shadow: 5px 5px;
     border: 1px solid #1C6EA4;
     background-color: #eee;
@@ -114,20 +46,20 @@ table.avgTable {
     border-collapse: collapse;
 }
 
-table.avgTable td, table.avgTable th {
+#reportTable td, #reportTable th {
 	  border: 1px solid #aaa;
 	  padding: 3px 2px;
 }
 
-table.avgTable tbody td {
+#reportTable tbody td {
 	font-size: 13px;
 }
 
-table.avgTable tr:nth-child(even) {
+#reportTable tr:nth-child(even) {
 	background: #D0E4F5;
 }
 
-table.avgTable thead th{
+#reportTable thead th {
 	background: #1C6EA4;
 	background: -moz-linear-gradient(top, #5592bb 0%, #327cad 66%, #1C6EA4 100%);
 	background: -webkit-linear-gradient(top, #5592bb 0%, #327cad 66%, #1C6EA4 100%);
@@ -135,22 +67,22 @@ table.avgTable thead th{
 	border-bottom: 2px solid #444444;
 }
 
-table.avgTable thead tr:first-child {
+#reportTable thead tr:first-child {
 	text-align: center;
 }
 
-table.avgTable thead th {
+#reportTable thead th {
 	font-size: 15px;
 	font-weight: bold;
 	color: #FFFFFF;
 	border-left: 2px solid #D0E4F5;
 }
 
-table.avgTable thead th {
+#reportTable thead th {
 	border-left: none;
 }
 
-table.avgTable tfoot {
+#reportTable tfoot {
 	font-size: 14px;
 	font-weight: bold;
 	color: #fff;
@@ -161,15 +93,15 @@ table.avgTable tfoot {
 	border-top: 2px solid #444444;
 }
 
-table.avgTable tfoot td {
+#reportTable tfoot td {
 	font-size: 14px;
 }
 
-table.avgTable tfoot .links {
+#reportTable tfoot .links {
 	text-align: right;
 }
 
-table.avgTable tfoot .links a{
+#reportTable tfoot .links a{
 	display: inline-block;
 	background: #1C6EA4;
 	color: #FFFFFF;
