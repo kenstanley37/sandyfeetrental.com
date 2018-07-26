@@ -292,6 +292,8 @@ function get_freq_rentersC3(e){
         success:function(response){
             var data = new google.visualization.DataTable(response);
             $('#freq_report_area button').click(function(){
+                var width = $('#myChart').width();
+                var height = $('#myChart').height();
                 var myButton = $(this).text();
                 // Instantiate and draw our chart, passing in some options.
             if(myButton === 'Pie'){
@@ -305,7 +307,16 @@ function get_freq_rentersC3(e){
                 var chart = new google.visualization.BarChart(document.getElementById('myChart'));
             }
             
-            chart.draw(data);
+            var options = {
+              'legend':'left',
+              'title':'Frequent Renters',
+              'is3D':true,
+              'width':width,
+              'height':height
+            }
+                
+                
+            chart.draw(data, options);
             });
             
 

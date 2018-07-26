@@ -24,17 +24,20 @@
     include $path."/views/header.php"; 
 ?>
 <link rel="stylesheet" href="assets/css/admin.css">
+<link rel="stylesheet" href="assets/css/dataTables.bootstrap4.min.css">
 <!-- Load c3.css -->
-<link href="assets/css/c3.min.css" rel="stylesheet">
 <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
 
 <script src='assets/js/jquery.dataTables.min.js' type='text/javascript'></script>
+<script src='assets/js/dataTables.bootstrap4.min.js' type='text/javascript'></script>
 <script src='assets/js/admin.js' type='text/javascript'></script>
 <script src='assets/js/reports.js' type='text/javascript'></script>
 
 <!-- Load d3.js and c3.js -->
 <script src="assets/js/d3.min.js" charset="utf-8"></script>
 <script src="assets/js/c3.min.js"></script>
+<link href="assets/css/c3.min.css" rel="stylesheet">
+
 </head>
 
 <?php
