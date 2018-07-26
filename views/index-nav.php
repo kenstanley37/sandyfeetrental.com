@@ -50,6 +50,7 @@ fixed-top
                 <div class="row h-100 sandyNav links">
                     <div class="col">
                          <ul class="nav navbar-nav flex-row justify-content-start ml-auto">
+                             <li class="nav-item"><button id="reports" class="btn btn-sm" data-toggle="button" aria-pressed="false" autocomplete="off" onclick="location.href = '<?php echo ROOT_URL ?>/index.php';">Home</button></li>
                             <?php if($rank === "admin" or $rank === "super_admin" ){
                                 ?>
                                 <li class="nav-item"><button id="reports" class="btn btn-sm" data-toggle="button" aria-pressed="false" autocomplete="off" onclick="location.href = '<?php echo ROOT_URL ?>/admin/reports.php';">Reports</button></li>
@@ -74,15 +75,25 @@ fixed-top
                 <div class="row h-100 links text-right">
                     <div class="col">
                         <ul class="nav navbar-nav flex-row justify-content-end ml-auto">
+                            <?php if($rank === "admin" or $rank === "super_admin" ){
+                                ?>
+                                <li class="nav-item"><button id="reports" class="btn btn-sm" data-toggle="button" aria-pressed="false" autocomplete="off" onclick="location.href = '<?php echo ROOT_URL ?>/admin/reports.php';">Reports</button></li>
+
+                                <li class="nav-item"><button id="photo" class="btn btn-sm" data-toggle="button" aria-pressed="false" autocomplete="off" onclick="location.href = '<?php echo ROOT_URL ?>/admin/photo.php';">Pictures</button></li>
+                            <?php
+                            }
+                            ?>
                             <?php 
                                 if(isset($ufname)){
 
                                 }else{
                                     ?>
-
-                                        <li class="nav-item order-2 order-md-1"><a href="profile.php" class="nav-link" title="settings"><i class="fa fa-cog fa-fw fa-lg"></i></a></li>
+                                         <li class="order-2 order-md-1">
+                                            <a href="profile.php" class="btn-sm" title="settings"><i class="fa fa-cog fa-fw fa-lg"></i></a>
+                                        </li>
+                                       
                                         <li class="order-1">
-                                            <button type="button" id="register" href="sign-up.php" class="btn">Register<span class="caret"></span></button>
+                                            <button type="button" id="register" href="sign-up.php" class="btn btn-sm">Register<span class="caret"></span></button>
                                             <ul class="dropdown-menu dropdown-menu-right mt-2">
                                                <li class="px-3 py-2">
                                                 </li>
@@ -93,12 +104,12 @@ fixed-top
 
                             ?>
 
-
+                                
                                 <?php 
                                     if(isset($ufname)){
                                         ?>
                                             <li class="nav-item dropdown order-1">
-                                                <button type="button" id="dropdownMenu1" data-toggle="dropdown" class="btn dropdown-toggle">Welcome <?php print($ufname); ?> <span class="caret"></span></button>
+                                                <button type="button" id="dropdownMenu1" data-toggle="dropdown" class="btn btn-sm dropdown-toggle">Welcome <?php print($ufname); ?> <span class="caret"></span></button>
                                                   <div class="dropdown-menu">
                                                     <a class="dropdown-item" href="<?php echo ROOT_URL ?>/profile.php">Profile</a>
                                                     <a class="dropdown-item" href="<?php echo ROOT_URL ?>/logout.php?logout=true">Logout</a>
@@ -108,7 +119,7 @@ fixed-top
                                     }else {
                                         ?>
                                             <li class="dropdown order-1">
-                                                <button type="button" id="dropdownMenu1" data-toggle="dropdown" class="btn dropdown-toggle">Login <span class="caret"></span></button>
+                                                <button type="button" id="dropdownMenu1" data-toggle="dropdown" class="btn btn-sm dropdown-toggle">Login <span class="caret"></span></button>
                                                 <ul class="dropdown-menu dropdown-menu-right mt-2">
                                                    <li class="px-3 py-2">
                                                        <form class="form-signin" method="post" id="login-form">
@@ -140,7 +151,7 @@ fixed-top
                                                                     <div class="row">
                                                                         <div class="col-xs-7">
                                                                             <input type="checkbox" tabindex="3" name="remember" id="remember">
-                                                                            <label for="remember"> Remember Me</label>
+                                                                            <label for="remember">Remember Me</label>
                                                                         </div>
                                                                         <div class="col-xs-5">
                                                                          <button type="submit" name="btn-login" class="btn">

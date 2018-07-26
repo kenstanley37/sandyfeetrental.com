@@ -48,4 +48,4 @@
     <script type="text/javascript" src="<?php echo ROOT_URL ?>/assets/js/sandy.js"></script>
 
     
-    <link href="<?php echo ROOT_URL ?>/favicon.ico" rel="icon" type="image/x-icon" />
+    <link href="favicon.ico" rel="icon" type="image/x-icon" />

@@ -1,3 +1,7 @@
+.fa-cog {
+    font-size: 10px;
+}
+
 h5 {
   display: inline-block;
   padding: 10px;
@@ -135,7 +139,7 @@ anchors are inline so you need ot make them block to go full width
 
 .sandyBar button {
     background-color: Transparent;
-    background-repeat:no-repeat;
+    background-repeat: no-repeat;
     border: none;
     cursor: pointer;
     overflow: hidden;
@@ -202,6 +206,7 @@ anchors are inline so you need ot make them block to go full width
 .login  a:active {
     color: #000;
 }
+
 
 .footer {
     position: fixed;
