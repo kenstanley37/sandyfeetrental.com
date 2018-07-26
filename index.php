@@ -54,7 +54,7 @@ include "views/index-nav.php";
         </ol>
         <div class="carousel-inner" role="listbox">
             <div class="carousel-item active">
-                <a href="https://bootstrapcreative.com/">
+                <a href="#">
                     <!-- 
                     If you need more browser support use https://scottjehl.github.io/picturefill/
                     If a picture looks blurry on a retina device you can add a high resolution like this
@@ -67,8 +67,8 @@ include "views/index-nav.php";
                       <img srcset="/assets/images/slide-1.jpg" alt="responsive image" class="d-block img-fluid">
                     </picture>
 
-                    <div class="carousel-caption">
-                        <div>
+                    <div class="carousel-caption justify-content-center align-items-center text-white">
+                        <div class="car-cap-bg">
                             <h2>DBA-120 Project</h2>
                             <p>This is not a real website or company</p>
                             <p>This is a student project</p>
@@ -79,14 +79,14 @@ include "views/index-nav.php";
             </div>
             <!-- /.carousel-item -->
             <div class="carousel-item">
-                <a href="https://bootstrapcreative.com/">
+                <a href="#">
                      <picture>
                         <source srcset="/assets/images/slide-2.jpg">
                         <img srcset="/assets/images/slide-2.jpg" alt="responsive image" class="d-block img-fluid">
                     </picture>
 
                     <div class="carousel-caption justify-content-center align-items-center text-white">
-                        <div>
+                        <div class="car-cap-bg">
                             <h2>DBA-120 Project</h2>
                             <p>This is not a real website or company</p>
                             <p>This is a student project</p>
@@ -97,14 +97,14 @@ include "views/index-nav.php";
             </div>
             <!-- /.carousel-item -->
             <div class="carousel-item">
-                <a href="https://bootstrapcreative.com/">
+                <a href="#">
                      <picture>
                         <source srcset="/assets/images/slide-3.jpg">
                         <img srcset="/assets/images/slide-3.jpg" alt="responsive image" class="d-block img-fluid">
                     </picture>
 
                     <div class="carousel-caption justify-content-center align-items-center text-white">
-                        <div>
+                        <div class="car-cap-bg">
                             <h2>DBA-120 Project</h2>
                             <p>This is not a real website or company</p>
                             <p>This is a student project</p>

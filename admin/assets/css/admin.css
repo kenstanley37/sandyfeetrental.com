@@ -24,24 +24,24 @@
 }
 
 #reportTable td, table.avgTable th {
-  border: 1px solid #aaa;
-  padding: 3px 2px;
+	border: 1px solid #aaa;
+	padding: 3px 2px;
 }
 
 #reportTable tbody td {
-  font-size: 13px;
+	font-size: 13px;
 }
 
 #reportTable tr:nth-child(even) {
-  background: #D0E4F5;
+	background: #D0E4F5;
 }
 
 #reportTable thead th{
-  background: #1C6EA4;
-  background: -moz-linear-gradient(top, #5592bb 0%, #327cad 66%, #1C6EA4 100%);
-  background: -webkit-linear-gradient(top, #5592bb 0%, #327cad 66%, #1C6EA4 100%);
-  background: linear-gradient(to bottom, #5592bb 0%, #327cad 66%, #1C6EA4 100%);
-  border-bottom: 2px solid #444444;
+	  background: #1C6EA4;
+	  background: -moz-linear-gradient(top, #5592bb 0%, #327cad 66%, #1C6EA4 100%);
+	  background: -webkit-linear-gradient(top, #5592bb 0%, #327cad 66%, #1C6EA4 100%);
+	  background: linear-gradient(to bottom, #5592bb 0%, #327cad 66%, #1C6EA4 100%);
+	  border-bottom: 2px solid #444444;
 }
 
 #reportTable thead tr:first-child {
@@ -49,41 +49,41 @@
 }
 
 #reportTable thead th {
-  font-size: 15px;
-  font-weight: bold;
-  color: #FFFFFF;
-  border-left: 2px solid #D0E4F5;
+	  font-size: 15px;
+	  font-weight: bold;
+	  color: #FFFFFF;
+	  border-left: 2px solid #D0E4F5;
 }
 
 #reportTable thead th {
-  border-left: none;
+	border-left: none;
 }
 
 #reportTable tfoot {
-  font-size: 14px;
-  font-weight: bold;
-  color: #fff;
-  background: #D0E4F5;
-  background: -moz-linear-gradient(top, #dcebf7 0%, #d4e6f6 66%, #D0E4F5 100%);
-  background: -webkit-linear-gradient(top, #dcebf7 0%, #d4e6f6 66%, #D0E4F5 100%);
-  background: linear-gradient(to bottom, #dcebf7 0%, #d4e6f6 66%, #D0E4F5 100%);
-  border-top: 2px solid #444444;
+	  font-size: 14px;
+	  font-weight: bold;
+	  color: #fff;
+	  background: #D0E4F5;
+	  background: -moz-linear-gradient(top, #dcebf7 0%, #d4e6f6 66%, #D0E4F5 100%);
+	  background: -webkit-linear-gradient(top, #dcebf7 0%, #d4e6f6 66%, #D0E4F5 100%);
+	  background: linear-gradient(to bottom, #dcebf7 0%, #d4e6f6 66%, #D0E4F5 100%);
+	  border-top: 2px solid #444444;
 }
 
 #reportTable tfoot td {
-  font-size: 14px;
+	font-size: 14px;
 }
 
 #reportTable tfoot .links {
-  text-align: right;
+	text-align: right;
 }
 
 #reportTable tfoot .links a{
-  display: inline-block;
-  background: #1C6EA4;
-  color: #FFFFFF;
-  padding: 2px 8px;
-  border-radius: 5px;
+	  display: inline-block;
+	  background: #1C6EA4;
+	  color: #FFFFFF;
+	  padding: 2px 8px;
+	  border-radius: 5px;
 }
 
 #txt_umail {
@@ -91,7 +91,7 @@
 }
 
 ul.dropdown-lr {
-  width: 300px;
+	width: 300px;
 }
 
 .btn-toolbar button {
@@ -115,24 +115,24 @@ table.avgTable {
 }
 
 table.avgTable td, table.avgTable th {
-  border: 1px solid #aaa;
-  padding: 3px 2px;
+	  border: 1px solid #aaa;
+	  padding: 3px 2px;
 }
 
 table.avgTable tbody td {
-  font-size: 13px;
+	font-size: 13px;
 }
 
 table.avgTable tr:nth-child(even) {
-  background: #D0E4F5;
+	background: #D0E4F5;
 }
 
 table.avgTable thead th{
-  background: #1C6EA4;
-  background: -moz-linear-gradient(top, #5592bb 0%, #327cad 66%, #1C6EA4 100%);
-  background: -webkit-linear-gradient(top, #5592bb 0%, #327cad 66%, #1C6EA4 100%);
-  background: linear-gradient(to bottom, #5592bb 0%, #327cad 66%, #1C6EA4 100%);
-  border-bottom: 2px solid #444444;
+	background: #1C6EA4;
+	background: -moz-linear-gradient(top, #5592bb 0%, #327cad 66%, #1C6EA4 100%);
+	background: -webkit-linear-gradient(top, #5592bb 0%, #327cad 66%, #1C6EA4 100%);
+	background: linear-gradient(to bottom, #5592bb 0%, #327cad 66%, #1C6EA4 100%);
+	border-bottom: 2px solid #444444;
 }
 
 table.avgTable thead tr:first-child {
@@ -140,53 +140,55 @@ table.avgTable thead tr:first-child {
 }
 
 table.avgTable thead th {
-  font-size: 15px;
-  font-weight: bold;
-  color: #FFFFFF;
-  border-left: 2px solid #D0E4F5;
+	font-size: 15px;
+	font-weight: bold;
+	color: #FFFFFF;
+	border-left: 2px solid #D0E4F5;
 }
 
 table.avgTable thead th {
-  border-left: none;
+	border-left: none;
 }
 
 table.avgTable tfoot {
-  font-size: 14px;
-  font-weight: bold;
-  color: #fff;
-  background: #D0E4F5;
-  background: -moz-linear-gradient(top, #dcebf7 0%, #d4e6f6 66%, #D0E4F5 100%);
-  background: -webkit-linear-gradient(top, #dcebf7 0%, #d4e6f6 66%, #D0E4F5 100%);
-  background: linear-gradient(to bottom, #dcebf7 0%, #d4e6f6 66%, #D0E4F5 100%);
-  border-top: 2px solid #444444;
+	font-size: 14px;
+	font-weight: bold;
+	color: #fff;
+	background: #D0E4F5;
+	background: -moz-linear-gradient(top, #dcebf7 0%, #d4e6f6 66%, #D0E4F5 100%);
+	background: -webkit-linear-gradient(top, #dcebf7 0%, #d4e6f6 66%, #D0E4F5 100%);
+	background: linear-gradient(to bottom, #dcebf7 0%, #d4e6f6 66%, #D0E4F5 100%);
+	border-top: 2px solid #444444;
 }
 
 table.avgTable tfoot td {
-  font-size: 14px;
+	font-size: 14px;
 }
 
 table.avgTable tfoot .links {
-  text-align: right;
+	text-align: right;
 }
 
 table.avgTable tfoot .links a{
-  display: inline-block;
-  background: #1C6EA4;
-  color: #FFFFFF;
-  padding: 2px 8px;
-  border-radius: 5px;
+	display: inline-block;
+	background: #1C6EA4;
+	color: #FFFFFF;
+	padding: 2px 8px;
+	border-radius: 5px;
 }
 
 #report_area {
     padding: 25px;
+	/*
     border-radius: 25px;
     background-color: rgba(41,163,183, 0.5);
 	border: 5px solid rgb(41,163,183);
+	*/
 }
 
 #report_area  h1 {
     font-family: 'PT Serif', serif;
-    color: #fff;
+    color: #000;
     text-shadow: 1px 1px #000;
 }
 

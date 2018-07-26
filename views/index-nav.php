@@ -50,19 +50,11 @@ fixed-top
                 <div class="row h-100 sandyNav links">
                     <div class="col">
                          <ul class="nav navbar-nav flex-row justify-content-start ml-auto">
-                            <!--
-                            <li class="nav-item"><button class="btn btn-sm btn-success" data-toggle="button" aria-pressed="false" autocomplete="off">About</button></li>
-                            -->
                             <?php if($rank === "admin" or $rank === "super_admin" ){
                                 ?>
                                 <li class="nav-item"><button id="reports" class="btn btn-sm" data-toggle="button" aria-pressed="false" autocomplete="off" onclick="location.href = '<?php echo ROOT_URL ?>/admin/reports.php';">Reports</button></li>
 
                                 <li class="nav-item"><button id="photo" class="btn btn-sm" data-toggle="button" aria-pressed="false" autocomplete="off" onclick="location.href = '<?php echo ROOT_URL ?>/admin/photo.php';">Pictures</button></li>
-
-                                <!--
-                                <li class="nav-item"><a href="<?php echo ROOT_URL ?>/admin/reports.php" class="nav-link">Reports</a></li>
-                                <li class="nav-item"><a href="<?php echo ROOT_URL ?>/admin/photo.php" class="nav-link">Property Pictures</a></li>
-                                -->
                             <?php
                             }
                             ?>
