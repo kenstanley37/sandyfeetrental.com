@@ -1,8 +1,34 @@
 $(document).ready(function(){
     $.ajaxSetup({ cache: false });  // Prevent browser from caching the page. This is !important
+
+    
+    
+    //nav bar class change based on scroll. 
+    $(window).scroll(function() {
+        var scrollPos = $(window).scrollTop();
+        if(scrollPos <= 0){
+            $(".sandyBar").removeClass('navbarScrollDown');
+            $(".sandyBar").addClass('navbarScrollUp');
+            //alert('')
+        } else {
+            $(".sandyBar").removeClass('navbarScrollUp');
+            $(".sandyBar").addClass('navbarScrollDown');
+        }
+    });
+    
+    
+    
+
+    
+    
+    
+    
+    
+    //carousel();
     datePicker();
     register();
     mainNavButtonCheck();
+    
     if($('#avg_report_area').length){
         //$('#myTable').append('<p>I rock</p>');
         avg_rate_graph();
@@ -28,6 +54,35 @@ $(document).ready(function(){
         return "rgb(" + r + "," + g + "," + b + ")";
     }
 });
+
+function carousel(){
+    //alert('test');
+    var $item = $('.carousel-item'); 
+    var $wHeight = $(window).height();
+    $item.eq(0).addClass('active');
+    $item.height($wHeight); 
+    $item.addClass('full-screen');
+
+    $('.carousel img').each(function() {
+      var $src = $(this).attr('src');
+      var $color = $(this).attr('data-color');
+      $(this).parent().css({
+        'background-image' : 'url(' + $src + ')',
+        'background-color' : $color
+      });
+      $(this).remove();
+    });
+
+    $(window).on('resize', function (){
+      $wHeight = $(window).height();
+      $item.height($wHeight);
+    });
+
+    $('.carousel').carousel({
+      interval: 6000,
+      pause: "false"
+    });
+}
 
 function mainNavButtonCheck(){
     var temp1 = location.pathname;

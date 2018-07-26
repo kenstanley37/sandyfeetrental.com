@@ -24,11 +24,17 @@
     <link rel="stylesheet" href="<?php echo ROOT_URL ?>/assets/css/jquery-ui.min.css">
     <link rel="stylesheet" href="<?php echo ROOT_URL ?>/assets/css/jquery-ui.structure.css">
     <link rel="stylesheet" href="<?php echo ROOT_URL ?>/assets/css/jquery-ui.theme.min.css">
-    <link rel="stylesheet" href="<?php echo ROOT_URL ?>/assets/css/font-awesome.min.css">
+    <link rel="stylesheet" href="<?php echo ROOT_URL ?>/assets/css/all.min.css"><!-- fontawesome -->
     <link rel="stylesheet" href="<?php echo ROOT_URL ?>/assets/css/open-iconic.css">
     <link rel="stylesheet" href="<?php echo ROOT_URL ?>/assets/css/open-iconic-bootstrap.css">
     <link rel="stylesheet" href="<?php echo ROOT_URL ?>/assets/css/sandy.css">
 
+    
+    <!--Google fonts-->
+    <link href="https://fonts.googleapis.com/css?family=Montserrat|Playfair+Display" rel="stylesheet">
+
+    
+    
     <!-- JS -->  
     <script type="text/javascript" src="<?php echo ROOT_URL ?>/assets/js/jquery-3.3.1.min.js"></script>
     <script type="text/javascript" src="<?php echo ROOT_URL ?>/assets/js/jquery.validate.min.js"></script>

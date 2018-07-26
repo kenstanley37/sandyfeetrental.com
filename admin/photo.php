@@ -40,7 +40,7 @@
 ?>
 
 
-<div class="container">
+<div class="container" id="admin">
     <h3 align="center">Property Image Management</h3>
     <br />
     <div align="right" id="dropdown"></div>

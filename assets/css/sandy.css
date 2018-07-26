@@ -1,188 +1,199 @@
-@import url('https://fonts.googleapis.com/css?family=PT+Serif');
-
-body {
-    background-image: url("../images/bg-pattern.jpg");
-}
-
-.sandy {
-    background-image: url("../images/beach2.jpg");
-    min-height: 150px;
-    max-height: 150px;
-    border-bottom: 1px solid #000;
-    background-color: #fff;
-}
-
-#index-img {
-	background-image: url("../images/sandyFeet6.jpg");
-    -webkit-background-size: cover;
-    -moz-background-size: cover;
-    -o-background-size: cover;
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-position: 45% 50%; 
-    min-height: 350px;
-	max-width: 100%;
-	border: 5px solid #fff;
-}
-
-#txt_umail {
-    text-transform: lowercase;
-}
-
-ul.dropdown-lr {
-  width: 300px;
-}
-
-.index-nav {
-    background-color: #0077BE;
-}
-
-.admin-nav {
-    margin-bottom: 15px;
-}
-
-.btn-toolbar button {
-    margin-right: 5px;
-    margin-left: 5px;
-}
-
-.navbar-nav button {
-    margin-top: 5px;
-    margin-right: 5px;
-    margin-left: 5px;
-}
-
-.main-car {
-    margin-top: 10px;
-    background: rgba(0,119,190, 0.3);
-    border-radius: 5px;
-    min-height: 500px;
-}
-
-#carouselExampleIndicators {
-    margin-top: 10%;
-    box-shadow: 5px 10px #000;
-    max-width: 720px;
-}
-
-.reservation {
-    margin-top: 20%;
-}
-
-.navProp {
-	max-height: 20px;
-	font-size: 15px;
-	margin-left: -15px;
-    position: fixed;
-    top: 200px;
-    width: 100%;
-    z-index: 1;
-}
-
-.navProp + .content {
-	padding-top: 130px;
-}
-
-.userinfobk {
-    display: none;
-    border-radius: 5px;
-    background: rgba(0,123,255, 0.6);
-    color: #fff;
-    width: 500px;
-    height: 100px;
-}
-
-.userinfo {
-    color: #003;
-}
-
-table.avgTable {
-    box-shadow: 5px 5px;
-    border: 1px solid #1C6EA4;
-    background-color: #eee;
-    width: 100%;
-    text-align: left;
-    border-collapse: collapse;
-}
-
-table.avgTable td, table.avgTable th {
-  border: 1px solid #aaa;
-  padding: 3px 2px;
-}
-
-table.avgTable tbody td {
-  font-size: 13px;
-}
-
-table.avgTable tr:nth-child(even) {
-  background: #D0E4F5;
-}
-
-table.avgTable thead th{
-  background: #1C6EA4;
-  background: -moz-linear-gradient(top, #5592bb 0%, #327cad 66%, #1C6EA4 100%);
-  background: -webkit-linear-gradient(top, #5592bb 0%, #327cad 66%, #1C6EA4 100%);
-  background: linear-gradient(to bottom, #5592bb 0%, #327cad 66%, #1C6EA4 100%);
-  border-bottom: 2px solid #444444;
-}
-
-table.avgTable thead tr:first-child {
-	text-align: center;
-}
-
-table.avgTable thead th {
-  font-size: 15px;
-  font-weight: bold;
-  color: #FFFFFF;
-  border-left: 2px solid #D0E4F5;
-}
-
-table.avgTable thead th {
-  border-left: none;
-}
-
-table.avgTable tfoot {
-  font-size: 14px;
-  font-weight: bold;
-  color: #fff;
-  background: #D0E4F5;
-  background: -moz-linear-gradient(top, #dcebf7 0%, #d4e6f6 66%, #D0E4F5 100%);
-  background: -webkit-linear-gradient(top, #dcebf7 0%, #d4e6f6 66%, #D0E4F5 100%);
-  background: linear-gradient(to bottom, #dcebf7 0%, #d4e6f6 66%, #D0E4F5 100%);
-  border-top: 2px solid #444444;
-}
-
-table.avgTable tfoot td {
-  font-size: 14px;
-}
-
-table.avgTable tfoot .links {
-  text-align: right;
-}
-
-table.avgTable tfoot .links a{
+h5 {
   display: inline-block;
-  background: #1C6EA4;
-  color: #FFFFFF;
-  padding: 2px 8px;
-  border-radius: 5px;
+  padding: 10px;
+  background: #B9121B;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
 }
 
-#admin {
-    margin-top: 25px;
+.full-screen {
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
 }
 
-#report_area {
-    padding: 25px;
-    border-radius: 25px;
-    background-color: rgba(41,163,183, 0.5);
-	border: 5px solid rgb(41,163,183);
+#carousel{
+    position: static;
+    top: 0;
+    z-index: 0;
 }
 
-#report_area  h1 {
-    font-family: 'PT Serif', serif;
+#carousel img{
+    max-height: 800px;
+}
+
+/*
+Removes white gap between slides - chagnge to base color of slide images
+*/
+/*
+.carousel {
+  background:#007aeb;
+}
+*/
+/*
+Forces image to be 100% width and not max width of 100%
+*/
+.carousel-item .img-fluid {
+  width:100%;
+}
+
+/* 
+anchors are inline so you need ot make them block to go full width
+*/
+.carousel-item a {
+  display: block;
+  width: 100%;
+}
+
+.carousel-caption {
+    top: 350px;
+    color: #000;
+}
+
+.text-white {
     color: #fff;
-    text-shadow: 1px 1px #000;
+}
+
+.navbarScrollUp {
+    -webkit-transition: all 0.5s ease;
+    -moz-transition: all 0.5s ease;
+    -o-transition: all 0.5s ease;
+    transition: all 0.5s ease;
+    z-index: 1;
+    background-color: rgb(0,72,106, 0.0);
+    border-bottom: 1px solid #fff;
+    height: 120px;
+}
+
+.navbarScrollDown {
+    -webkit-transition: all 0.5s ease;
+    -moz-transition: all 0.5s ease;
+    -o-transition: all 0.5s ease;
+    transition: all 0.5s ease;
+    z-index: 1;
+    background-color: rgb(0,72,106);
+    border-bottom: 1px solid #fff;
+    height: 70px;
+}
+
+.navbarScrollDown .hideMe {
+    display: none;
+}
+
+.hideMe {
+    margin-bottom: 30px;
+}
+
+.sandyLogo {
+    height: 100%; 
+}
+
+.navbarScrollDown .sandyLogo {
+    -webkit-transition: all 0.5s ease;
+    -moz-transition: all 0.5s ease;
+    -o-transition: all 0.5s ease;
+    transition: all 0.5s ease;
+    background-image: url("/assets/images/SandyLogo-2.png");
+    background-repeat: no-repeat;
+    background-attachment: absolute;
+    background-position: center; 
+    z-index: 2;
+    position: absolute;
+    top: 1px;
+    margin-top: -18px;
+    height: 145px;
+    right: 1px;
+}
+
+.navbarScrollUp .sandyLogo {
+    -webkit-transition: all 0.5s ease;
+    -moz-transition: all 0.5s ease;
+    -o-transition: all 0.5s ease;
+    transition: all 0.5s ease;
+    background-image: url("/assets/images/SandyLogo.png");
+    background-repeat: no-repeat;
+    background-position: center; 
+ 
+}
+
+.sandyNav {
+    height: 100%;
+    align-items: flex-end;
+}
+
+.sandyBar {
+    color: #fff;
+    font-weight: 600;
+}
+
+.sandyBar button {
+    background-color: Transparent;
+    background-repeat:no-repeat;
+    border: none;
+    cursor: pointer;
+    overflow: hidden;
+    outline: none;
+    color: #fff;
+}
+
+.sandyBar .dropdown-item {
+    color: #000;
+}
+/* style the nav bar links */
+.sandyBar a {
+    color: #fff;
+}
+
+.sandyBar a:link {
+    color: #fff;
+}
+
+.sandyBar a:visted {
+    color: #fff;
+}
+
+.sandyBar a:hover {
+    color: #fff;
+    text-shadow: 0 0 3px #fff;
+}
+
+.sandyBar button:hover {
+    color: #fff;
+    text-shadow: 0 0 3px #fff;
+} 
+
+.sandyBar a:active {
+    color: #fff;
+}
+
+.login button {
+    color: #000;
+}
+
+.login a {
+    color: #000;
+}
+
+.login  a:link {
+    color: #000;
+}
+
+.login  a:visted {
+    color: #000;
+}
+
+.login  a:hover {
+    color: #000;
+    text-shadow: 0 0 3px #fff;
+}
+
+.login  button:hover {
+    color: #000;
+    text-shadow: 0 0 3px #fff;
+} 
+
+.login  a:active {
+    color: #000;
 }
 
 .footer {
@@ -205,22 +216,4 @@ table.avgTable tfoot .links a{
 
 .form-signin button {
     margin-left: 25px;
-}
-
-#norent_pie {
-    margin-top: 15px;
-}
-
-.active, .btn:hover {
-
-}
-
-/* mobile fix */
-@media (max-width: 768px) {
-	.dropdown-lr h3 {
-		color: #eee;
-	}
-	.dropdown-lr label {
-		color: #eee;
-	}
 }
