@@ -212,7 +212,7 @@ public function avg_rate(){
 		}
     } // end get_freq_renters
     */
-    
+    // Setup for Google
      public function get_freq_renters(){
        try
 		{
@@ -229,8 +229,8 @@ public function avg_rate(){
            echo $format = '{
             "cols":
             [
-            {"id":"","label":"Subject","pattern":"","type":"string"},
-            {"id":"","label":"Number","pattern":"","type":"number"}
+            {"id":"","label":"Name","pattern":"","type":"string"},
+            {"id":"","label":"Rented","pattern":"","type":"number"}
             ],
             "rows":'.json_encode($rows).'}';
 		}

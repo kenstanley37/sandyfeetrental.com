@@ -294,7 +294,7 @@ function get_freq_rentersC3(e){
 
             // Instantiate and draw our chart, passing in some options.
             var chart = new google.visualization.PieChart(document.getElementById('myChart'));
-            chart.draw(data, {width: 400, height: 240});
+            chart.draw(data);
 
         },
         
@@ -303,16 +303,8 @@ function get_freq_rentersC3(e){
         }
         
        });
-        
-        // Create our data table out of JSON data loaded from server.
-        // alert(jsonData);return false;
-        
-        
     }
 } //end avg_rate_graph
-
-
-
 
 
 function resetall(){

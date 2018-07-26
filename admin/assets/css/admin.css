@@ -1,5 +1,9 @@
 @import url('https://fonts.googleapis.com/css?family=PT+Serif');
 
+#myChart {
+    margin-top: 20px;
+}
+
 #idTheID {
     color: #fff;
 }
