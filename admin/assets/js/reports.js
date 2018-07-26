@@ -2,7 +2,7 @@ $(document).ready(function(){
     reportFromBtnHandler();
     reportSetup();
     load_image_data();
-    //$('#reportTable').DataTable();
+    $('#reportTable').DataTable();
 });
 
 function reportSetup() {
@@ -291,10 +291,25 @@ function get_freq_rentersC3(e){
         data: 'btn-freq',
         success:function(response){
             var data = new google.visualization.DataTable(response);
-
-            // Instantiate and draw our chart, passing in some options.
-            var chart = new google.visualization.PieChart(document.getElementById('myChart'));
+            $('#freq_report_area button').click(function(){
+                var myButton = $(this).text();
+                // Instantiate and draw our chart, passing in some options.
+            if(myButton === 'Pie'){
+                $('#myChart').empty();
+                var chart = new google.visualization.PieChart(document.getElementById('myChart'));
+            } else if(myButton === 'Column'){
+                $('#myChart').empty();
+                var chart = new google.visualization.ColumnChart(document.getElementById('myChart'));
+            } else if(myButton === 'Bar'){
+                $('#myChart').empty();
+                var chart = new google.visualization.BarChart(document.getElementById('myChart'));
+            }
+            
             chart.draw(data);
+            });
+            
+
+            
 
         },
         
