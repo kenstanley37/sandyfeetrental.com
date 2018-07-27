@@ -32,7 +32,7 @@ navbar bootstrap options-
 fixed-top 
 
 -->
-<nav class="container-fluid sandyBar fixed-top navbarScrollDown" role="navigation">
+<nav class="container-fluid sandyBar fixed-top navbarScrollUp" role="navigation">
     <div class="container sandyNav">
         <div class="row sandyNav">
             <div class="col">
@@ -48,7 +48,7 @@ fixed-top
                     </div>
                 </div>
                 <div class="row h-100 sandyNav links">
-                    <div class="col">
+                    <div class="col-12 dude">
                          <ul class="nav navbar-nav flex-row justify-content-start ml-auto">
                              <li class="nav-item"><button id="reports" class="btn btn-sm" data-toggle="button" aria-pressed="false" autocomplete="off" onclick="location.href = '<?php echo ROOT_URL ?>/index.php';">Home</button></li>
                             <?php if($rank === "admin" or $rank === "super_admin" ){
@@ -63,7 +63,7 @@ fixed-top
                     </div>
                 </div>
             </div>
-            <div class="col h-145 sandyLogo">
+            <div class="col-1 sandyLogo sandyLogoUp" id="sandyLogo">
                 <!-- <img src="../assets/images/SandyLogo.png" alt="Sandy Feet Logo"> -->
             </div>
             <div class="col">
@@ -73,7 +73,7 @@ fixed-top
                     </div>
                 </div>
                 <div class="row h-100 links text-right">
-                    <div class="col">
+                    <div class="col-12 dude justify-content-end">
                         <ul class="nav navbar-nav flex-row justify-content-end ml-auto">
                             <?php if($rank === "admin" or $rank === "super_admin" ){
                                 ?>

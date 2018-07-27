@@ -6,15 +6,18 @@ $(document).ready(function(){
     //nav bar class change based on scroll. 
     $(window).scroll(function(e) {
         var scrollPos = $(window).scrollTop();
-        e.preventDefault();
-        e.stopPropagation();
+        //console.log(scrollPos);
         if(scrollPos <= 0){
             $(".sandyBar").removeClass('navbarScrollDown');
             $(".sandyBar").addClass('navbarScrollUp');
+            $("#sandyLogo").addClass('sandyLogoUp');
+            $("#sandyLogo").removeClass('sandyLogoDown');
             //alert('')
         } else {
             $(".sandyBar").removeClass('navbarScrollUp');
-            $(".sandyBar").addClass('navbarScrollDown');
+            $(".sandyBar").addClass('navbarScrollDown'); 
+            $("#sandyLogo").removeClass('sandyLogoUp');
+            $("#sandyLogo").addClass('sandyLogoDown');
         }
     });
     
