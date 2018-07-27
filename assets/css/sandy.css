@@ -96,7 +96,16 @@ anchors are inline so you need ot make them block to go full width
 }
 
 .sandyLogo {
-    height: 100%; 
+    
+}
+
+.sandyLogo {
+    height: 115px; 
+    z-index: 1;
+    width: 100px; 
+    position: fixed;
+    top: 1px;
+    left: 47%;
 }
 
 .navbarScrollDown .sandyLogo {
@@ -106,14 +115,7 @@ anchors are inline so you need ot make them block to go full width
     transition: all 0.5s ease;
     background-image: url("/assets/images/SandyLogo-2.png");
     background-repeat: no-repeat;
-    background-attachment: absolute;
     background-position: center; 
-    z-index: 2;
-    position: absolute;
-    top: 1px;
-    margin-top: -18px;
-    height: 145px;
-    right: 1px;
 }
 
 .navbarScrollUp .sandyLogo {
@@ -124,10 +126,12 @@ anchors are inline so you need ot make them block to go full width
     background-image: url("/assets/images/SandyLogo.png");
     background-repeat: no-repeat;
     background-position: center; 
+    z-index: 9;
  
 }
 
 .sandyNav {
+    z-index: 2;
     height: 100%;
     align-items: flex-end;
 }

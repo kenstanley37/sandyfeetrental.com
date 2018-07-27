@@ -32,7 +32,7 @@ navbar bootstrap options-
 fixed-top 
 
 -->
-<nav class="container-fluid sandyBar fixed-top navbarScrollUp" role="navigation">
+<nav class="container-fluid sandyBar fixed-top navbarScrollDown" role="navigation">
     <div class="container sandyNav">
         <div class="row sandyNav">
             <div class="col">
@@ -63,7 +63,7 @@ fixed-top
                     </div>
                 </div>
             </div>
-            <div class="col text-center sandyLogo">
+            <div class="col h-145 sandyLogo">
                 <!-- <img src="../assets/images/SandyLogo.png" alt="Sandy Feet Logo"> -->
             </div>
             <div class="col">

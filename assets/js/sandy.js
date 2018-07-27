@@ -4,8 +4,10 @@ $(document).ready(function(){
     
     
     //nav bar class change based on scroll. 
-    $(window).scroll(function() {
+    $(window).scroll(function(e) {
         var scrollPos = $(window).scrollTop();
+        e.preventDefault();
+        e.stopPropagation();
         if(scrollPos <= 0){
             $(".sandyBar").removeClass('navbarScrollDown');
             $(".sandyBar").addClass('navbarScrollUp');
