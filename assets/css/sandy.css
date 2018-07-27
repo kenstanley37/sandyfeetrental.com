@@ -22,6 +22,18 @@ h5 {
     z-index: 0;
 }
 
+.page-header {
+    height: 250px;
+    color: #fff;
+}
+
+.title {
+    margin-top: 150px;
+}
+
+
+
+
 #carousel img{
     max-height: 800px;
 }
@@ -72,7 +84,7 @@ anchors are inline so you need ot make them block to go full width
     transition: all 0.5s ease;
     z-index: 1;
     background-color: rgb(0,72,106, 0.0);
-    border-bottom: 1px solid #fff;
+    border-bottom: 1px solid #b3d7ff;
     height: 120px;
 }
 
@@ -83,7 +95,7 @@ anchors are inline so you need ot make them block to go full width
     transition: all 0.5s ease;
     z-index: 1;
     background-color: rgb(0,72,106);
-    border-bottom: 1px solid #fff;
+    box-shadow: 1px 1px 8px #000;
     height: 70px;
 }
 
@@ -100,7 +112,6 @@ anchors are inline so you need ot make them block to go full width
 }
 */
 .sandyLogoDown {
-
     background-image: url("/assets/images/SandyLogo-2.png");
     background-repeat: no-repeat;
     background-position: center;
@@ -109,7 +120,6 @@ anchors are inline so you need ot make them block to go full width
     left: 46%;
     z-index: 3;
     height: 105px;
-
 }
 
 .sandyLogoUp {
@@ -122,7 +132,6 @@ anchors are inline so you need ot make them block to go full width
     background-position: center; 
     z-index: 2;
     height: 100%;
- 
 }
 
 .sandyNav {

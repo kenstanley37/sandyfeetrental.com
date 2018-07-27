@@ -38,7 +38,6 @@ include "views/header.php";
 include "views/index-nav.php"; 
 //echo ROOT_DIR;
 ?>
-<body>
 
  
       <!--
@@ -159,10 +158,4 @@ include "views/index-nav.php";
     
     
     
-    
-    
-    
-
-</body>
-
 <?php include "views/footer.php" ?>

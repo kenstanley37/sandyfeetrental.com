@@ -1,0 +1,9 @@
+test:  
+  override:
+    - "true"
+    
+deployment:
+  production:
+    branch: master
+    commands:
+      - scp -r * sandyfeetrental@stanleysoft.org:/
