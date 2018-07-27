@@ -129,11 +129,11 @@
                         <div class="row" id="report_area">
                             <div class="col">
                                 <div class="row title">
-                                    <div class="col-12 text-center">
+                                    <div class="col-12 text-center buttonList">
                                         <h1>Frequent Customers</h1>
                                         <button id="pie">Pie</button>
                                         <button id="column">Column</button>
-                                        <button id="column">Bar</button>
+                                        <button id="bar">Bar</button>
                                     </div>
                                 </div>
                                 <div class="row">

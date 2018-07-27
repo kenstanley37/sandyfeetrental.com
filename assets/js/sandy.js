@@ -1,7 +1,5 @@
 $(document).ready(function(){
     $.ajaxSetup({ cache: false });  // Prevent browser from caching the page. This is !important
-
-    
     
     //nav bar class change based on scroll. 
     $(window).scroll(function(e) {

@@ -63,7 +63,7 @@ fixed-top
                     </div>
                 </div>
             </div>
-            <div class="col-1 sandyLogo sandyLogoUp" id="sandyLogo">
+            <div class="col-1 dude sandyLogo sandyLogoUp" id="sandyLogo">
                 <!-- <img src="../assets/images/SandyLogo.png" alt="Sandy Feet Logo"> -->
             </div>
             <div class="col">
