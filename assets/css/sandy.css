@@ -215,8 +215,11 @@ anchors are inline so you need ot make them block to go full width
     color: #000;
 }
 
+section, main, article {
+    margin-bottom: 70px;
+}
 
-.footer {
+footer {
     position: fixed;
     left: 0;
     bottom: 0;

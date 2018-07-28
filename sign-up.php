@@ -13,16 +13,16 @@ if($user->is_loggedin()!="")
     
 }
 
-if(isset($_POST['btn-signup']))
+if(isset($_POST['sandySubmit']))
 {
-    $ufname = ucfirst(strtolower(strip_tags($_POST['txt_ufname'])));
-    $ulname = strip_tags($_POST['txt_ulname']);
-    $ustreet = strip_tags($_POST['txt_ustreet']);
-    $ustate = strip_tags($_POST['txt_ustate']);
-    $uzip = strip_tags($_POST['txt_uzip']);
-    $uphone = strip_tags($_POST['txt_uphone']);
-	$umail = strip_tags($_POST['txt_umail']);
-	$upass = strip_tags($_POST['txt_upass']);	
+    $ufname = ucfirst(strtolower(strip_tags($_POST['sandyFname'])));
+    $ulname = strip_tags($_POST['sandyLname']);
+    $ustreet = strip_tags($_POST['sandyAddress']);
+    $ustate = strip_tags($_POST['sandyState']);
+    $uzip = strip_tags($_POST['sandyZip']);
+    $uphone = strip_tags($_POST['sandyPhone']);
+	$umail = strip_tags($_POST['sandyEmail']);
+	$upass = strip_tags($_POST['sandyPass2']);	
     $ujoindate = date("Y-m-d H:i:s");
     //$utype = "renter";
 
@@ -87,7 +87,7 @@ include "views/header.php";
 <!--
     Add more css or js here
 -->
-<script type="text/javascript" src="<?php echo ROOT_URL ?>/assets/js/zipcode.js"></script>
+<script type="text/javascript" src="<?php echo ROOT_URL ?>/assets/js/register.js"></script>
 
 </head>
 <?php
@@ -119,44 +119,50 @@ include "views/index-nav.php";
 
                 <div class="login-wrapper">
 
-                    <form class="needs-validation" novalidate>
+                    <form class="needs-validation register" method="post" novalidate>
+                        
                         <div class="form-row">
                             
                             <div class="col-md-4 mb-3">
-                                <label for="validationCustom01">First name</label>
-                                <input type="text" class="form-control" id="validationCustom01" placeholder="First name" value="" required>
-                                <div class="valid-feedback">
-                                Looks good!
+                                <label for="sandyFname">First name</label>
+                                <input type="text" name="sandyFname" class="form-control" id="sandyFname" placeholder="First name" value="" required>
+                                <div class="invalid-feedback">
+                                    Please enter your first name
                                 </div>
                             </div>
                             
                             <div class="col-md-4 mb-3">
-                                <label for="validationCustom02">Last name</label>
-                                <input type="text" class="form-control" id="validationCustom02" placeholder="Last name" value="" required>
-                                <div class="valid-feedback">
-                                Looks good!
+                                <label for="sandyLname">Last name</label>
+                                <input type="text" name="sandyLname" class="form-control" id="sandyLname" placeholder="Last name" value="" required>
+                                <div class="invalid-feedback">
+                                    Please enter your last name
                                 </div>
                             </div>
                             
                             <div class="col-md-4 mb-3">
-                                <label for="validationCustomUsername">Username</label>
+                                <label for="sandyEmail">E-Mail</label>
                                 <div class="input-group">
-                                    <div class="input-group-prepend">
-                                        <span class="input-group-text" id="inputGroupPrepend">@</span>
-                                    </div>
-                                    <input type="text" class="form-control" id="validationCustomUsername" placeholder="Username" aria-describedby="inputGroupPrepend" required>
+                                    <input type="email" name="sandyEmail" class="form-control" id="sandyEmail" placeholder="E-Mail" aria-describedby="inputGroupPrepend" required>
                                     <div class="invalid-feedback">
-                                    Please choose a username.
+                                    Please enter your email address
                                     </div>
                                 </div>
                             </div>
-                            
                         </div> <!-- end form row -->
                         
                         <div class="form-row">
+                            
+                            <div class="col-md-3 mb-3">
+                                <label for="sandyZip">Zip</label>
+                                <input type="text" name="sandyZip" class="form-control" id="sandyZip" placeholder="Zip" required>
+                                <div class="invalid-feedback">
+                                Please provide a valid zip.
+                                </div>
+                            </div>
+                            
                             <div class="col-md-6 mb-3">
                                 <label for="sandyCity">City</label>
-                                <input type="text" class="form-control" id="sandyCity" placeholder="City" required>
+                                <input type="text" name="sandyCity" class="form-control" id="sandyCity" placeholder="City" required>
                                 <div class="invalid-feedback">
                                 Please provide a valid city.
                                 </div>
@@ -164,20 +170,49 @@ include "views/index-nav.php";
                             
                             <div class="col-md-3 mb-3">
                                 <label for="sandyState">State</label>
-                                <input type="text" class="form-control" id="sandyState" placeholder="State" required>
+                                <input type="text" name="sandyState" class="form-control" id="sandyState" placeholder="State" required>
                                 <div class="invalid-feedback">
-                                Please provide a valid state.
+                                Please provide a valid state
+                                </div>
+                            </div>
+                        </div> <!-- end form row -->
+                        
+                        <div class="form-row">
+                            
+                            <div class="col-md-8 mb-3">
+                                <label for="sandyAddress">Street Address</label>
+                                <input type="text" name="sandyAddress" class="form-control" id="sandyAddress" placeholder="Address" required>
+                                <div class="invalid-feedback">
+                                Please provide a valid street address
                                 </div>
                             </div>
                             
-                            <div class="col-md-3 mb-3">
-                                <label for="sandyZip">Zip</label>
-                                <input type="text" class="form-control" id="sandyZip" placeholder="Zip" required>
+                            <div class="col-md-4 mb-3">
+                                <label for="sandyPhone">Phone</label>
+                                <input type="tel" name="sandyPhone" class="form-control" id="sandyPhone" maxlength="14" placeholder="(XXX) XXX-XXXX" required>
                                 <div class="invalid-feedback">
-                                Please provide a valid zip.
+                                Please provide a valid phone number
+                                </div>
+                            </div>
+                        </div> <!-- end form row -->
+                        
+                        <div class="form-row">
+                            
+                            <div class="col-md-6 mb-3">
+                                <label for="sandyPass1">Password</label>
+                                <input type="password" name="sandyPass1" class="form-control" id="sandyPass1" placeholder="Password" required>
+                                <div class="invalid-feedback">
+                                Please enter a password
                                 </div>
                             </div>
                             
+                            <div class="col-md-6 mb-3">
+                                <label for="sandyPass2">Repeat Password</label>
+                                <input type="password" name="sandyPass2" class="form-control" id="sandyPass2" placeholder="Password" required>
+                                <div class="invalid-feedback">
+                                Please enter the password again
+                                </div>
+                            </div>
                         </div> <!-- end form row -->
                         
                         <div class="form-group">
@@ -192,7 +227,7 @@ include "views/index-nav.php";
                             </div>
                             
                         </div> <!-- end form group -->
-                        <button class="btn btn-primary" type="submit">Submit form</button>
+                        <button class="btn btn-primary" name="sandySubmit" type="submit">Register</button>
                     </form>
 
                     <script>
