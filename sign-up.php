@@ -87,6 +87,8 @@ include "views/header.php";
 <!--
     Add more css or js here
 -->
+<script type="text/javascript" src="<?php echo ROOT_URL ?>/assets/js/zipcode.js"></script>
+
 </head>
 <?php
 
@@ -117,77 +119,102 @@ include "views/index-nav.php";
 
                 <div class="login-wrapper">
 
-                    <div class="white-block">
-
-
-                        <!--signup-->
-
-                        <div class="login-block login-block-signup">
-
-                            <div class="h4">Register now</div>
-
-                            <hr />
-
-                            <div class="row">
-
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <input type="text" value="" class="form-control" placeholder="First name: *">
-                                    </div>
+                    <form class="needs-validation" novalidate>
+                        <div class="form-row">
+                            
+                            <div class="col-md-4 mb-3">
+                                <label for="validationCustom01">First name</label>
+                                <input type="text" class="form-control" id="validationCustom01" placeholder="First name" value="" required>
+                                <div class="valid-feedback">
+                                Looks good!
                                 </div>
-
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <input type="text" value="" class="form-control" placeholder="Last name: *">
-                                    </div>
-                                </div>
-
-                                <div class="col-md-4">
-                                    <div class="form-group">
-                                        <input type="text" value="" class="form-control" placeholder="Zip code: *">
-                                    </div>
-                                </div>
-
-                                <div class="col-md-8">
-                                    <div class="form-group">
-                                        <input type="text" value="" class="form-control" placeholder="City: *">
-                                    </div>
-                                </div>
-
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <input type="text" value="" class="form-control" placeholder="Email: *">
-                                    </div>
-                                </div>
-
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <input type="text" value="" class="form-control" placeholder="Phone: *">
-                                    </div>
-                                </div>
-
-                                <div class="col-md-12">
-                                    <hr />
-                                    <span class="checkbox">
-                                        <input type="checkbox" id="checkBoxId1">
-                                        <label for="checkBoxId1">I have read and accepted the <a href="#">terms</a></label>
-                                    </span>
-                                </div>
-                                <div class="col-md-12">
-                                    <span class="checkbox">
-                                        <input type="checkbox" id="checkBoxId2">
-                                        <label for="checkBoxId2">Subscribe to exciting newsletters and great tips</label>
-                                    </span>
-                                    <hr />
-                                </div>
-
-                                <div class="col-md-12">
-                                    <a href="#" class="btn btn-main btn-primary btn-block">Create account</a>
-                                </div>
-
                             </div>
-                        </div> <!--/signup-->
-                    </div>
+                            
+                            <div class="col-md-4 mb-3">
+                                <label for="validationCustom02">Last name</label>
+                                <input type="text" class="form-control" id="validationCustom02" placeholder="Last name" value="" required>
+                                <div class="valid-feedback">
+                                Looks good!
+                                </div>
+                            </div>
+                            
+                            <div class="col-md-4 mb-3">
+                                <label for="validationCustomUsername">Username</label>
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text" id="inputGroupPrepend">@</span>
+                                    </div>
+                                    <input type="text" class="form-control" id="validationCustomUsername" placeholder="Username" aria-describedby="inputGroupPrepend" required>
+                                    <div class="invalid-feedback">
+                                    Please choose a username.
+                                    </div>
+                                </div>
+                            </div>
+                            
+                        </div> <!-- end form row -->
+                        
+                        <div class="form-row">
+                            <div class="col-md-6 mb-3">
+                                <label for="validationCustom03">City</label>
+                                <input type="text" class="form-control" id="validationCustom03" placeholder="City" required>
+                                <div class="invalid-feedback">
+                                Please provide a valid city.
+                                </div>
+                            </div>
+                            
+                            <div class="col-md-3 mb-3">
+                                <label for="validationCustom04">State</label>
+                                <input type="text" class="form-control" id="validationCustom04" placeholder="State" required>
+                                <div class="invalid-feedback">
+                                Please provide a valid state.
+                                </div>
+                            </div>
+                            
+                            <div class="col-md-3 mb-3">
+                                <label for="sandyZip">Zip</label>
+                                <input type="text" class="form-control" id="sandyZip" placeholder="Zip" required>
+                                <div class="invalid-feedback">
+                                Please provide a valid zip.
+                                </div>
+                            </div>
+                            
+                        </div> <!-- end form row -->
+                        
+                        <div class="form-group">
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" value="" id="invalidCheck" required>
+                                <label class="form-check-label" for="invalidCheck">
+                                Agree to terms and conditions
+                                </label>
+                                <div class="invalid-feedback">
+                                You must agree before submitting.
+                                </div>
+                            </div>
+                            
+                        </div> <!-- end form group -->
+                        <button class="btn btn-primary" type="submit">Submit form</button>
+                    </form>
+
+                    <script>
+                    // Example starter JavaScript for disabling form submissions if there are invalid fields
+                    (function() {
+                        'use strict';
+                        window.addEventListener('load', function() {
+                            // Fetch all the forms we want to apply custom Bootstrap validation styles to
+                            var forms = document.getElementsByClassName('needs-validation');
+                            // Loop over them and prevent submission
+                            var validation = Array.prototype.filter.call(forms, function(form) {
+                                form.addEventListener('submit', function(event) {
+                                    if (form.checkValidity() === false) {
+                                        event.preventDefault();
+                                        event.stopPropagation();
+                                    }
+                                    form.classList.add('was-validated');
+                                }, false);
+                            });
+                        }, false);
+                    })();
+                    </script>
                 </div> <!--/login-wrapper-->
             </div> <!--/col-md-6-->
         </div> <!--/row -->
