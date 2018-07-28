@@ -155,16 +155,16 @@ include "views/index-nav.php";
                         
                         <div class="form-row">
                             <div class="col-md-6 mb-3">
-                                <label for="validationCustom03">City</label>
-                                <input type="text" class="form-control" id="validationCustom03" placeholder="City" required>
+                                <label for="sandyCity">City</label>
+                                <input type="text" class="form-control" id="sandyCity" placeholder="City" required>
                                 <div class="invalid-feedback">
                                 Please provide a valid city.
                                 </div>
                             </div>
                             
                             <div class="col-md-3 mb-3">
-                                <label for="validationCustom04">State</label>
-                                <input type="text" class="form-control" id="validationCustom04" placeholder="State" required>
+                                <label for="sandyState">State</label>
+                                <input type="text" class="form-control" id="sandyState" placeholder="State" required>
                                 <div class="invalid-feedback">
                                 Please provide a valid state.
                                 </div>
