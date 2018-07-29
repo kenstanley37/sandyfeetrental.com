@@ -33,20 +33,21 @@ class USER
         
     }
     
-	public function register($ufname, $ulname, $ustreet, $ustate, $uzip, $uphone, $umail, $upass, $ujoindate)
+	public function register($ufname, $ulname, $ustreet, $ustate, $ucity, $uzip, $uphone, $umail, $upass, $ujoindate)
 	{
 		try
 		{
 			$new_password = password_hash($upass, PASSWORD_DEFAULT);
             $utype = "renter";
 			
-			$stmt = $this->conn->prepare("INSERT INTO user(user_fName, user_lName, user_street, user_state, user_zip, user_phone, user_email, user_pass, user_type, joining_date) 
-                   VALUES(:ufname, :ulname, :ustreet, :ustate, :uzip, :uphone, :umail, :upass, :utype, :ujoindate)");
+			$stmt = $this->conn->prepare("INSERT INTO user(user_fName, user_lName, user_street, user_state, user_city, user_zip, user_phone, user_email, user_pass, user_type, joining_date) 
+                   VALUES(:ufname, :ulname, :ustreet, :ustate, :ucity, :uzip, :uphone, :umail, :upass, :utype, :ujoindate)");
 												  
 			$stmt->bindparam(":ufname", $ufname);
 			$stmt->bindparam(":ulname", $ulname);
             $stmt->bindparam(":ustreet", $ustreet);
             $stmt->bindparam(":ustate", $ustate);
+            $stmt->bindparam(":ucity", $ucity);
             $stmt->bindparam(":uzip", $uzip);
             $stmt->bindparam(":uphone", $uphone);
             $stmt->bindparam(":umail", $umail);
@@ -55,13 +56,14 @@ class USER
             $stmt->bindparam(":ujoindate", $ujoindate);
 				
 			$stmt->execute();	
-			
-			return $stmt;	
+			return $stmt;
+            //return true;
+            exit();
 		}
 		catch(PDOException $e)
 		{
 			echo $e->getMessage();
-		}				
+		}	
 	}
 	
 	
@@ -69,7 +71,7 @@ class USER
 	{
 		try
 		{
-			$stmt = $this->conn->prepare("SELECT user_id, user_email, user_pass, user_type FROM user WHERE user_email=:umail ");
+			$stmt = $this->conn->prepare("SELECT user_id, user_fName, user_email, user_pass, user_type FROM user WHERE user_email=:umail ");
 			$stmt->execute(array(':umail'=>$umail));
 			$userRow=$stmt->fetch(PDO::FETCH_ASSOC);
 			if($stmt->rowCount() == 1)
@@ -77,6 +79,7 @@ class USER
 				if(password_verify($upass, $userRow['user_pass']))
 				{
 					$_SESSION['user_session'] = $userRow['user_id'];
+                    $_SESSION['user_fName'] = $userRow['user_fName'];
                     $_SESSION['user_rank'] = $userRow['user_type'];
 					return true;
 				}

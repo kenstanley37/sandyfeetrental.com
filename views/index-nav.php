@@ -1,14 +1,18 @@
 <?php 
     $rank = '';
-    
+
     if($page_name === "index.php"){
         $ufname = $login->fname(); 
     }else if($page_name === "sign-up.php"){
-        $ufname = $user->fname(); 
+        $ufname = $login->fname(); 
     }else{
         $ufname = $login->fname(); 
     }
+    
 
+    if(isset($_SESSION['user_fName'])){
+        $ufname = $_SESSION['user_fName'];   
+    }
     if(isset($_SESSION['user_rank'])){
         $rank = $_SESSION['user_rank'];
     } 
@@ -130,7 +134,7 @@ fixed-top
                                                                     {
                                                                         ?>
                                                                         <div class="alert alert-danger">
-                                                                           <i class="glyphicon glyphicon-warning-sign"></i> &nbsp; <?php echo $error; ?> !
+                                                                           <i class="glyphicon glyphicon-warning-sign"></i> &nbsp; <?php $error; ?> !
                                                                         </div>
                                                                         <?php
                                                                     }

@@ -1,3 +1,7 @@
+.label {
+    color: red;
+}
+
 .fa-cog {
     font-size: 10px;
 }
@@ -30,9 +34,6 @@ h5 {
 .title {
     margin-top: 150px;
 }
-
-
-
 
 #carousel img{
     max-height: 800px;

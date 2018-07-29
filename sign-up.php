@@ -1,59 +1,68 @@
-<?php
-session_start();
+<?php session_start();
 include('init.php');
 require_once('inc/class.user.php');
-$user = new USER();
+$login = new USER();
 
+if(isset($_SESSION['user_fName'])){
+    $login->redirect('index.php');
+}
 
-
-if($user->is_loggedin()!="")
+if($login->is_loggedin()!="")
 {
 	//$login->redirect('home.php');
-    $rank = $user->check_rank();
+    $rank = $login->check_rank();
+    echo $rank;
     
 }
 
 if(isset($_POST['sandySubmit']))
 {
-    $ufname = ucfirst(strtolower(strip_tags($_POST['sandyFname'])));
-    $ulname = strip_tags($_POST['sandyLname']);
-    $ustreet = strip_tags($_POST['sandyAddress']);
-    $ustate = strip_tags($_POST['sandyState']);
-    $uzip = strip_tags($_POST['sandyZip']);
-    $uphone = strip_tags($_POST['sandyPhone']);
-	$umail = strip_tags($_POST['sandyEmail']);
-	$upass = strip_tags($_POST['sandyPass2']);	
+    $ufname = ucfirst(strtolower(strip_tags($_POST['sandyFname']))); $_SESSION['ufname'] = $ufname;
+    $ulname = strip_tags($_POST['sandyLname']); $_SESSION['ulname'] = $ulname;
+    $ustreet = strip_tags($_POST['sandyAddress']); $_SESSION['ustreet'] = $ustreet;
+    $ustate = strip_tags($_POST['sandyState']); $_SESSION['ustate'] = $ustate;
+    $ucity = strip_tags($_POST['sandyCity']); $_SESSION['ucity'] = $ucity;
+    $uzip = strip_tags($_POST['sandyZip']); $_SESSION['uzip'] = $uzip;
+    $uphone = strip_tags($_POST['sandyPhone']); $_SESSION['uphone'] = $uphone;
+	$umail = strip_tags($_POST['sandyEmail']); $_SESSION['umail'] = $umail;
+	$upass = strip_tags($_POST['sandyPass2']); $_SESSION['upass'] = $upass;
     $ujoindate = date("Y-m-d H:i:s");
     //$utype = "renter";
 
 	if($umail=="")	{
-		$error[] = "provide email id !";	
+		$error['email'] = "provide email id !";	
 	}
 	else if(!filter_var($umail, FILTER_VALIDATE_EMAIL))	{
-	    $error[] = 'Please enter a valid email address !';
+	    $error['email'] = 'Please enter a valid email address !';
 	}
 	else if($upass=="")	{
-		$error[] = "provide password !";
+		$error['password'] = "provide password !";
 	}
 	else if(strlen($upass) < 6){
-		$error[] = "Password must be atleast 6 characters";	
+		$error['password'] = "Password must be atleast 6 characters";	
 	}
 	else
 	{
 		try
 		{
-			$stmt = $user->runQuery("SELECT user_email FROM user WHERE user_email=:umail");
+			$stmt = $login->runQuery("SELECT user_email FROM user WHERE user_email=:umail");
 			$stmt->execute(array(':umail'=>$umail));
 			$row=$stmt->fetch(PDO::FETCH_ASSOC);
 				
             if($row['user_email']==$umail) {
-				$error[] = "sorry email id already taken !";
+				$error['email'] = "Email address is taken";
 			}
 			else
 			{
-				if($user->register($ufname, $ulname, $ustreet, $ustate, $uzip, $uphone, $umail, $upass, $ujoindate)){	
-					$user->redirect('sign-up.php?joined');
+				
+                if($login->register($ufname, $ulname, $ustreet, $ustate, $ucity, $uzip, $uphone, $umail, $upass, $ujoindate)){	
+                    $_SESSION['fname'] = serialize($umail);
+                    $_SESSION['pass'] = serialize($upass);
+                    $login->redirect('sign-up.php?joined');
 				}
+                 else {
+                    echo 'I dont rock';
+                }
 			}
 		}
 		catch(PDOException $e)
@@ -94,6 +103,7 @@ include "views/header.php";
 
 include "views/index-nav.php"; 
 ?>
+
 <section class="page">
 
     <!-- ===  Page header === -->
@@ -109,6 +119,20 @@ include "views/index-nav.php";
         </div>
     </div>
 
+    
+<?php if(isset($_GET['joined'])){
+    ?>
+    <div class="container">
+        <div class="row">
+            <div class="col-12 title text-center" id>
+                Thanks for registering. Please sign in to reserve a property.
+            </div>
+        </div>
+    </div>
+    <?php
+?></section><?php
+}else {
+    ?>
     <div class="container register">
         <div class="row justify-content-md-center">
             <!-- === left content === -->
@@ -120,12 +144,11 @@ include "views/index-nav.php";
                 <div class="login-wrapper">
 
                     <form class="needs-validation register" method="post" novalidate>
-                        
                         <div class="form-row">
-                            
+
                             <div class="col-md-4 mb-3">
                                 <label for="sandyFname">First name</label>
-                                <input type="text" name="sandyFname" class="form-control" id="sandyFname" placeholder="First name" value="" required>
+                                <input type="text" name="sandyFname" class="form-control" id="sandyFname" placeholder="First name" value="<?php if(isset($_SESSION['ufname'])){echo $_SESSION['ufname'];}?>" required>
                                 <div class="invalid-feedback">
                                     Please enter your first name
                                 </div>
@@ -133,7 +156,7 @@ include "views/index-nav.php";
                             
                             <div class="col-md-4 mb-3">
                                 <label for="sandyLname">Last name</label>
-                                <input type="text" name="sandyLname" class="form-control" id="sandyLname" placeholder="Last name" value="" required>
+                                <input type="text" name="sandyLname" class="form-control" id="sandyLname" placeholder="Last name" value="<?php if(isset($_SESSION['ulname'])){echo $_SESSION['ulname'];}?>" required>
                                 <div class="invalid-feedback">
                                     Please enter your last name
                                 </div>
@@ -142,11 +165,17 @@ include "views/index-nav.php";
                             <div class="col-md-4 mb-3">
                                 <label for="sandyEmail">E-Mail</label>
                                 <div class="input-group">
-                                    <input type="email" name="sandyEmail" class="form-control" id="sandyEmail" placeholder="E-Mail" aria-describedby="inputGroupPrepend" required>
+                                    <input type="email" name="sandyEmail" class="form-control" id="sandyEmail" placeholder="E-Mail" aria-describedby="inputGroupPrepend" value="<?php if(isset($_SESSION['umail'])){echo $_SESSION['umail'];}?>" required>
                                     <div class="invalid-feedback">
                                     Please enter your email address
                                     </div>
                                 </div>
+                                <span class="text-danger">
+                                    <?php 
+                                    if(isset($error['email'])){
+                                        echo $error['email'];
+                                    } ?>
+                                </span>
                             </div>
                         </div> <!-- end form row -->
                         
@@ -154,7 +183,7 @@ include "views/index-nav.php";
                             
                             <div class="col-md-3 mb-3">
                                 <label for="sandyZip">Zip</label>
-                                <input type="text" name="sandyZip" class="form-control" id="sandyZip" placeholder="Zip" required>
+                                <input type="text" name="sandyZip" class="form-control" id="sandyZip" placeholder="Zip" value="<?php if(isset($_SESSION['uzip'])){echo $_SESSION['uzip'];}?>" required>
                                 <div class="invalid-feedback">
                                 Please provide a valid zip.
                                 </div>
@@ -162,7 +191,7 @@ include "views/index-nav.php";
                             
                             <div class="col-md-6 mb-3">
                                 <label for="sandyCity">City</label>
-                                <input type="text" name="sandyCity" class="form-control" id="sandyCity" placeholder="City" required>
+                                <input type="text" name="sandyCity" class="form-control" id="sandyCity" placeholder="City" value="<?php if(isset($_SESSION['ucity'])){echo $_SESSION['ucity'];}?>" required>
                                 <div class="invalid-feedback">
                                 Please provide a valid city.
                                 </div>
@@ -170,7 +199,7 @@ include "views/index-nav.php";
                             
                             <div class="col-md-3 mb-3">
                                 <label for="sandyState">State</label>
-                                <input type="text" name="sandyState" class="form-control" id="sandyState" placeholder="State" required>
+                                <input type="text" name="sandyState" class="form-control" id="sandyState" placeholder="State" value="<?php if(isset($_SESSION['ustate'])){echo $_SESSION['ustate'];}?>" required>
                                 <div class="invalid-feedback">
                                 Please provide a valid state
                                 </div>
@@ -181,7 +210,7 @@ include "views/index-nav.php";
                             
                             <div class="col-md-8 mb-3">
                                 <label for="sandyAddress">Street Address</label>
-                                <input type="text" name="sandyAddress" class="form-control" id="sandyAddress" placeholder="Address" required>
+                                <input type="text" name="sandyAddress" class="form-control" id="sandyAddress" placeholder="Address" value="<?php if(isset($_SESSION['ustreet'])){echo $_SESSION['ustreet'];}?>" required>
                                 <div class="invalid-feedback">
                                 Please provide a valid street address
                                 </div>
@@ -189,7 +218,7 @@ include "views/index-nav.php";
                             
                             <div class="col-md-4 mb-3">
                                 <label for="sandyPhone">Phone</label>
-                                <input type="tel" name="sandyPhone" class="form-control" id="sandyPhone" maxlength="14" placeholder="(XXX) XXX-XXXX" required>
+                                <input type="tel" name="sandyPhone" class="form-control" id="sandyPhone" maxlength="14" placeholder="(XXX) XXX-XXXX" value="<?php if(isset($_SESSION['uphone'])){echo $_SESSION['uphone'];}?>" required>
                                 <div class="invalid-feedback">
                                 Please provide a valid phone number
                                 </div>
@@ -205,6 +234,12 @@ include "views/index-nav.php";
                                 Please enter a password
                                 </div>
                             </div>
+                            <span class="text-danger">
+                                <?php 
+                                if(isset($error['password'])){
+                                    echo $error['password'];
+                                } ?>
+                            </span>
                             
                             <div class="col-md-6 mb-3">
                                 <label for="sandyPass2">Repeat Password</label>
@@ -256,5 +291,7 @@ include "views/index-nav.php";
     </div> <!-- End register container -->
 
 </section>
-
+<?php
+}
+?>  
 <?php include "views/footer.php" ?>
