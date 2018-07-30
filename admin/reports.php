@@ -48,118 +48,120 @@
           </ol>
 
           <!-- Page Content -->
-            <div class="container" id="admin">
-                <div class="row admin-nav">
-                    <div class="col-12"><?php include "inc/reports/admin-nav.php"; ?></div>
+            
+        <div class="container" id="admin">
+            <div class="row admin-nav">
+                <div class="col-12"><?php include $path."/views/admin/admin-nav.php"; ?>
                 </div>
-                <div class="row">
-                    <div class="col" id="resetDB"></div>
+            </div>
+            
+        <?php
+        if(isset($_POST["btn-avg"])){
+            $myID = "btn-avg";
+            ?>
+                <div class="row" id="avg_report_area">
+                    <div class="col-12">
+                        <div class="row" id="report_area">
+                            <div class="col">
+                                <div class="row">
+                                    <div class="col-12 text-center">
+                                        <h1>Average Rate</h1>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-6" id="myTable">
+                                        <?php print $prop->avg_rate(); ?>
+                                    </div>
+                                    <div class="col-6" id="avg_rate">
+                                        <!--
+                                        Use for Google Charts
+                                        <div id="myChart"></div>
+                                        -->
+                                        <canvas id="myChart"></canvas>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-              <?php
-                if(isset($_POST["btn-avg"])){
-                    $myID = "btn-avg";
-                    ?>
-                        <div class="row" id="avg_report_area">
-                            <div class="col-12">
-                                <div class="row" id="report_area">
-                                    <div class="col">
-                                        <div class="row">
-                                            <div class="col-12 text-center">
-                                                <h1>Average Rate</h1>
-                                            </div>
+            </div> <!-- End container -->
+        <?php
+        }
+            if(isset($_POST["btn-norent"])){
+                $myID = "btn-norent";
+        ?>
+                <div class="row" id="norent_report_area">
+                    <div class="col-12">
+                        <div class="row" id="report_area">
+                            <div class="col">
+                                <div class="row">
+                                    <div class="col-12 text-center">
+                                        <h1>Customers who have not rented</h1>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-12" id="myTable">
+                                        <?php print $prop->no_rent(); ?>
+                                    </div>
+                                    <div class="col-6">
+                                        <canvas id="myChart"></canvas>
+                                    </div>
+                                    <div class="col-6">
+                                        <canvas id="myChart"></canvas>
+                                    </div>
+                                </div>
+                                
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div> <!-- End container -->
+        <?php
+        }
+            if(isset($_POST["btn-freq"])){
+                $myID = "btn-freq";
+        ?>
+
+            <div class="row" id="freq_report_area">
+                    <div class="col-12">
+                        <div class="row" id="report_area">
+                            <div class="col">
+                                <div class="row">
+                                    <div class="col-12 text-center">
+                                        <h1>Frequent Customers</h1>
+                                        <div class="buttonwrapper">
+                                            <button id="pie">Pie</button>
+                                            <button id="column">Column</button>
+                                            <button id="bar">Bar</button>
                                         </div>
-                                        <div class="row">
-                                            <div class="col-6" id="myTable">
-                                                <?php print $prop->avg_rate(); ?>
-                                            </div>
-                                            <div class="col-6" id="avg_rate">
-                                                <!--
-                                                Use for Google Charts
-                                                <div id="myChart"></div>
-                                                -->
-                                                <canvas id="myChart"></canvas>
-                                            </div>
-                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-6" id="myTable">
+                                        <?php print $prop->freq_renters(); ?>
+                                    </div>
+                                    <div class="col-6" id="freq_pie">
+                                        <!--
+                                        Use for Google Charts
+                                        <div id="myChart"></div>
+                                        -->
+                                        <div id="myChart" class="myChart"></div>
+                                        <!-- <canvas id="myChart"></canvas> -->
                                     </div>
                                 </div>
                             </div>
                         </div>
-                    </div> <!-- End container -->
-                <?php
-                }
-                    if(isset($_POST["btn-norent"])){
-                        $myID = "btn-norent";
-                ?>
-                        <div class="row" id="norent_report_area">
-                            <div class="col-12">
-                                <div class="row" id="report_area">
-                                    <div class="col">
-                                        <div class="row">
-                                            <div class="col-12 text-center">
-                                                <h1>Customers who have not rented</h1>
-                                            </div>
-                                        </div>
-                                        <div class="row">
-                                            <div class="col-12" id="myTable">
-                                                <?php print $prop->no_rent(); ?>
-                                            </div>
-                                            <div class="col-6">
-                                                <canvas id="myChart"></canvas>
-                                            </div>
-                                            <div class="col-6">
-                                                <canvas id="myChart"></canvas>
-                                            </div>
-                                        </div>
-
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div> <!-- End container -->
-                <?php
-                }
-                    if(isset($_POST["btn-freq"])){
-                        $myID = "btn-freq";
-                ?>
-
-                    <div class="row" id="freq_report_area">
-                            <div class="col-12">
-                                <div class="row" id="report_area">
-                                    <div class="col">
-                                        <div class="row">
-                                            <div class="col-12 text-center">
-                                                <h1>Frequent Customers</h1>
-                                                <div class="buttonwrapper">
-                                                    <button id="pie">Pie</button>
-                                                    <button id="column">Column</button>
-                                                    <button id="bar">Bar</button>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="row">
-                                            <div class="col-6" id="myTable">
-                                                <?php print $prop->freq_renters(); ?>
-                                            </div>
-                                            <div class="col-6" id="freq_pie">
-                                                <!--
-                                                Use for Google Charts
-                                                <div id="myChart"></div>
-                                                -->
-                                                <div id="myChart" class="myChart"></div>
-                                                <!-- <canvas id="myChart"></canvas> -->
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div> <!-- End container -->
-                <?php
-                }
-                ?>
-
-        </div>
-        <!-- /.container-fluid -->
+                    </div>
+                </div>
+            </div> <!-- End container -->
+        <?php
+        }
+        ?>
+            
+            
+            
+            
+        </div><!-- /.container-fluid -->
   
      <?php
     include "inc/admin-footer.php"; 

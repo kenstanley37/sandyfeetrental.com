@@ -6,28 +6,53 @@ function pop_dropdown(){
     $.ajax({
         url:"/inc/ajax.php",
         method:"POST",
-        data: 'get_prop_list',    
+        data: 'get_build_list',    
         success:function(data){
-        $('#dropdown').html(data);
-        $('select[name="property"]').change(function(){
-            //alert('test');
-            var prop_id = $(this).val();
-            if(prop_id === ''){
-                $('#image_table').empty();
+        $('#building_list').append('<option value=""></option>');    
+        $('#building_list').append(data);
+        $('select[name="building"]').change(function(){
+            // if #building_list value is empty
+            if ($(this).children(":selected").val() === "" ){
+                $('#property_list :nth-child(1)').prop('selected', true);
+                $('#reportTable').empty();
+                $('#property_list').attr("disabled", true);
             } else {
+                $('#property_list').attr("disabled", false);
+                build_id = $(this).children(":selected").val();
                  $.ajax({
-                       url:"/inc/ajax.php",
-                       method:"POST",
-                       data: {'img_fetch' : prop_id},    
-                       success:function(data)
-                       {
-                        $('#image_table').html(data);
-                       },
-                       error:function(data){
-                           $('#image_table').html(data);
-                           console.log(data);
-                       }
-                  });   
+                    url:"/inc/ajax.php",
+                    method:"POST",
+                    data: 'get_prop_list='+build_id,    
+                    success:function(data){
+                    $('#property_list').empty();
+                    $('#property_list').append('<option value=""></option>');
+                    $('#property_list').append(data);
+                    $('select[name="property"]').change(function(){
+                        //alert('test');
+                        var prop_id = $(this).val();
+                        if(prop_id === ''){
+                            $('#reportTable').empty();
+                        } else {
+                             $.ajax({
+                                   url:"/inc/ajax.php",
+                                   method:"POST",
+                                   data: {'img_fetch' : prop_id},    
+                                   success:function(data)
+                                   {
+                                    $('#reportTable').empty();
+                                    $('#reportTable').append(data);
+                                   },
+                                   error:function(data){
+                                       $('#reportTable').append(data);
+                                   }
+                              });   
+                        }
+                    });
+                    },
+                    error:function(data){
+                    $('#dropdown').html(data);
+                    }
+                });
             }
         });
         },
@@ -36,6 +61,11 @@ function pop_dropdown(){
         console.log(data);
         }
     });
+    
+    
+    
+    
+    
 }//end pop_dropdown
 
 

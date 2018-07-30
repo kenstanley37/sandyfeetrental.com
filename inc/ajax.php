@@ -24,8 +24,11 @@ if(isset( $_POST['btn-avg'] )) {
      $result = $prop->img_fetch($img_fetch);
      print_r($result);
 } else if(isset( $_POST['get_prop_list'] )) {
-     $result = $prop->get_prop_list();
+     $result = $prop->get_prop_list($_POST['get_prop_list']);
      print_r($result);
-}else {
+} else if(isset( $_POST['get_build_list'] )) {
+     $result = $prop->get_build_list();
+     print_r($result);
+} else {
     echo "<h1>NOTHING HERE DUDE</h1>";
 }

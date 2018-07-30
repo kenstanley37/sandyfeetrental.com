@@ -241,26 +241,56 @@ public function avg_rate(){
     } // end get_freq_renters
     
     
-    public function get_prop_list(){
+    public function get_prop_list($building){
        try
 		{
-            $stmt = $this->conn->prepare("SELECT * from property order by prop_num");
+            $stmt = $this->conn->prepare("SELECT * from property p left join building b on b.building_id = p.building_id where b.building_name = :building order by prop_num");
+           
+            $stmt->bindparam(":building", $building);
             $stmt->execute();
             $result = $stmt->fetchAll();
             $number_of_rows = $stmt->rowCount();
             $output = '';
-        $output .= '
-            <select name="property" id="property_list">
-                <option value=""></option>
-        ';
+           
         if($number_of_rows > 0)
         {
-         $count = 0;
          foreach($result as $row)
          {
-          $count ++; 
           $output .= '
             <option>'.$row["prop_num"].'</option>
+          ';
+         }
+        }
+        else
+        {
+
+        }
+        echo $output;           
+           
+           
+        }
+		catch(PDOException $e)
+		{
+			echo $e->getMessage();
+		}
+    } // end get_freq_renters
+    
+    
+    public function get_build_list(){
+       try
+		{
+            $stmt = $this->conn->prepare("SELECT * from building order by building_name");
+            $stmt->execute();
+            $result = $stmt->fetchAll();
+            $number_of_rows = $stmt->rowCount();
+            $output = '';
+           
+        if($number_of_rows > 0)
+        {
+         foreach($result as $row)
+         {
+          $output .= '
+            <option>'.$row["building_name"].'</option>
           ';
          }
         }
@@ -272,7 +302,6 @@ public function avg_rate(){
             </tr>
          ';
         }
-        $output .= '</select>';
         echo $output;           
            
            
@@ -282,6 +311,10 @@ public function avg_rate(){
 			echo $e->getMessage();
 		}
     } // end get_freq_renters
+    
+    
+    
+    
     
     public function img_fetch($img_fetch){
         $query = "SELECT p.prop_num, pp.prop_pic_id, pp.prop_pic_name, pp.prop_pic_desc, pp.prop_pic_name, pp.prop_pic_link FROM prop_pics pp
@@ -295,7 +328,6 @@ public function avg_rate(){
         $number_of_rows = $stmt->rowCount();
         $output = '';
         $output .= '
-         <table id="reportTable" class="table table-bordered table-striped">
             <thead>
                 <tr>
                     <th id="tbl-head" colspan="7">Property ID: '.$img_fetch.'</th>
@@ -338,8 +370,7 @@ public function avg_rate(){
          ';
         }
         $output .= '
-        </tbody>
-        </table>';
+        </tbody>';
         echo $output;
     }
     

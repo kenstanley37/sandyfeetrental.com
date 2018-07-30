@@ -7,60 +7,95 @@
 
         if($login->is_loggedin()!="true")
     {
-        //header("Location: /index.php");
         $rank = $login->check_rank();
         if($rank != 'admin' or 'super_admin'){
             header("Location: /index.php");
         }
-        //echo $rank;
     }
-
-
     $prop = new PROP();
     
 
     $myID = '';
 
-    include $path."/views/header.php"; 
+    include "inc/admin-header.php"; 
 ?>
 
-<!-- ADD MORE LINKS TO JS OR CSS HERE -->
-<link rel="stylesheet" href="assets/css/admin.css">
-<script src='assets/js/admin.js' type='text/javascript'></script>
-<script src='assets/js/photo.js' type='text/javascript'></script>
+<!-- Extra CSS and JS here -->
+<script src='assets/js/photo.js' type='text/javascript'></script>  
 </head>
 
 <?php
-
-    include $path."/views/index-nav.php"; 
-    
+    //include $path."/views/index-nav.php"; 
+    include "inc/admin-nav.php"; 
 
     //echo ROOT_URL;
     //echo ROOT_DIR;
+    ?>
+<div id="wrapper">
+
+     <?php include "inc/admin-sidebar.php"; ?>
+
+      <div id="content-wrapper">
+
+        <div class="container-fluid">
+
+            <!-- Breadcrumbs-->
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item">
+                    <a href="index.php">Dashboard</a>
+                </li>
+                <li class="breadcrumb-item active">Property Images</li>
+            </ol>
+
+            <!-- Page Content -->
+            <div class="container" id="admin">
+                <h3 align="center">Property Image Management</h3>
+                <br />
+                <div class="row">
+                    <div class="col-2">
+                        <div align="center" id="building-dropdown">
+                            <span>Building</span>
+                            <select name="building" id="building_list">
+
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-2">
+                        <div align="center" id="pic-dropdown">
+                            <span>Property</span>
+                            <select name="property" id="property_list" disabled>
+
+                            </select>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div align="right">
+                    <input type="file" name="multiple_files" id="multiple_files" multiple />
+                    <span class="text-muted">Only .jpg, png, .gif file allowed</span>
+                    <span id="error_multiple_files"></span>
+                </div>
+                <br />
+                <div class="table-responsive" id="image_table">
+                    <table id="reportTable" class="table table-bordered table-striped">
+                    </table>
+                </div>
+            </div>
+            
+            
+            
+            
+        </div><!-- /.container-fluid -->
+  
+     <?php
+    include "inc/admin-footer.php"; 
+    ?>
+    <div id="idTheID"><?php echo $myID; ?></div>
+    <?php
 ?>
-
-
-<div class="container" id="admin">
-    <h3 align="center">Property Image Management</h3>
-    <br />
-    <div align="right" id="dropdown"></div>
-    <div align="right">
-        <input type="file" name="multiple_files" id="multiple_files" multiple />
-        <span class="text-muted">Only .jpg, png, .gif file allowed</span>
-        <span id="error_multiple_files"></span>
-    </div>
-    <br />
-    <div class="table-responsive" id="image_table">
-
-    </div>
-</div>
-</body>
-
-<?php
-include $path."/views/footer.php"; 
-?>
-
-<div id="imageModal" class="modal fade" role="dialog">
+          
+          <div id="imageModal" class="modal fade" role="dialog">
     <div class="modal-dialog">
         <div class="modal-content">
             <form method="POST" id="edit_image_form">
