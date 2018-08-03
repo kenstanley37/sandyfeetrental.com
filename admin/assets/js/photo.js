@@ -1,5 +1,6 @@
 $(document).ready(function(){
     pop_dropdown();
+    img_upload();
 });
 
 function pop_dropdown(){
@@ -27,25 +28,13 @@ function pop_dropdown(){
                     $('#property_list').empty();
                     $('#property_list').append('<option value=""></option>');
                     $('#property_list').append(data);
-                    $('select[name="property"]').change(function(){
+                    $('#property_list').change(function(){
                         //alert('test');
                         var prop_id = $(this).val();
                         if(prop_id === ''){
                             $('#reportTable').empty();
                         } else {
-                             $.ajax({
-                                   url:"/inc/ajax.php",
-                                   method:"POST",
-                                   data: {'img_fetch' : prop_id},    
-                                   success:function(data)
-                                   {
-                                    $('#reportTable').empty();
-                                    $('#reportTable').append(data);
-                                   },
-                                   error:function(data){
-                                       $('#reportTable').append(data);
-                                   }
-                              });   
+                            img_fetch(prop_id);
                         }
                     });
                     },
@@ -61,69 +50,47 @@ function pop_dropdown(){
         console.log(data);
         }
     });
-    
-    
-    
-    
-    
 }//end pop_dropdown
 
 
-$('#multiple_files').change(function(){
-    var error_images = '';
-    var form_data = new FormData();
-    var files = $('#multiple_files')[0].files;
-    if(files.length > 10){
-        error_images += 'You can not select more than 10 files';
-    }
-    else {
-        for(var i=0; i<files.length; i++){
-            var name = document.getElementById("multiple_files").files[i].name;
-            var ext = name.split('.').pop().toLowerCase();
-            if(jQuery.inArray(ext, ['gif','png','jpg','jpeg']) == -1){
-            error_images += '<p>Invalid '+i+' File</p>';
-            }
-            var oFReader = new FileReader();
-            oFReader.readAsDataURL(document.getElementById("multiple_files").files[i]);
-            var f = document.getElementById("multiple_files").files[i];
-            var fsize = f.size||f.fileSize;
-        if(fsize > 2000000){
-            error_images += '<p>' + i + ' File Size is very big</p>';
-        }
-        else {
-            form_data.append("file[]", document.getElementById('multiple_files').files[i]);
-        }
-    }
-    }
-    if(error_images == '')
-    {
+function img_fetch(data){
     $.ajax({
-    url:"upload.php",
-    method:"POST",
-    data: form_data,
-    contentType: false,
-    cache: false,
-    processData: false,
-    beforeSend:function(){
-    $('#error_multiple_files').html('<br /><label class="text-primary">Uploading...</label>');
-    },   
-    success:function(data)
-    {
-    $('#error_multiple_files').html('<br /><label class="text-success">Uploaded</label>');
-    load_image_data();
-    }
+        url:"/inc/ajax.php",
+        method:"POST",
+        data: {'img_fetch' : data},    
+        success:function(data)
+        {
+            $('#reportTable').empty();
+            $('#reportTable').append(data);
+        },
+        error:function(data){
+            $('#reportTable').append(data);
+        }
+    }); 
+}
+
+function img_upload(){
+    // Get the current value of the property select box.
+    $('#property_list').change(function(){
+        prop_num = $(this).val();
     });
-    }
-    else
-    {
-    $('#multiple_files').val('');
-    $('#error_multiple_files').html("<span class='text-danger'>"+error_images+"</span>");
-    return false;
-    }
-});  
-
-
-
+    
+    // http://malsup.com/jquery/form/#ajaxForm
+    $('#uploadForm').ajaxForm({
+        target:'#imagesPreview',
+        beforeSubmit:function(){
+            $('#uploadStatus').html('<img src="assets/images/uploading.gif"/>');
+        },
+        success:function(){
+            img_fetch(prop_num);
+            $('#uploadStatus').html('');
+        },
+        error:function(){
+            $('#uploadStatus').html('Images upload failed, please try again.');
+        }
+    });
+    
+} //end img_upload
 
 
  $(document).on('click', '.edit', function(){

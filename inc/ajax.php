@@ -19,15 +19,19 @@ if(isset( $_POST['btn-avg'] )) {
      //echo json_encode($result);
      //print_r($result);
     echo $result;
-} else if(isset( $_POST['img_fetch'] )) {
-     $img_fetch = $_POST['img_fetch'];
-     $result = $prop->img_fetch($img_fetch);
-     print_r($result);
-} else if(isset( $_POST['get_prop_list'] )) {
+}  else if(isset( $_POST['get_prop_list'] )) {
      $result = $prop->get_prop_list($_POST['get_prop_list']);
      print_r($result);
 } else if(isset( $_POST['get_build_list'] )) {
      $result = $prop->get_build_list();
+     print_r($result);
+} else if(isset( $_POST['img_fetch'] )) {
+     $img_fetch = $_POST['img_fetch'];
+     $result = $prop->img_fetch($img_fetch);
+     print_r($result);
+} else if(isset( $_POST['img_upload'] )) {
+     $result = $prop->img_upload($img_prop, $img_data);
+    echo "dude I rock";
      print_r($result);
 } else {
     echo "<h1>NOTHING HERE DUDE</h1>";

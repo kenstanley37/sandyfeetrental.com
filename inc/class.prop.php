@@ -257,7 +257,7 @@ public function avg_rate(){
          foreach($result as $row)
          {
           $output .= '
-            <option>'.$row["prop_num"].'</option>
+            <option value="'.$row["prop_id"].'">'.$row["prop_num"].'</option>
           ';
          }
         }
@@ -317,20 +317,25 @@ public function avg_rate(){
     
     
     public function img_fetch($img_fetch){
-        $query = "SELECT p.prop_num, pp.prop_pic_id, pp.prop_pic_name, pp.prop_pic_desc, pp.prop_pic_name, pp.prop_pic_link FROM prop_pics pp
+        $query = "SELECT p.prop_id, p.prop_num, pp.prop_pic_id, pp.prop_pic_name, pp.prop_pic_desc, pp.prop_pic_name, pp.prop_pic_link FROM prop_pics pp
         left join property p on pp.prop_id = p.prop_id
-        WHERE p.prop_num = :img_fetch
+        WHERE p.prop_id = :img_fetch
         ORDER BY pp.prop_pic_id";
         $stmt = $this->conn->prepare($query);
         $stmt->bindParam(':img_fetch', $img_fetch);
         $stmt->execute();
         $result = $stmt->fetchAll();
         $number_of_rows = $stmt->rowCount();
+        if(isset($result[0]['prop_num'])){
+            $prop_num = $result[0]['prop_num'];
+        } else {
+            $prop_num = 'No Images';
+        }
         $output = '';
         $output .= '
             <thead>
                 <tr>
-                    <th id="tbl-head" colspan="7">Property ID: '.$img_fetch.'</th>
+                    <th id="tbl-head" colspan="7">Property ID: '.$prop_num.'</th>
                 </tr>
                 <tr>
                     <th>Pic ID</th>
@@ -352,7 +357,7 @@ public function avg_rate(){
           $output .= '
             <tr>
                 <td>'.$row["prop_pic_id"].'</td>
-                <td><a href="uploads/'.$row["prop_pic_name"].'"><img src="'.$row["prop_pic_link"].'" class="img-thumbnail" width="100" height="100" /></a></td>
+                <td><a href="'.$row["prop_pic_link"].'"><img src="'.$row["prop_pic_link"].'" class="img-thumbnail" width="100" height="100" /></a></td>
                 <td>'.$row["prop_pic_name"].'</td>
                 <td>'.$row["prop_pic_desc"].'</td>
                 <td><button type="button" class="btn btn-warning btn-xs edit" id="'.$row["prop_pic_id"].'">Edit</button></td>
@@ -374,9 +379,68 @@ public function avg_rate(){
         echo $output;
     }
     
-    public function img_upload(){
+    public function img_upload($img_prop, $img_data){
+        $directoryName = $img_prop;
+        // check if property has it's own folder
+        if(!is_dir($directoryName)){
+            //if it doesn't have its own folder make one
+            mkdir($directoryName, 0755);
+        }
         
+        //upload.php
+        if(count($_FILES["file"]["name"]) > 0)
+        {
+            //$output = '';
+            sleep(3);
+            for($count=0; $count<count($_FILES["file"]["name"]); $count++)
+            {
+                $file_name = $_FILES["file"]["name"][$count];
+                $tmp_name = $_FILES["file"]['tmp_name'][$count];
+                $file_array = explode(".", $file_name);
+                $file_extension = end($file_array);
+                if(file_already_uploaded($file_name, $conn))
+                {
+                    $file_name = $file_array[0] . '-'. rand() . '.' . $file_extension;
+                }
+                $location = 'uploads/'.$img_prop.'/' . $file_name;
+                if(move_uploaded_file($tmp_name, $location))
+                {
+                    try
+                    {
+                        $query = "
+                        INSERT INTO prop_pics (prop_id, prop_pic_name, prop_pic_desc, prop_pic_link) 
+                        VALUES ('".$img_prop."', '".$file_name."', '', '')
+                        ";
+                        $statement = $conn->prepare($query);
+                        $statement->execute();
+                    }
+                    catch(PDOException $e)
+                    {
+                        echo $e->getMessage();
+                    }
+                    
+                }
+            }
+        }
     }
+    
+    
+    public function file_already_uploaded($img_prop, $file_name, $conn)
+        {
+
+            $query = "SELECT * FROM prop_pocs WHERE prop_id = '".$img_prop."' and prop_pic_name = '".$file_name."'";
+            $statement = $conn->prepare($query);
+            $statement->execute();
+            $number_of_rows = $statement->rowCount();
+            if($number_of_rows > 0)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
     
     public function img_edit(){
         

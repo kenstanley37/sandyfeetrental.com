@@ -51,7 +51,7 @@
             
         <div class="container" id="admin">
             <div class="row admin-nav">
-                <div class="col-12"><?php include $path."/views/admin/admin-nav.php"; ?>
+                <div class="col-12"><?php include "inc/reports/admin-nav.php"; ?>
                 </div>
             </div>
             
